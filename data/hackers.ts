@@ -1,0 +1,172 @@
+import { HackerType } from '@/types';
+
+export const hackerTypes: HackerType[] = [
+  {
+    id: 'white-hat',
+    name: 'White Hat Hacker',
+    definition: 'An authorized cybersecurity specialist who uses their technical skills and offensive methodologies to discover vulnerabilities and improve security posture with explicit permission.',
+    objectives: 'Identify security flaws, strengthen organizational defenses, protect customer data, and comply with security regulations.',
+    activities: 'Authorized penetration testing, vulnerability assessments, security architecture reviews, defensive design consulting.',
+    commonTechniques: ['Port Scanning & Enumeration', 'Vulnerability Scanning', 'Exploit Verification in Test Labs', 'Code Auditing', 'Reporting and Remediation Advice'],
+    legalEthicalContext: 'Operates with strict legal authorization (Rules of Engagement, Contracts, Written Permission). Adheres strictly to relevant laws (e.g., CFAA, GDPR).',
+    careerRoles: ['Penetration Tester', 'Security Consultant', 'Vulnerability Analyst', 'Application Security Engineer'],
+    relatedSkills: ['Network Security', 'Web Application Security', 'Remediation Advisory', 'Technical Documentation'],
+    relatedCertifications: ['OSCP+', 'Security+', 'GPEN', 'eJPT']
+  },
+  {
+    id: 'black-hat',
+    name: 'Black Hat Hacker',
+    definition: 'An unauthorized malicious actor who breaches computer networks, steals data, or deploys destructive malware for personal financial gain, ideological reasons, or malicious intent.',
+    objectives: 'Financial extortion, data theft, corporate espionage, service disruption, and unauthorized surveillance.',
+    activities: 'Ransomware deployment, credential harvesting, unauthorized database exfiltration, sale of stolen credentials on illicit forums.',
+    commonTechniques: ['Phishing Campaigns', 'Zero-day Exploitation', 'Malware Authoring', 'Active Directory Lateral Movement', 'DDoS Extortion'],
+    legalEthicalContext: 'Illegal. Violates criminal cyber laws worldwide (such as the US Computer Fraud and Abuse Act, UK Computer Misuse Act). Subject to felony prosecution.',
+    careerRoles: ['No legal career role. Black hat actions lead to criminal prosecution.'],
+    relatedSkills: ['Exploit Development', 'Stealth and Obfuscation', 'Social Engineering', 'Malware Engineering'],
+    relatedCertifications: []
+  },
+  {
+    id: 'gray-hat',
+    name: 'Gray Hat Hacker',
+    definition: 'An individual who may violate laws or ethical standards by probing systems without prior authorization, but without malicious intent, often disclosing found flaws publicly or to the owner.',
+    objectives: 'Discover vulnerabilities, gain recognition, explore systems, or prompt organizations to fix security issues.',
+    activities: 'Unsolicited vulnerability scanning of public websites, discovering flaws and emailing site owners demanding payment or bounty before disclosure.',
+    commonTechniques: ['Automated Web Scanning', 'Public Asset Enumeration', 'Uncoordinated Vulnerability Disclosure'],
+    legalEthicalContext: 'Legally ambiguous or illegal due to lack of prior authorization, even if no damage or theft occurs.',
+    careerRoles: ['Independent Security Enthusiasts (risk legal liability without safe harbor programs)'],
+    relatedSkills: ['Reconnaissance', 'Vulnerability Identification', 'Coordinated Disclosure Practices'],
+    relatedCertifications: ['Security+', 'eJPT']
+  },
+  {
+    id: 'script-kiddie',
+    name: 'Script Kiddie',
+    definition: 'An unskilled individual who uses existing automated scripts, tools, or exploits created by others without understanding the underlying technical mechanisms.',
+    objectives: 'Show off to peers, deface websites, disrupt online games, or test tools found on public repositories.',
+    activities: 'Running automated DDoS tools, executing public exploit scripts blindly against arbitrary IP addresses, web defacement.',
+    commonTechniques: ['Low Orbit Ion Cannon (LOIC)', 'Automated SQLMAP runs without tuning', 'Public exploit execution without modification'],
+    legalEthicalContext: 'Often unlawful. Even amateur attacks carry severe legal consequences and detection due to noisy, unrefined tool usage.',
+    careerRoles: ['Unskilled amateur entry point; transitioning to cybersecurity requires learning fundamentals.'],
+    relatedSkills: ['Foundations of Networking', 'Operating Systems', 'Python Scripting'],
+    relatedCertifications: ['CompTIA Network+', 'CompTIA Security+']
+  },
+  {
+    id: 'hacktivist',
+    name: 'Hacktivist',
+    definition: 'A hacker or group of hackers who use cyberattacks to promote political agendas, social change, freedom of speech, or human rights causes.',
+    objectives: 'Draw public attention to perceived injustices, disrupt political entities, expose classified documents, or retaliate against corporate actions.',
+    activities: 'Website defacement with political messages, leaking private emails of public figures/corporations, launching DDoS attacks against government portals.',
+    commonTechniques: ['Distributed Denial of Service (DDoS)', 'Doxxing', 'Website Defacement', 'Database Dumps and Public Leaks'],
+    legalEthicalContext: 'Illegal under computer misuse legislation regardless of ideological motivation.',
+    careerRoles: ['Ideologically motivated activism; not a formal professional career path.'],
+    relatedSkills: ['Anonymity Technologies (Tor/VPN)', 'OSINT', 'DDoS Infrastructure'],
+    relatedCertifications: []
+  },
+  {
+    id: 'state-sponsored-hacker',
+    name: 'State-Sponsored Hacker (APT)',
+    definition: 'Highly skilled, well-resourced cyber operators employed or funded by nation-states to conduct espionage, sabotage critical infrastructure, or achieve geopolitical objectives.',
+    objectives: 'Long-term intelligence gathering, intellectual property theft, critical infrastructure disruption, strategic advantage in geopolitical conflicts.',
+    activities: 'Persistent stealthy reconnaissance, developing zero-day exploit chains, infiltrating defense contractors, government ministries, and energy grids.',
+    commonTechniques: ['Zero-Day Exploits', 'Supply Chain Compromise', 'Living-off-the-Land (LotL)', 'Custom Proprietary Malware', 'Advanced Memory Injection'],
+    legalEthicalContext: 'Authorized by their sponsor government but illegal in target countries and governed by international conflict dynamics.',
+    careerRoles: ['Government Cyber Operator', 'Intelligence Agency Technical Specialist', 'National Cyber Defense Command'],
+    relatedSkills: ['Kernel Exploitation', 'Firmware Reverse Engineering', 'Advanced Threat Intelligence', 'Long-term Stealth Operations'],
+    relatedCertifications: ['OSED', 'OSEE', 'CISSP']
+  },
+  {
+    id: 'cybercriminal',
+    name: 'Cybercriminal / Organized Cybercrime',
+    definition: 'Members of organized criminal syndicates who operate cyberattacks strictly as a commercial business enterprise focused on maximizing financial revenue.',
+    objectives: 'Direct financial theft, running Ransomware-as-a-Service (RaaS) affiliate networks, illicit carding markets, and money laundering.',
+    activities: 'Operating ransomware negotiation portals, purchasing initial access from brokers (IABs), laundering illicit cryptocurrency through mixers.',
+    commonTechniques: ['Ransomware-as-a-Service (RaaS)', 'Initial Access Brokerage (IAB)', 'Banking Trojans', 'SIM Swapping', 'Business Email Compromise (BEC)'],
+    legalEthicalContext: 'Major international organized crime; investigated by international law enforcement (Interpol, FBI, Europol).',
+    careerRoles: ['Criminal syndicate; subject to global sanctions, asset forfeiture, and prison.'],
+    relatedSkills: ['Cryptocurrency Flow Analysis', 'Financial Systems Exploitation', 'Affiliate Management'],
+    relatedCertifications: []
+  },
+  {
+    id: 'insider-threat',
+    name: 'Insider Threat',
+    definition: 'A current or former employee, contractor, or business partner who has authorized access to an organization network and misuses that access maliciously or negligently.',
+    objectives: 'Steal trade secrets before joining a competitor, sabotage systems after termination, sabotage for financial bribery, or unintentional data exposure.',
+    activities: 'Copying source code to personal USB drives, creating rogue administrative accounts, exfiltrating customer records, ignoring security policies.',
+    commonTechniques: ['Authorized Data Exfiltration', 'Abuse of Legitimate Privileges', 'Disabling Security Logging', 'Creating Shadow Admin Accounts'],
+    legalEthicalContext: 'Breach of employment contract, trade secret theft statutes, and corporate computer abuse laws.',
+    careerRoles: ['N/A (Mitigated by User and Entity Behavior Analytics - UEBA and DLP teams).'],
+    relatedSkills: ['Data Loss Prevention (DLP)', 'Access Control Management', 'Behavioral Auditing'],
+    relatedCertifications: ['CISSP', 'CISM']
+  },
+  {
+    id: 'ethical-hacker',
+    name: 'Ethical Hacker',
+    definition: 'A professional practitioner who uses hacking skills, methodologies, and tools to identify system weaknesses and help organizations remediate them before malicious actors exploit them.',
+    objectives: 'Validate security controls, test real-world attack vectors, educate stakeholders, and protect enterprise resilience.',
+    activities: 'Conducting comprehensive penetration tests, physical security testing, red team simulations, and developer training.',
+    commonTechniques: ['Full-scope Penetration Testing', 'Social Engineering Assessments', 'Wireless Audits', 'Active Directory Assessments'],
+    legalEthicalContext: 'Operates with formal contracts, explicit Non-Disclosure Agreements (NDAs), and adherence to ethical codes (e.g., (ISC)² Code of Ethics, EC-Council Code).',
+    careerRoles: ['Ethical Hacker', 'Penetration Tester', 'Security Assessment Lead'],
+    relatedSkills: ['Threat Modeling', 'Exploitation Techniques', 'Remediation Guidance', 'Client Communication'],
+    relatedCertifications: ['OSCP+', 'PNPT', 'eCPPT', 'Security+']
+  },
+  {
+    id: 'security-researcher',
+    name: 'Security Researcher / Vulnerability Researcher',
+    definition: 'An expert who investigates software, hardware, protocols, and cryptography to discover previously unknown vulnerabilities (0-days) and publish defensive findings.',
+    objectives: 'Advance the state of computer science security, uncover fundamental software bugs, develop secure design patterns, and coordinate responsible disclosure with vendors.',
+    activities: 'Fuzzing software protocols, reverse engineering binaries in disassemblers (Ghidra/IDA Pro), analyzing cryptographic implementations, writing CVE advisories.',
+    commonTechniques: ['Binary Fuzzing (AFL, LibFuzzer)', 'Static and Dynamic Binary Analysis', 'Source Code Auditing', 'Proof of Concept (PoC) Engineering'],
+    legalEthicalContext: 'Follows Coordinated Vulnerability Disclosure (CVD) and safe harbor guidelines (e.g., ISO/IEC 29147).',
+    careerRoles: ['Vulnerability Researcher', 'Security Architect', 'Cryptanalyst', 'Software Security Specialist'],
+    relatedSkills: ['C/C++', 'Assembly', 'Debugging (x64dbg/GDB)', 'Reverse Engineering'],
+    relatedCertifications: ['OSED', 'OSWE', 'OSEE']
+  },
+  {
+    id: 'bug-bounty-hunter',
+    name: 'Bug Bounty Hunter',
+    definition: 'An independent security researcher who discovers and reports security vulnerabilities in participating organizations through managed bounty programs (e.g., HackerOne, Bugcrowd).',
+    objectives: 'Identify high-impact valid vulnerabilities within defined scopes to earn financial bounties and community reputation.',
+    activities: 'Reconnaissance on public web assets, submitting structured vulnerability reports with reproduction steps, collaborating with program triagers.',
+    commonTechniques: ['Subdomain Enumeration', 'API Endpoint Discovery', 'Logic Flaw Hunting', 'IDOR and Access Control Bypass', 'SSRF and XSS Hunting'],
+    legalEthicalContext: 'Protected by program Safe Harbor policies as long as activities remain within defined program scopes and terms of service.',
+    careerRoles: ['Full-time / Part-time Bug Bounty Hunter', 'Application Security Consultant'],
+    relatedSkills: ['Web Reconnaissance', 'Automation Scripting (Bash/Go/Python)', 'Burp Suite Mastery', 'Report Writing'],
+    relatedCertifications: ['OSWA', 'OSWE', 'eWPT']
+  },
+  {
+    id: 'red-team',
+    name: 'Red Team Operator',
+    definition: 'An offensive security specialist who simulates realistic adversary tactics, techniques, and procedures (TTPs) to test the detection and response capabilities of an organization (the Blue Team).',
+    objectives: 'Assess organizational response capability, test people and processes (not just software vulnerabilities), simulate full cyber attack campaigns covertly.',
+    activities: 'Spear phishing campaigns, assumed-breach exercises, Active Directory privilege escalation, lateral movement, physical security bypass, maintaining covert persistence.',
+    commonTechniques: ['C2 Frameworks (Cobalt Strike, Sliver)', 'EDR Evasion', 'Process Injection', 'Living-off-the-Land Binaries (LOLBins)', 'Kerberos Attacks'],
+    legalEthicalContext: 'Authorized by senior executive leadership with strict Rules of Engagement (RoE) and trusted emergency contact procedures.',
+    careerRoles: ['Red Team Operator', 'Adversary Emulation Engineer', 'Principal Offensive Consultant'],
+    relatedSkills: ['Adversary Simulation', 'PowerShell & C# Development', 'Active Directory Internals', 'Stealth Operations'],
+    relatedCertifications: ['OSEP', 'CRTO', 'OSCP+']
+  },
+  {
+    id: 'blue-team',
+    name: 'Blue Team / Defensive Analyst',
+    definition: 'A cybersecurity professional responsible for maintaining internal network defenses, monitoring threats, hunting anomalies, analyzing logs, and responding to incidents.',
+    objectives: 'Detect adversary activity in real time, minimize mean-time-to-detect (MTTD) and mean-time-to-remediate (MTTR), harden system configurations, and isolate compromised assets.',
+    activities: 'SIEM monitoring, threat hunting, malware triage, firewall and EDR policy tuning, patch management, digital forensics.',
+    commonTechniques: ['Log Correlation & Querying (KQL/SPL)', 'Memory Forensics (Volatility)', 'Network Traffic Analysis (Wireshark/Zeek)', 'Endpoint Detection & Response (EDR)', 'YARA/Sigma Rule Authoring'],
+    legalEthicalContext: 'Authorized defenders operating on organization-owned assets to preserve business confidentiality, integrity, and availability.',
+    careerRoles: ['SOC Analyst', 'Incident Responder', 'Detection Engineer', 'Threat Hunter', 'Digital Forensics Analyst'],
+    relatedSkills: ['Log Analysis', 'SIEM/SOAR', 'Threat Intelligence', 'Operating System Telemetry'],
+    relatedCertifications: ['CySA+', 'OSDA', 'GCIH', 'GCFA', 'BTL1']
+  },
+  {
+    id: 'purple-team',
+    name: 'Purple Team Specialist',
+    definition: 'A collaborative security practice where offensive (Red) and defensive (Blue) teams work closely together in real-time to test specific attack techniques and immediately tune detection mechanisms.',
+    objectives: 'Close the gap between vulnerability discovery and defensive detection; maximize return on investment from security controls through iterative testing.',
+    activities: 'Atomic attack simulation (Atomic Red Team), walking through MITRE ATT&CK techniques with defenders observing telemetry, immediate SIEM rule creation and validation.',
+    commonTechniques: ['Adversary Emulation Plans', 'Atomic Red Team execution', 'Continuous Detection Engineering', 'MITRE ATT&CK Coverage Mapping'],
+    legalEthicalContext: 'Fully transparent collaborative exercise sanctioned by enterprise security leadership.',
+    careerRoles: ['Purple Team Lead', 'Continuous Security Validation Engineer', 'Detection Engineering Consultant'],
+    relatedSkills: ['Cross-domain Offensive & Defensive Knowledge', 'Threat Telemetry Analysis', 'Collaboration & Facilitation'],
+    relatedCertifications: ['OSDA', 'CySA+', 'OSCP+', 'CISSP']
+  }
+];
