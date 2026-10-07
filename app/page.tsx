@@ -68,7 +68,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-20 border-b border-slate-200 dark:border-slate-800/80 bg-gradient-to-b from-slate-100/70 via-white to-slate-50 dark:from-slate-950 dark:via-[#090d16] dark:to-slate-950">
+      <section className="relative overflow-hidden pt-16 pb-20 border-b border-slate-200 dark:border-slate-800/80 bg-gradient-to-b from-slate-100/70 via-white to-slate-50 dark:from-slate-950 dark:via-[#0d1527] dark:to-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             {/* Tagline Badge */}

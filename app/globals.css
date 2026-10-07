@@ -1,12 +1,28 @@
 @import "tailwindcss";
 
+@theme {
+  --color-slate-950: #0d1527;
+  --color-slate-900: #131f38;
+  --color-slate-850: #162442;
+  --color-slate-800: #1a2948;
+  --color-slate-750: #203358;
+  --color-slate-700: #283e68;
+  --color-slate-600: #465f8c;
+  --color-slate-500: #6d84ad;
+  --color-slate-400: #8ea4c4;
+  --color-slate-300: #b8c8df;
+  --color-slate-200: #dce5f2;
+  --color-slate-100: #eef3f9;
+  --color-slate-50: #f8fafc;
+}
+
 @layer base {
   :root {
     --background: #f8fafc;
     --foreground: #0f172a;
     --card: #ffffff;
     --card-foreground: #0f172a;
-    --primary: #1d4ed8;
+    --primary: #2563eb;
     --primary-foreground: #ffffff;
     --border: #e2e8f0;
     --muted: #f1f5f9;
@@ -14,15 +30,15 @@
   }
 
   html.dark {
-    --background: #090d16;
-    --foreground: #f8fafc;
-    --card: #0f172a;
-    --card-foreground: #f8fafc;
+    --background: #0d1527;
+    --foreground: #f1f5f9;
+    --card: #131f38;
+    --card-foreground: #f1f5f9;
     --primary: #3b82f6;
-    --primary-foreground: #090d16;
-    --border: #1e293b;
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
+    --primary-foreground: #0d1527;
+    --border: #203358;
+    --muted: #1a2948;
+    --muted-foreground: #8ea4c4;
   }
 }
 
@@ -60,7 +76,7 @@ body {
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #283e68;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -68,5 +84,5 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #465f8c;
 }
