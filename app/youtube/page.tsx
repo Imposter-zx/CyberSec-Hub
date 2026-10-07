@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { YouTubeCard } from '@/components/ui/YouTubeCard';
 import { youtubeChannels } from '@/data/youtube';
 import { filterYouTubeChannels } from '@/lib/filters';
-import { Search, PlaySquare, RefreshCw, Video } from 'lucide-react';
+import { Search, RefreshCw } from 'lucide-react';
 
 export default function YouTubeDirectoryPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -30,24 +30,24 @@ export default function YouTubeDirectoryPage() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
-          Recommended Cybersecurity YouTube Channels
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
+          Recommended Cybersecurity Video Channels
         </h1>
-        <p className="text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#68645D] dark:text-[#B8B1A5] max-w-3xl leading-relaxed">
           Curated directory of top-tier cybersecurity educators, exploit researchers, digital forensics experts, and walkthrough creators on YouTube.
         </p>
       </div>
 
       {/* Controls */}
-      <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 mb-8 space-y-4 shadow-sm">
+      <div className="bg-[#FFFDF8] dark:bg-[#302E29] p-4 rounded-xl border border-[#D8D0C2] dark:border-[#454139] mb-8 space-y-4 shadow-sm">
         <div className="relative">
-          <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3.5 top-3 w-4 h-4 text-[#68645D] dark:text-[#B8B1A5]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search channels by creator (e.g. John Hammond, IppSec, Professor Messer) or topic..."
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 rounded-lg border border-slate-200 dark:border-slate-800 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+            className="w-full pl-10 pr-4 py-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] text-[#242424] dark:text-[#F1EDE4] placeholder-[#68645D]/60 dark:placeholder-[#B8B1A5]/60 rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-xs focus:outline-none focus:ring-2 focus:ring-[#66705A]/40"
           />
         </div>
 
@@ -56,7 +56,7 @@ export default function YouTubeDirectoryPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full p-2 bg-slate-50 dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none"
+              className="w-full p-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#242424] dark:text-[#F1EDE4] focus:outline-none"
             >
               {categories.map((c) => (
                 <option key={c} value={c}>
@@ -73,7 +73,7 @@ export default function YouTubeDirectoryPage() {
                 setSearchQuery('');
                 setSelectedCategory('all');
               }}
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white"
+              className="p-2 rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#68645D] hover:text-[#242424] dark:text-[#B8B1A5] dark:hover:text-[#F1EDE4] transition-colors"
               title="Reset filters"
             >
               <RefreshCw className="w-4 h-4" />
@@ -84,8 +84,8 @@ export default function YouTubeDirectoryPage() {
 
       {/* Results Count */}
       <div className="flex items-center justify-between mb-6">
-        <span className="text-xs font-semibold text-slate-500">
-          Showing <span className="text-slate-900 dark:text-white">{filteredChannels.length}</span> verified YouTube channels
+        <span className="text-xs font-semibold text-[#68645D] dark:text-[#B8B1A5]">
+          Showing <span className="text-[#242424] dark:text-[#F1EDE4]">{filteredChannels.length}</span> verified channels
         </span>
       </div>
 

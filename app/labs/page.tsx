@@ -5,13 +5,13 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { resources } from '@/data/resources';
 import { ResourceCard } from '@/components/ui/ResourceCard';
 import { Difficulty, Pricing } from '@/types';
-import { FlaskConical, Search, Filter, RefreshCw, Terminal, Shield, Flag } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function LabsPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty | 'all'>('all');
-  const [selectedPricing, setSelectedPricing] = useState<Pricing | 'all'>('all');
+  const [selectedDifficulty] = useState<Difficulty | 'all'>('all');
+  const [selectedPricing] = useState<Pricing | 'all'>('all');
   const [selectedTag, setSelectedTag] = useState<string>('all');
 
   // Filter resources to those that are interactive labs, platforms, or CTFs
@@ -70,24 +70,24 @@ export default function LabsPage() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
           Hands-on Cybersecurity Labs & Practice Platforms
         </h1>
-        <p className="text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#68645D] dark:text-[#B8B1A5] max-w-3xl leading-relaxed">
           The core philosophy of cybersecurity mastery is deliberate practical execution. Browse verified virtual labs, vulnerable wargames, Capture The Flag (CTF) environments, and SOC defense simulators.
         </p>
       </div>
 
       {/* Controls Bar */}
-      <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 mb-8 space-y-4 shadow-sm">
+      <div className="bg-[#FFFDF8] dark:bg-[#302E29] p-4 rounded-xl border border-[#D8D0C2] dark:border-[#454139] mb-8 space-y-4 shadow-sm">
         <div className="relative">
-          <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3.5 top-3 w-4 h-4 text-[#68645D] dark:text-[#B8B1A5]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search lab environments by skill, platform, or vulnerability type..."
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 rounded-lg border border-slate-200 dark:border-slate-800 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+            className="w-full pl-10 pr-4 py-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] text-[#242424] dark:text-[#F1EDE4] placeholder-[#68645D]/60 dark:placeholder-[#B8B1A5]/60 rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-xs focus:outline-none focus:ring-2 focus:ring-[#66705A]/40"
           />
         </div>
 
@@ -101,8 +101,8 @@ export default function LabsPage() {
               className={cn(
                 'px-3 py-1 rounded-lg text-xs font-semibold transition-colors',
                 selectedTag === tag.id
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-[#66705A] text-[#FFFDF8] dark:bg-[#A5AD8C] dark:text-[#1F1E1B] shadow-sm'
+                  : 'bg-[#EAE3D5] dark:bg-[#292722] text-[#242424] dark:text-[#F1EDE4] border border-[#D8D0C2] dark:border-[#454139] hover:bg-[#D8D0C2]'
               )}
             >
               {tag.label}

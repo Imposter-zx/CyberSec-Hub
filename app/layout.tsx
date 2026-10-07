@@ -54,7 +54,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} dark`} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col font-sans bg-slate-50 dark:bg-[#0d1527] text-slate-900 dark:text-slate-100 transition-colors">
+      <body className="min-h-screen flex flex-col font-sans bg-[#F5F1E8] dark:bg-[#1F1E1B] text-[#242424] dark:text-[#F1EDE4] transition-colors antialiased">
         <ThemeProvider>
           <I18nProvider>
             <Navbar />

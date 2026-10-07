@@ -19,10 +19,6 @@ import {
   Users,
   Bug,
   Flag,
-  CheckCircle2,
-  ExternalLink,
-  PlaySquare,
-  Sparkles,
 } from 'lucide-react';
 import { SearchBar } from '@/components/ui/SearchBar';
 import { ResourceCard } from '@/components/ui/ResourceCard';
@@ -66,29 +62,29 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#F5F1E8] dark:bg-[#1F1E1B] text-[#242424] dark:text-[#F1EDE4]">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-20 border-b border-slate-200 dark:border-slate-800/80 bg-gradient-to-b from-slate-100/70 via-white to-slate-50 dark:from-slate-950 dark:via-[#0d1527] dark:to-slate-950">
+      <section className="relative overflow-hidden pt-16 pb-20 border-b border-[#D8D0C2] dark:border-[#454139] bg-gradient-to-b from-[#EAE3D5]/40 via-[#F5F1E8] to-[#F5F1E8] dark:from-[#292722]/50 dark:via-[#1F1E1B] dark:to-[#1F1E1B]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs font-semibold mb-6">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#EAE3D5] dark:bg-[#292722] border border-[#D8D0C2] dark:border-[#454139] text-[#66705A] dark:text-[#A5AD8C] text-xs font-semibold mb-6">
               <Shield className="w-3.5 h-3.5" />
-              <span>Structured Cybersecurity Knowledge & Resource Hub</span>
+              <span>Structured Cybersecurity Knowledge & Resource Journal</span>
             </div>
 
             {/* Title */}
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4 leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#242424] dark:text-[#F1EDE4] mb-4 leading-tight">
               Cybersecurity Learning Hub
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-[#68645D] dark:text-[#B8B1A5] mb-8 leading-relaxed">
               Learn cybersecurity from fundamentals to advanced security research. Structured roadmaps, free learning resources, verified technical concepts, and industry certifications.
             </p>
 
             {/* Global Search Bar */}
-            <div className="max-w-2xl mx-auto mb-8 shadow-lg rounded-xl">
+            <div className="max-w-2xl mx-auto mb-8 shadow-sm rounded-xl">
               <SearchBar placeholder="Search cybersecurity topics, certifications, labs, courses, or channels..." />
             </div>
 
@@ -96,30 +92,30 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm font-semibold">
               <Link
                 href="/learn"
-                className="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-colors flex items-center gap-1.5"
+                className="px-5 py-2.5 rounded-lg bg-[#66705A] hover:bg-[#56604b] dark:bg-[#A5AD8C] dark:hover:bg-[#929c78] text-[#FFFDF8] dark:text-[#1F1E1B] shadow-sm transition-colors flex items-center gap-1.5"
               >
                 <span>Start Learning</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/roadmaps"
-                className="px-5 py-2.5 rounded-lg bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white transition-colors flex items-center gap-1.5"
+                className="px-5 py-2.5 rounded-lg bg-[#242424] hover:bg-[#383632] dark:bg-[#302E29] dark:hover:bg-[#3d3a34] text-[#F1EDE4] border border-[#242424] dark:border-[#454139] transition-colors flex items-center gap-1.5"
               >
                 <Compass className="w-4 h-4" />
                 <span>Explore Roadmaps</span>
               </Link>
               <Link
                 href="/certifications"
-                className="px-5 py-2.5 rounded-lg bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 transition-colors flex items-center gap-1.5"
+                className="px-5 py-2.5 rounded-lg bg-[#FFFDF8] dark:bg-[#302E29] hover:bg-[#EAE3D5] dark:hover:bg-[#3d3a34] text-[#242424] dark:text-[#F1EDE4] border border-[#D8D0C2] dark:border-[#454139] transition-colors flex items-center gap-1.5 shadow-sm"
               >
-                <Award className="w-4 h-4" />
+                <Award className="w-4 h-4 text-[#B89B62]" />
                 <span>Explore Certifications</span>
               </Link>
               <Link
                 href="/learn?pricing=free"
-                className="px-5 py-2.5 rounded-lg bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 transition-colors flex items-center gap-1.5"
+                className="px-5 py-2.5 rounded-lg bg-[#FFFDF8] dark:bg-[#302E29] hover:bg-[#EAE3D5] dark:hover:bg-[#3d3a34] text-[#242424] dark:text-[#F1EDE4] border border-[#D8D0C2] dark:border-[#454139] transition-colors flex items-center gap-1.5 shadow-sm"
               >
-                <BookOpen className="w-4 h-4" />
+                <BookOpen className="w-4 h-4 text-[#66705A] dark:text-[#A5AD8C]" />
                 <span>Browse Free Resources</span>
               </Link>
             </div>
@@ -131,14 +127,14 @@ export default function HomePage() {
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-2">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#66705A] dark:text-[#A5AD8C]">
               Structured Taxonomy
             </span>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+            <h2 className="text-2xl font-bold text-[#242424] dark:text-[#F1EDE4]">
               Explore Knowledge Categories
             </h2>
           </div>
-          <p className="text-xs text-slate-500 max-w-md">
+          <p className="text-xs text-[#68645D] dark:text-[#B8B1A5] max-w-md">
             Organized learning domains spanning offensive, defensive, operational, and research specializations.
           </p>
         </div>
@@ -158,20 +154,20 @@ export default function HomePage() {
       </section>
 
       {/* Featured Free Resources Section */}
-      <section className="py-16 bg-slate-100/50 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800/80 w-full">
+      <section className="py-16 bg-[#EAE3D5]/40 dark:bg-[#292722]/40 border-y border-[#D8D0C2] dark:border-[#454139] w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-2">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#657A58] dark:text-[#A5AD8C]">
                 100% Free & Freemium Access
               </span>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+              <h2 className="text-2xl font-bold text-[#242424] dark:text-[#F1EDE4]">
                 Featured Free Resources
               </h2>
             </div>
             <Link
               href="/learn?pricing=free"
-              className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+              className="text-xs font-semibold text-[#66705A] dark:text-[#A5AD8C] hover:underline flex items-center gap-1"
             >
               <span>View all free resources</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -190,16 +186,16 @@ export default function HomePage() {
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-2">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#B56F4A] dark:text-[#C58A68]">
               Interactive Guidance
             </span>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+            <h2 className="text-2xl font-bold text-[#242424] dark:text-[#F1EDE4]">
               Popular Learning Paths
             </h2>
           </div>
           <Link
             href="/roadmaps"
-            className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+            className="text-xs font-semibold text-[#66705A] dark:text-[#A5AD8C] hover:underline flex items-center gap-1"
           >
             <span>Explore all 8 roadmaps</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -210,31 +206,31 @@ export default function HomePage() {
           {popularRoadmaps.map((rmap) => (
             <div
               key={rmap.id}
-              className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-blue-500/40 hover:shadow-md transition-all"
+              className="p-6 rounded-xl bg-[#FFFDF8] dark:bg-[#302E29] border border-[#D8D0C2] dark:border-[#454139] flex flex-col justify-between hover:border-[#66705A] dark:hover:border-[#A5AD8C] hover:shadow-sm transition-all"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                  <span className="text-xs font-bold px-2 py-0.5 rounded bg-[#EAE3D5] dark:bg-[#292722] text-[#242424] dark:text-[#F1EDE4] border border-[#D8D0C2] dark:border-[#454139]">
                     {rmap.category}
                   </span>
-                  <span className="text-xs text-slate-400">{rmap.steps.length} Learning Phases</span>
+                  <span className="text-xs text-[#68645D] dark:text-[#B8B1A5]">{rmap.steps.length} Learning Phases</span>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                <h3 className="text-lg font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
                   {rmap.title}
                 </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mb-4 leading-relaxed line-clamp-2">
+                <p className="text-xs text-[#68645D] dark:text-[#B8B1A5] mb-4 leading-relaxed line-clamp-2">
                   {rmap.description}
                 </p>
-                <div className="text-[11px] font-mono text-slate-500 mb-4 bg-slate-50 dark:bg-slate-800/50 p-2 rounded">
+                <div className="text-[11px] font-mono text-[#68645D] dark:text-[#B8B1A5] mb-4 bg-[#EAE3D5]/50 dark:bg-[#292722]/60 p-2 rounded border border-[#D8D0C2]/60 dark:border-[#454139]/60">
                   {rmap.estimatedSequence}
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <span className="text-xs text-slate-400">Target: {rmap.targetRole}</span>
+              <div className="pt-3 border-t border-[#D8D0C2]/50 dark:border-[#454139]/60 flex items-center justify-between">
+                <span className="text-xs text-[#68645D] dark:text-[#B8B1A5]">Target: {rmap.targetRole}</span>
                 <Link
                   href={`/roadmaps/${rmap.id}`}
-                  className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                  className="text-xs font-semibold text-[#66705A] dark:text-[#A5AD8C] hover:underline flex items-center gap-1"
                 >
                   <span>Start Roadmap</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -246,27 +242,27 @@ export default function HomePage() {
       </section>
 
       {/* Cybersecurity Certifications Showcase */}
-      <section className="py-16 bg-slate-100/50 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800/80 w-full">
+      <section className="py-16 bg-[#EAE3D5]/40 dark:bg-[#292722]/40 border-y border-[#D8D0C2] dark:border-[#454139] w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-2">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#B89B62]">
                 Industry Credentials
               </span>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+              <h2 className="text-2xl font-bold text-[#242424] dark:text-[#F1EDE4]">
                 Cybersecurity Certifications
               </h2>
             </div>
             <div className="flex items-center gap-3">
               <Link
                 href="/certifications/compare"
-                className="text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600"
+                className="text-xs font-semibold text-[#68645D] dark:text-[#B8B1A5] hover:text-[#66705A] dark:hover:text-[#A5AD8C]"
               >
                 Compare Certifications
               </Link>
               <Link
                 href="/certifications"
-                className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                className="text-xs font-semibold text-[#66705A] dark:text-[#A5AD8C] hover:underline flex items-center gap-1"
               >
                 <span>View all certifications</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -286,16 +282,16 @@ export default function HomePage() {
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-2">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-red-600 dark:text-red-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#B56F4A] dark:text-[#C58A68]">
               Video Education
             </span>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
-              Recommended YouTube Channels
+            <h2 className="text-2xl font-bold text-[#242424] dark:text-[#F1EDE4]">
+              Recommended Security Channels
             </h2>
           </div>
           <Link
             href="/youtube"
-            className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+            className="text-xs font-semibold text-[#66705A] dark:text-[#A5AD8C] hover:underline flex items-center gap-1"
           >
             <span>View all channels</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -310,18 +306,18 @@ export default function HomePage() {
       </section>
 
       {/* Recently Verified Resources Section */}
-      <section className="py-16 bg-slate-100/50 dark:bg-slate-900/40 border-t border-slate-200 dark:border-slate-800/80 w-full">
+      <section className="py-16 bg-[#EAE3D5]/40 dark:bg-[#292722]/40 border-t border-[#D8D0C2] dark:border-[#454139] w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-2">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#657A58] dark:text-[#A5AD8C]">
                 Quality Assurance
               </span>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+              <h2 className="text-2xl font-bold text-[#242424] dark:text-[#F1EDE4]">
                 Recently Verified Resources
               </h2>
             </div>
-            <span className="text-xs text-slate-500">
+            <span className="text-xs text-[#68645D] dark:text-[#B8B1A5]">
               All external references checked for active availability and official links.
             </span>
           </div>

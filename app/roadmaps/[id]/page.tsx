@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { roadmaps } from '@/data/roadmaps';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { RoadmapTimeline } from '@/components/ui/RoadmapTimeline';
-import { ArrowLeft, Compass } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 interface RoadmapDetailPageProps {
   params: Promise<{ id: string }>;
@@ -36,7 +36,7 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
       <div className="my-6">
         <Link
           href="/roadmaps"
-          className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline mb-6"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-[#66705A] dark:text-[#A5AD8C] hover:underline mb-6"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to All Roadmaps</span>

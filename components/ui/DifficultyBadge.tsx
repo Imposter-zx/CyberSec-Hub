@@ -11,25 +11,25 @@ export const DifficultyBadge: React.FC<DifficultyBadgeProps> = ({ difficulty, cl
   const config = {
     beginner: {
       label: 'Beginner',
-      bg: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
+      bg: 'bg-[#657A58]/15 text-[#445638] dark:text-[#A5AD8C] border-[#657A58]/30',
     },
     intermediate: {
       label: 'Intermediate',
-      bg: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
+      bg: 'bg-[#B89B62]/15 text-[#82662c] dark:text-[#D1B87F] border-[#B89B62]/30',
     },
     advanced: {
       label: 'Advanced',
-      bg: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20',
+      bg: 'bg-[#B56F4A]/15 text-[#8C4A28] dark:text-[#E09873] border-[#B56F4A]/30',
     },
   }[difficulty] || {
     label: difficulty,
-    bg: 'bg-slate-500/10 text-slate-400 border-slate-500/20',
+    bg: 'bg-[#68645D]/10 text-[#68645D] dark:text-[#B8B1A5] border-[#D8D0C2] dark:border-[#454139]',
   };
 
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border tracking-wide uppercase',
+        'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold border tracking-wide uppercase',
         config.bg,
         className
       )}

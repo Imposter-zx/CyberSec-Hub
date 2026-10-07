@@ -11,25 +11,25 @@ export const PricingBadge: React.FC<PricingBadgeProps> = ({ pricing, className }
   const config = {
     free: {
       label: 'Free',
-      bg: 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20',
+      bg: 'bg-[#66705A]/15 text-[#4a553f] dark:text-[#A5AD8C] border-[#66705A]/30',
     },
     freemium: {
       label: 'Freemium',
-      bg: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20',
+      bg: 'bg-[#B56F4A]/15 text-[#8C4A28] dark:text-[#E09873] border-[#B56F4A]/30',
     },
     paid: {
       label: 'Paid',
-      bg: 'bg-slate-500/10 text-slate-600 dark:text-slate-400 border-slate-500/20',
+      bg: 'bg-[#68645D]/10 text-[#68645D] dark:text-[#B8B1A5] border-[#D8D0C2] dark:border-[#454139]',
     },
   }[pricing] || {
     label: pricing,
-    bg: 'bg-slate-500/10 text-slate-400 border-slate-500/20',
+    bg: 'bg-[#68645D]/10 text-[#68645D] dark:text-[#B8B1A5] border-[#D8D0C2] dark:border-[#454139]',
   };
 
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border tracking-wide uppercase',
+        'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold border tracking-wide uppercase',
         config.bg,
         className
       )}

@@ -24,32 +24,32 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
     <Link
       href={href}
       className={cn(
-        'group flex flex-col justify-between p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:shadow-md transition-all duration-200',
+        'group flex flex-col justify-between p-5 rounded-xl bg-[#FFFDF8] dark:bg-[#302E29] border border-[#D8D0C2] dark:border-[#454139] hover:border-[#66705A] dark:hover:border-[#A5AD8C] hover:shadow-sm transition-all duration-200',
         className
       )}
     >
       <div>
         <div className="flex items-center justify-between gap-2 mb-3">
-          <div className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+          <div className="p-2.5 rounded-lg bg-[#EAE3D5] dark:bg-[#292722] text-[#66705A] dark:text-[#A5AD8C] group-hover:bg-[#66705A] group-hover:text-[#FFFDF8] dark:group-hover:bg-[#A5AD8C] dark:group-hover:text-[#1F1E1B] transition-colors">
             {icon}
           </div>
           {count !== undefined && (
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#EAE3D5] dark:bg-[#292722] text-[#68645D] dark:text-[#B8B1A5]">
               {count} {count === 1 ? 'Topic' : 'Topics'}
             </span>
           )}
         </div>
-        <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-1.5">
+        <h3 className="text-sm font-bold text-[#242424] dark:text-[#F1EDE4] group-hover:text-[#66705A] dark:group-hover:text-[#A5AD8C] transition-colors mb-1.5">
           {title}
         </h3>
-        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
+        <p className="text-xs text-[#68645D] dark:text-[#B8B1A5] leading-relaxed line-clamp-2">
           {description}
         </p>
       </div>
 
-      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-medium text-blue-600 dark:text-blue-400">
+      <div className="mt-4 pt-3 border-t border-[#D8D0C2]/50 dark:border-[#454139]/60 flex items-center justify-between text-xs font-medium text-[#66705A] dark:text-[#A5AD8C]">
         <span>Explore Category</span>
-        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#66705A] dark:text-[#A5AD8C]" />
       </div>
     </Link>
   );

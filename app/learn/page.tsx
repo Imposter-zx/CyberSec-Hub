@@ -7,7 +7,7 @@ import { ResourceCard } from '@/components/ui/ResourceCard';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { Difficulty, Pricing } from '@/types';
 import { filterResources, FilterState } from '@/lib/filters';
-import { Search, Filter, RefreshCw, Layers, ShieldCheck, DollarSign } from 'lucide-react';
+import { Search, RefreshCw, Layers, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 function LearnContent() {
@@ -69,25 +69,25 @@ function LearnContent() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
           Cybersecurity Learning Resources Directory
         </h1>
-        <p className="text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#68645D] dark:text-[#B8B1A5] max-w-3xl leading-relaxed">
           Curated index of verified, high-quality cybersecurity training platforms, interactive academies, standard frameworks, and practice labs. Filter by domain, skill difficulty, pricing, and resource format.
         </p>
       </div>
 
       {/* Controls Bar */}
-      <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 mb-8 space-y-4 shadow-sm">
+      <div className="bg-[#FFFDF8] dark:bg-[#302E29] p-4 rounded-xl border border-[#D8D0C2] dark:border-[#454139] mb-8 space-y-4 shadow-sm">
         {/* Top Search Input */}
         <div className="relative">
-          <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3.5 top-3 w-4 h-4 text-[#68645D] dark:text-[#B8B1A5]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Filter resources by name, skill (e.g. SQL Injection, Wireshark), or topic..."
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 rounded-lg border border-slate-200 dark:border-slate-800 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+            className="w-full pl-10 pr-4 py-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] text-[#242424] dark:text-[#F1EDE4] placeholder-[#68645D]/60 dark:placeholder-[#B8B1A5]/60 rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-xs focus:outline-none focus:ring-2 focus:ring-[#66705A]/40"
           />
         </div>
 
@@ -95,13 +95,13 @@ function LearnContent() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs">
           {/* Category */}
           <div>
-            <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-[11px] font-semibold text-[#68645D] dark:text-[#B8B1A5] uppercase tracking-wider mb-1">
               Category
             </label>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full p-2 bg-slate-50 dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none"
+              className="w-full p-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#242424] dark:text-[#F1EDE4] focus:outline-none"
             >
               {categories.map((cat) => (
                 <option key={cat} value={cat}>
@@ -113,13 +113,13 @@ function LearnContent() {
 
           {/* Difficulty */}
           <div>
-            <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-[11px] font-semibold text-[#68645D] dark:text-[#B8B1A5] uppercase tracking-wider mb-1">
               Difficulty
             </label>
             <select
               value={selectedDifficulty}
               onChange={(e) => setSelectedDifficulty(e.target.value as Difficulty | 'all')}
-              className="w-full p-2 bg-slate-50 dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none"
+              className="w-full p-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#242424] dark:text-[#F1EDE4] focus:outline-none"
             >
               <option value="all">All Difficulties</option>
               <option value="beginner">Beginner</option>
@@ -130,13 +130,13 @@ function LearnContent() {
 
           {/* Pricing */}
           <div>
-            <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-[11px] font-semibold text-[#68645D] dark:text-[#B8B1A5] uppercase tracking-wider mb-1">
               Pricing
             </label>
             <select
               value={selectedPricing}
               onChange={(e) => setSelectedPricing(e.target.value as Pricing | 'all')}
-              className="w-full p-2 bg-slate-50 dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none"
+              className="w-full p-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#242424] dark:text-[#F1EDE4] focus:outline-none"
             >
               <option value="all">All Pricing</option>
               <option value="free">100% Free</option>
@@ -147,13 +147,13 @@ function LearnContent() {
 
           {/* Type */}
           <div>
-            <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-[11px] font-semibold text-[#68645D] dark:text-[#B8B1A5] uppercase tracking-wider mb-1">
               Resource Format
             </label>
             <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="w-full p-2 bg-slate-50 dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none uppercase"
+              className="w-full p-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#242424] dark:text-[#F1EDE4] focus:outline-none uppercase"
             >
               {resourceTypes.map((t) => (
                 <option key={t} value={t}>
@@ -171,8 +171,8 @@ function LearnContent() {
               className={cn(
                 'flex-1 p-2 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors',
                 verifiedOnly
-                  ? 'bg-emerald-600 text-white border-emerald-600'
-                  : 'bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800'
+                  ? 'bg-[#657A58] text-[#FFFDF8] border-[#657A58] dark:bg-[#A5AD8C] dark:text-[#1F1E1B]'
+                  : 'bg-[#F5F1E8] dark:bg-[#1F1E1B] text-[#68645D] dark:text-[#B8B1A5] border-[#D8D0C2] dark:border-[#454139]'
               )}
             >
               <ShieldCheck className="w-3.5 h-3.5" />
@@ -182,7 +182,7 @@ function LearnContent() {
               <button
                 type="button"
                 onClick={resetFilters}
-                className="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                className="p-2 rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#68645D] hover:text-[#242424] dark:text-[#B8B1A5] dark:hover:text-[#F1EDE4] transition-colors"
                 title="Reset all filters"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
@@ -194,25 +194,25 @@ function LearnContent() {
 
       {/* Results Count */}
       <div className="flex items-center justify-between mb-6">
-        <span className="text-xs font-semibold text-slate-500">
-          Showing <span className="text-slate-900 dark:text-white">{filteredResources.length}</span> of {resources.length} learning resources
+        <span className="text-xs font-semibold text-[#68645D] dark:text-[#B8B1A5]">
+          Showing <span className="text-[#242424] dark:text-[#F1EDE4]">{filteredResources.length}</span> of {resources.length} learning resources
         </span>
       </div>
 
       {/* Resource Grid */}
       {filteredResources.length === 0 ? (
-        <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-8">
-          <Layers className="w-12 h-12 mx-auto text-slate-400 mb-3 opacity-60" />
-          <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">
+        <div className="text-center py-16 bg-[#FFFDF8] dark:bg-[#302E29] rounded-xl border border-[#D8D0C2] dark:border-[#454139] p-8 shadow-sm">
+          <Layers className="w-12 h-12 mx-auto text-[#68645D] dark:text-[#B8B1A5] mb-3 opacity-60" />
+          <h3 className="text-base font-semibold text-[#242424] dark:text-[#F1EDE4] mb-1">
             No resources match your filters
           </h3>
-          <p className="text-xs text-slate-500 mb-4">
+          <p className="text-xs text-[#68645D] dark:text-[#B8B1A5] mb-4">
             Try adjusting your search terms or clearing selected filter criteria.
           </p>
           <button
             type="button"
             onClick={resetFilters}
-            className="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold"
+            className="px-4 py-2 rounded-lg bg-[#66705A] hover:bg-[#56604b] text-[#FFFDF8] text-xs font-semibold transition-colors"
           >
             Reset Filters
           </button>
@@ -230,7 +230,7 @@ function LearnContent() {
 
 export default function LearnPage() {
   return (
-    <Suspense fallback={<div className="p-8 text-center text-xs">Loading learning resources...</div>}>
+    <Suspense fallback={<div className="p-8 text-center text-xs text-[#68645D]">Loading learning resources...</div>}>
       <LearnContent />
     </Suspense>
   );

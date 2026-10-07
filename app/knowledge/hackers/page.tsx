@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { HackerCard } from '@/components/ui/HackerCard';
 import { hackerTypes } from '@/data/hackers';
-import { Shield, Users, Scale, AlertTriangle } from 'lucide-react';
+import { Shield, Scale, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function HackersKnowledgePage() {
@@ -37,17 +37,17 @@ export default function HackersKnowledgePage() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
           Types of Hackers & Cybersecurity Operational Roles
         </h1>
-        <p className="text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#68645D] dark:text-[#B8B1A5] max-w-3xl leading-relaxed">
           Comprehensive taxonomy of technical threat actor profiles, ethical boundaries, and industry career pathways. Learn the distinct motivations, activities, and legal frameworks governing modern security.
         </p>
       </div>
 
       {/* Legal & Educational Notice Box */}
-      <div className="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 mb-8 text-xs text-blue-900 dark:text-blue-200 flex items-start gap-3 leading-relaxed">
-        <Scale className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+      <div className="p-4 rounded-xl bg-[#EAE3D5]/60 dark:bg-[#292722]/60 border border-[#D8D0C2] dark:border-[#454139] mb-8 text-xs text-[#242424] dark:text-[#F1EDE4] flex items-start gap-3 leading-relaxed shadow-sm">
+        <Scale className="w-5 h-5 text-[#66705A] dark:text-[#A5AD8C] shrink-0 mt-0.5" />
         <div>
           <span className="font-bold block mb-1">
             Educational Scope & Legal Authority Notice
@@ -57,15 +57,15 @@ export default function HackersKnowledgePage() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-2 mb-6 border-b border-slate-200 dark:border-slate-800 pb-3">
+      <div className="flex items-center gap-2 mb-6 border-b border-[#D8D0C2] dark:border-[#454139] pb-3">
         <button
           type="button"
           onClick={() => setFilter('all')}
           className={cn(
             'px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors',
             filter === 'all'
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+              ? 'bg-[#66705A] text-[#FFFDF8] dark:bg-[#A5AD8C] dark:text-[#1F1E1B] shadow-sm'
+              : 'text-[#68645D] dark:text-[#B8B1A5] hover:bg-[#EAE3D5] dark:hover:bg-[#292722]'
           )}
         >
           All Profiles ({hackerTypes.length})
@@ -76,8 +76,8 @@ export default function HackersKnowledgePage() {
           className={cn(
             'px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5',
             filter === 'authorized'
-              ? 'bg-emerald-600 text-white shadow-sm'
-              : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+              ? 'bg-[#657A58] text-[#FFFDF8] dark:bg-[#A5AD8C] dark:text-[#1F1E1B] shadow-sm'
+              : 'text-[#68645D] dark:text-[#B8B1A5] hover:bg-[#EAE3D5] dark:hover:bg-[#292722]'
           )}
         >
           <Shield className="w-3.5 h-3.5" />
@@ -89,8 +89,8 @@ export default function HackersKnowledgePage() {
           className={cn(
             'px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5',
             filter === 'adversary'
-              ? 'bg-rose-600 text-white shadow-sm'
-              : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+              ? 'bg-[#A45143] text-[#FFFDF8] shadow-sm'
+              : 'text-[#68645D] dark:text-[#B8B1A5] hover:bg-[#EAE3D5] dark:hover:bg-[#292722]'
           )}
         >
           <AlertTriangle className="w-3.5 h-3.5" />

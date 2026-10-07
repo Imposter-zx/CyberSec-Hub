@@ -16,8 +16,8 @@ export const Tag: React.FC<TagProps> = ({ label, onClick, active, className }) =
         'inline-flex items-center px-2 py-0.5 rounded text-xs transition-colors',
         onClick && 'cursor-pointer select-none',
         active
-          ? 'bg-blue-600 text-white font-medium shadow-sm'
-          : 'bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700/60',
+          ? 'bg-[#66705A] text-[#FFFDF8] dark:bg-[#A5AD8C] dark:text-[#1F1E1B] font-medium shadow-sm'
+          : 'bg-[#EAE3D5]/70 dark:bg-[#292722] text-[#242424] dark:text-[#F1EDE4] hover:bg-[#D8D0C2] dark:hover:bg-[#302E29] border border-[#D8D0C2] dark:border-[#454139]',
         className
       )}
     >
