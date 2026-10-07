@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { HackerCard } from '@/components/ui/HackerCard';
 import { hackerTypes } from '@/data/hackers';
-import { Shield, Scale, AlertTriangle } from 'lucide-react';
+import { Shield, Scale, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function HackersKnowledgePage() {
@@ -37,17 +37,21 @@ export default function HackersKnowledgePage() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
+        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1.5">
+          <Users className="w-4 h-4" />
+          <span>Threat Actor & Operational Taxonomy</span>
+        </div>
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
           Types of Hackers & Cybersecurity Operational Roles
         </h1>
-        <p className="text-sm text-[#68645D] dark:text-[#B8B1A5] max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#68736B] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
           Comprehensive taxonomy of technical threat actor profiles, ethical boundaries, and industry career pathways. Learn the distinct motivations, activities, and legal frameworks governing modern security.
         </p>
       </div>
 
       {/* Legal & Educational Notice Box */}
-      <div className="p-4 rounded-xl bg-[#EAE3D5]/60 dark:bg-[#292722]/60 border border-[#D8D0C2] dark:border-[#454139] mb-8 text-xs text-[#242424] dark:text-[#F1EDE4] flex items-start gap-3 leading-relaxed shadow-sm">
-        <Scale className="w-5 h-5 text-[#66705A] dark:text-[#A5AD8C] shrink-0 mt-0.5" />
+      <div className="p-4.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] mb-8 text-xs text-[#18221C] dark:text-[#E8F0EA] flex items-start gap-3.5 leading-relaxed shadow-xs">
+        <Scale className="w-5 h-5 text-[#3F7D5A] dark:text-[#6AAF8A] shrink-0 mt-0.5" />
         <div>
           <span className="font-bold block mb-1">
             Educational Scope & Legal Authority Notice
@@ -57,15 +61,15 @@ export default function HackersKnowledgePage() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-2 mb-6 border-b border-[#D8D0C2] dark:border-[#454139] pb-3">
+      <div className="flex items-center gap-2 mb-8 border-b border-[#DDE5DE] dark:border-[#3A4840] pb-3">
         <button
           type="button"
           onClick={() => setFilter('all')}
           className={cn(
-            'px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors',
+            'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
             filter === 'all'
-              ? 'bg-[#66705A] text-[#FFFDF8] dark:bg-[#A5AD8C] dark:text-[#1F1E1B] shadow-sm'
-              : 'text-[#68645D] dark:text-[#B8B1A5] hover:bg-[#EAE3D5] dark:hover:bg-[#292722]'
+              ? 'bg-[#3F7D5A] text-white shadow-xs'
+              : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
           )}
         >
           All Profiles ({hackerTypes.length})
@@ -74,32 +78,30 @@ export default function HackersKnowledgePage() {
           type="button"
           onClick={() => setFilter('authorized')}
           className={cn(
-            'px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5',
+            'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
             filter === 'authorized'
-              ? 'bg-[#657A58] text-[#FFFDF8] dark:bg-[#A5AD8C] dark:text-[#1F1E1B] shadow-sm'
-              : 'text-[#68645D] dark:text-[#B8B1A5] hover:bg-[#EAE3D5] dark:hover:bg-[#292722]'
+              ? 'bg-[#3F7D5A] text-white shadow-xs'
+              : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
           )}
         >
-          <Shield className="w-3.5 h-3.5" />
-          <span>Defensive & Authorized Roles</span>
+          Authorized Defensive & Research Roles
         </button>
         <button
           type="button"
           onClick={() => setFilter('adversary')}
           className={cn(
-            'px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5',
+            'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
             filter === 'adversary'
-              ? 'bg-[#A45143] text-[#FFFDF8] shadow-sm'
-              : 'text-[#68645D] dark:text-[#B8B1A5] hover:bg-[#EAE3D5] dark:hover:bg-[#292722]'
+              ? 'bg-[#3F7D5A] text-white shadow-xs'
+              : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
           )}
         >
-          <AlertTriangle className="w-3.5 h-3.5" />
-          <span>Threat Actor Profiles</span>
+          Threat Actors & Adversaries
         </button>
       </div>
 
-      {/* Grid of Hacker Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredHackers.map((hacker) => (
           <HackerCard key={hacker.id} hacker={hacker} />
         ))}

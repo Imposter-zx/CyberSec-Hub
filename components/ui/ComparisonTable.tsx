@@ -20,41 +20,41 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
 }) => {
   if (!certifications || certifications.length === 0) {
     return (
-      <div className="p-8 text-center rounded-xl bg-[#FFFDF8] dark:bg-[#302E29] border border-[#D8D0C2] dark:border-[#454139]">
-        <Award className="w-10 h-10 mx-auto text-[#68645D] dark:text-[#B8B1A5] mb-2 opacity-60" />
-        <h4 className="text-sm font-semibold text-[#242424] dark:text-[#F1EDE4]">
+      <div className="p-10 text-center rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840]">
+        <Award className="w-12 h-12 mx-auto text-[#3F7D5A] dark:text-[#6AAF8A] mb-3 opacity-60" />
+        <h4 className="text-base font-bold text-[#18221C] dark:text-[#E8F0EA]">
           No certifications selected for comparison
         </h4>
-        <p className="text-xs text-[#68645D] dark:text-[#B8B1A5] mt-1">
-          Select 2 to 4 certifications using the "+ Compare" button to view side-by-side technical differences.
+        <p className="text-xs text-[#68645D] dark:text-[#A0AFA5] mt-1.5 max-w-md mx-auto">
+          Select 2 to 4 certifications using the "+ Compare" button to view side-by-side technical differences, costs, and formats.
         </p>
       </div>
     );
   }
 
   return (
-    <div className={cn('overflow-x-auto rounded-xl border border-[#D8D0C2] dark:border-[#454139] shadow-sm', className)}>
-      <table className="w-full text-left text-xs border-collapse bg-[#FFFDF8] dark:bg-[#302E29]">
+    <div className={cn('overflow-x-auto rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] shadow-sm', className)}>
+      <table className="w-full text-left text-xs border-collapse bg-[#FFFFFF] dark:bg-[#262E28]">
         <thead>
-          <tr className="border-b border-[#D8D0C2] dark:border-[#454139] bg-[#EAE3D5]/60 dark:bg-[#292722]">
-            <th className="p-4 w-44 font-bold text-[#242424] dark:text-[#F1EDE4] uppercase tracking-wider text-[11px] sticky left-0 bg-[#EAE3D5] dark:bg-[#292722] z-10">
+          <tr className="border-b border-[#DDE5DE] dark:border-[#3A4840] bg-[#EEF3EE] dark:bg-[#202722]">
+            <th className="p-4.5 w-44 font-bold text-[#18221C] dark:text-[#E8F0EA] uppercase tracking-wider text-[11px] sticky left-0 bg-[#EEF3EE] dark:bg-[#202722] z-10">
               Metric / Feature
             </th>
             {certifications.map((c) => (
-              <th key={c.id} className="p-4 min-w-[240px] align-top">
+              <th key={c.id} className="p-4.5 min-w-[240px] align-top">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <span className="text-[11px] font-semibold text-[#66705A] dark:text-[#A5AD8C]">
+                    <span className="text-[11px] font-bold text-[#3F7D5A] dark:text-[#6AAF8A] uppercase tracking-wider">
                       {c.provider}
                     </span>
-                    <h4 className="text-sm font-bold text-[#242424] dark:text-[#F1EDE4]">
+                    <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA]">
                       {c.name}
                     </h4>
                   </div>
                   {onRemove && (
                     <button
                       onClick={() => onRemove(c.id)}
-                      className="text-[#68645D] hover:text-[#A45143] dark:text-[#B8B1A5] dark:hover:text-[#E08A7C] p-1 rounded transition-colors"
+                      className="text-[#68736B] hover:text-[#B84040] dark:text-[#A0AFA5] dark:hover:text-[#E07A7A] p-1 rounded-md transition-colors"
                       title="Remove from comparison"
                     >
                       <X className="w-4 h-4" />
@@ -65,10 +65,10 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-[#D8D0C2]/50 dark:divide-[#454139]">
+        <tbody className="divide-y divide-[#DDE5DE]/60 dark:divide-[#3A4840]">
           {/* Difficulty */}
           <tr>
-            <td className="p-4 font-semibold text-[#242424] dark:text-[#F1EDE4] sticky left-0 bg-[#FFFDF8] dark:bg-[#302E29] z-10 border-r border-[#D8D0C2]/60 dark:border-[#454139]">
+            <td className="p-4 font-bold text-[#18221C] dark:text-[#E8F0EA] sticky left-0 bg-[#FFFFFF] dark:bg-[#262E28] z-10 border-r border-[#DDE5DE]/60 dark:border-[#3A4840]">
               Level / Difficulty
             </td>
             {certifications.map((c) => (
@@ -79,46 +79,46 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
           </tr>
 
           {/* Exam Style */}
-          <tr className="bg-[#EAE3D5]/30 dark:bg-[#292722]/40">
-            <td className="p-4 font-semibold text-[#242424] dark:text-[#F1EDE4] sticky left-0 bg-[#EAE3D5]/60 dark:bg-[#292722] z-10 border-r border-[#D8D0C2]/60 dark:border-[#454139]">
+          <tr className="bg-[#EEF3EE]/30 dark:bg-[#202722]/40">
+            <td className="p-4 font-bold text-[#18221C] dark:text-[#E8F0EA] sticky left-0 bg-[#EEF3EE]/60 dark:bg-[#202722] z-10 border-r border-[#DDE5DE]/60 dark:border-[#3A4840]">
               Exam Style
             </td>
             {certifications.map((c) => (
               <td key={c.id} className="p-4">
                 <span
                   className={cn(
-                    'inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold',
+                    'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold',
                     c.practical
-                      ? 'bg-[#B56F4A]/15 text-[#8C4A28] dark:text-[#E09873]'
-                      : 'bg-[#66705A]/15 text-[#4a553f] dark:text-[#A5AD8C]'
+                      ? 'bg-[#FDF2EA] text-[#C97438] dark:bg-[#E58A4E]/20 dark:text-[#EDA574]'
+                      : 'bg-[#EBF4EF] text-[#3F7D5A] dark:bg-[#3F7D5A]/20 dark:text-[#6AAF8A]'
                   )}
                 >
-                  {c.practical ? 'Hands-on Practical' : 'Multiple-Choice & PBQs'}
+                  {c.practical ? 'Hands-on Practical Lab' : 'Multiple-Choice & PBQs'}
                 </span>
-                <div className="text-[11px] text-[#68645D] dark:text-[#B8B1A5] mt-1">{c.examType}</div>
+                <div className="text-[11px] text-[#68736B] dark:text-[#A0AFA5] mt-1">{c.examType}</div>
               </td>
             ))}
           </tr>
 
           {/* Duration */}
           <tr>
-            <td className="p-4 font-semibold text-[#242424] dark:text-[#F1EDE4] sticky left-0 bg-[#FFFDF8] dark:bg-[#302E29] z-10 border-r border-[#D8D0C2]/60 dark:border-[#454139]">
+            <td className="p-4 font-bold text-[#18221C] dark:text-[#E8F0EA] sticky left-0 bg-[#FFFFFF] dark:bg-[#262E28] z-10 border-r border-[#DDE5DE]/60 dark:border-[#3A4840]">
               Exam Duration
             </td>
             {certifications.map((c) => (
-              <td key={c.id} className="p-4 font-mono text-[#242424] dark:text-[#F1EDE4]">
+              <td key={c.id} className="p-4 font-mono font-medium text-[#18221C] dark:text-[#E8F0EA]">
                 {c.duration}
               </td>
             ))}
           </tr>
 
           {/* Cost */}
-          <tr className="bg-[#EAE3D5]/30 dark:bg-[#292722]/40">
-            <td className="p-4 font-semibold text-[#242424] dark:text-[#F1EDE4] sticky left-0 bg-[#EAE3D5]/60 dark:bg-[#292722] z-10 border-r border-[#D8D0C2]/60 dark:border-[#454139]">
+          <tr className="bg-[#EEF3EE]/30 dark:bg-[#202722]/40">
+            <td className="p-4 font-bold text-[#18221C] dark:text-[#E8F0EA] sticky left-0 bg-[#EEF3EE]/60 dark:bg-[#202722] z-10 border-r border-[#DDE5DE]/60 dark:border-[#3A4840]">
               Estimated Cost
             </td>
             {certifications.map((c) => (
-              <td key={c.id} className="p-4 font-semibold text-[#242424] dark:text-[#F1EDE4]">
+              <td key={c.id} className="p-4 font-bold text-[#3F7D5A] dark:text-[#6AAF8A]">
                 {c.cost}
               </td>
             ))}
@@ -126,11 +126,11 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
 
           {/* Prerequisites */}
           <tr>
-            <td className="p-4 font-semibold text-[#242424] dark:text-[#F1EDE4] sticky left-0 bg-[#FFFDF8] dark:bg-[#302E29] z-10 border-r border-[#D8D0C2]/60 dark:border-[#454139]">
-              Prerequisites & Experience
+            <td className="p-4 font-bold text-[#18221C] dark:text-[#E8F0EA] sticky left-0 bg-[#FFFFFF] dark:bg-[#262E28] z-10 border-r border-[#DDE5DE]/60 dark:border-[#3A4840]">
+              Prerequisites & Prep
             </td>
             {certifications.map((c) => (
-              <td key={c.id} className="p-4 text-[#68645D] dark:text-[#B8B1A5]">
+              <td key={c.id} className="p-4 text-[#68736B] dark:text-[#A0AFA5]">
                 <ul className="list-disc list-inside space-y-1">
                   {c.prerequisites.map((p, idx) => (
                     <li key={idx}>{p}</li>
@@ -141,13 +141,13 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
           </tr>
 
           {/* Validity & Renewal */}
-          <tr className="bg-[#EAE3D5]/30 dark:bg-[#292722]/40">
-            <td className="p-4 font-semibold text-[#242424] dark:text-[#F1EDE4] sticky left-0 bg-[#EAE3D5]/60 dark:bg-[#292722] z-10 border-r border-[#D8D0C2]/60 dark:border-[#454139]">
-              Validity & Renewal Policy
+          <tr className="bg-[#EEF3EE]/30 dark:bg-[#202722]/40">
+            <td className="p-4 font-bold text-[#18221C] dark:text-[#E8F0EA] sticky left-0 bg-[#EEF3EE]/60 dark:bg-[#202722] z-10 border-r border-[#DDE5DE]/60 dark:border-[#3A4840]">
+              Renewal Policy
             </td>
             {certifications.map((c) => (
-              <td key={c.id} className="p-4 text-[#68645D] dark:text-[#B8B1A5]">
-                <div className="font-semibold text-[#242424] dark:text-[#F1EDE4] mb-1">
+              <td key={c.id} className="p-4 text-[#68736B] dark:text-[#A0AFA5]">
+                <div className="font-bold text-[#18221C] dark:text-[#E8F0EA] mb-0.5">
                   {c.validityPeriod}
                 </div>
                 <div className="text-[11px] leading-relaxed">{c.renewalRequirements}</div>
@@ -157,7 +157,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
 
           {/* Tested Skills */}
           <tr>
-            <td className="p-4 font-semibold text-[#242424] dark:text-[#F1EDE4] sticky left-0 bg-[#FFFDF8] dark:bg-[#302E29] z-10 border-r border-[#D8D0C2]/60 dark:border-[#454139]">
+            <td className="p-4 font-bold text-[#18221C] dark:text-[#E8F0EA] sticky left-0 bg-[#FFFFFF] dark:bg-[#262E28] z-10 border-r border-[#DDE5DE]/60 dark:border-[#3A4840]">
               Tested Competencies
             </td>
             {certifications.map((c) => (
@@ -172,9 +172,9 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
           </tr>
 
           {/* Official Link */}
-          <tr className="bg-[#EAE3D5]/30 dark:bg-[#292722]/40">
-            <td className="p-4 font-semibold text-[#242424] dark:text-[#F1EDE4] sticky left-0 bg-[#EAE3D5]/60 dark:bg-[#292722] z-10 border-r border-[#D8D0C2]/60 dark:border-[#454139]">
-              Official Reference
+          <tr className="bg-[#EEF3EE]/30 dark:bg-[#202722]/40">
+            <td className="p-4 font-bold text-[#18221C] dark:text-[#E8F0EA] sticky left-0 bg-[#EEF3EE]/60 dark:bg-[#202722] z-10 border-r border-[#DDE5DE]/60 dark:border-[#3A4840]">
+              Official Guide
             </td>
             {certifications.map((c) => (
               <td key={c.id} className="p-4">
@@ -182,7 +182,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
                   href={c.officialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#66705A] dark:text-[#A5AD8C] hover:underline"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A] hover:underline"
                 >
                   <span>Official Guide</span>
                   <ExternalLink className="w-3.5 h-3.5" />

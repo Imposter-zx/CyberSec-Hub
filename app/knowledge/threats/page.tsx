@@ -6,7 +6,7 @@ import { ThreatCard } from '@/components/ui/ThreatCard';
 import { threats } from '@/data/threats';
 import { filterThreats } from '@/lib/filters';
 import { Difficulty } from '@/types';
-import { Search, RefreshCw } from 'lucide-react';
+import { Search, RefreshCw, ShieldAlert } from 'lucide-react';
 
 export default function ThreatsKnowledgePage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -43,25 +43,29 @@ export default function ThreatsKnowledgePage() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
+        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E58A4E] dark:text-[#EDA574] mb-1.5">
+          <ShieldAlert className="w-4 h-4" />
+          <span>Adversary Emulation & Defenses</span>
+        </div>
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
           Security Threats, Vulnerabilities & MITRE ATT&CK Taxonomy
         </h1>
-        <p className="text-sm text-[#68645D] dark:text-[#B8B1A5] max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#68736B] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
           Comprehensive encyclopedia of technical attack mechanisms, adversary vectors, detection telemetry, and defensive controls mapped to the MITRE ATT&CK matrix and OWASP Top 10 standards.
         </p>
       </div>
 
       {/* Controls */}
-      <div className="bg-[#FFFDF8] dark:bg-[#302E29] p-4 rounded-xl border border-[#D8D0C2] dark:border-[#454139] mb-8 space-y-4 shadow-sm">
+      <div className="bg-[#FFFFFF] dark:bg-[#262E28] p-5 rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] mb-8 space-y-4 shadow-xs">
         {/* Search */}
         <div className="relative">
-          <Search className="absolute left-3.5 top-3 w-4 h-4 text-[#68645D] dark:text-[#B8B1A5]" />
+          <Search className="absolute left-4 top-3.5 w-4 h-4 text-[#3F7D5A] dark:text-[#6AAF8A]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search threats by name (e.g. Ransomware, SQL Injection, SSRF, Phishing)..."
-            className="w-full pl-10 pr-4 py-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] text-[#242424] dark:text-[#F1EDE4] placeholder-[#68645D]/60 dark:placeholder-[#B8B1A5]/60 rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-xs focus:outline-none focus:ring-2 focus:ring-[#66705A]/40"
+            className="w-full pl-11 pr-4 py-2.5 bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] placeholder-[#68736B]/70 dark:placeholder-[#A0AFA5]/70 rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-xs focus:outline-none focus:ring-2 focus:ring-[#3F7D5A]/40 transition-all"
           />
         </div>
 
@@ -71,7 +75,7 @@ export default function ThreatsKnowledgePage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full p-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#242424] dark:text-[#F1EDE4] focus:outline-none"
+              className="w-full p-2 bg-[#EEF3EE] dark:bg-[#202722] rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-[#18221C] dark:text-[#E8F0EA] focus:outline-none font-medium text-xs"
             >
               {categories.map((c) => (
                 <option key={c} value={c}>
@@ -81,11 +85,11 @@ export default function ThreatsKnowledgePage() {
             </select>
           </div>
 
-          <div className="w-44">
+          <div className="w-48">
             <select
               value={selectedDifficulty}
               onChange={(e) => setSelectedDifficulty(e.target.value as Difficulty | 'all')}
-              className="w-full p-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#242424] dark:text-[#F1EDE4] focus:outline-none"
+              className="w-full p-2 bg-[#EEF3EE] dark:bg-[#202722] rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-[#18221C] dark:text-[#E8F0EA] focus:outline-none font-medium text-xs"
             >
               <option value="all">All Complexities</option>
               <option value="beginner">Beginner</option>
@@ -98,7 +102,7 @@ export default function ThreatsKnowledgePage() {
             <button
               type="button"
               onClick={resetFilters}
-              className="p-2 rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-[#68645D] hover:text-[#242424] dark:text-[#B8B1A5] dark:hover:text-[#F1EDE4] transition-colors"
+              className="p-2 rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-[#68736B] hover:text-[#18221C] dark:text-[#A0AFA5] dark:hover:text-[#E8F0EA] bg-[#EEF3EE] dark:bg-[#202722] transition-colors"
               title="Reset filters"
             >
               <RefreshCw className="w-4 h-4" />
@@ -109,8 +113,8 @@ export default function ThreatsKnowledgePage() {
 
       {/* Results Count */}
       <div className="flex items-center justify-between mb-6">
-        <span className="text-xs font-semibold text-[#68645D] dark:text-[#B8B1A5]">
-          Showing <span className="text-[#242424] dark:text-[#F1EDE4]">{filteredThreats.length}</span> of {threats.length} security threats
+        <span className="text-xs font-bold text-[#68736B] dark:text-[#A0AFA5]">
+          Showing <span className="text-[#3F7D5A] dark:text-[#6AAF8A]">{filteredThreats.length}</span> of {threats.length} security threats
         </span>
       </div>
 

@@ -14,12 +14,12 @@ export const VerificationBadge: React.FC<VerificationBadgeProps> = ({ status, da
     return (
       <span
         className={cn(
-          'inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-[#657A58]/15 text-[#445638] dark:text-[#A5AD8C] border border-[#657A58]/30',
+          'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#EBF4EF] text-[#3F7D5A] dark:bg-[#3F7D5A]/20 dark:text-[#6AAF8A] border border-[#DDE5DE] dark:border-[#3A4840]',
           className
         )}
-        title={date ? `Verified on ${date}` : 'Verified resource'}
+        title={date ? `Verified on ${date}` : 'Verified official reference'}
       >
-        <CheckCircle2 className="w-3 h-3 text-[#657A58] dark:text-[#A5AD8C]" />
+        <CheckCircle2 className="w-3 h-3 text-[#3F7D5A] dark:text-[#6AAF8A]" />
         <span>Verified {date ? `(${date})` : ''}</span>
       </span>
     );
@@ -29,11 +29,11 @@ export const VerificationBadge: React.FC<VerificationBadgeProps> = ({ status, da
     return (
       <span
         className={cn(
-          'inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-[#B89B62]/15 text-[#82662c] dark:text-[#D1B87F] border border-[#B89B62]/30',
+          'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#FDF6E7] text-[#A67B2E] dark:bg-[#D7A84B]/20 dark:text-[#E4BF74] border border-[#F2E5C9] dark:border-[#524426]',
           className
         )}
       >
-        <AlertCircle className="w-3 h-3 text-[#B89B62]" />
+        <AlertCircle className="w-3 h-3 text-[#D7A84B]" />
         <span>Needs Verification</span>
       </span>
     );
@@ -42,11 +42,11 @@ export const VerificationBadge: React.FC<VerificationBadgeProps> = ({ status, da
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-[#68645D]/10 text-[#68645D] dark:text-[#B8B1A5] border border-[#D8D0C2] dark:border-[#454139]',
+        'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#EEF3EE] text-[#68736B] dark:bg-[#202722] dark:text-[#A0AFA5] border border-[#DDE5DE] dark:border-[#3A4840]',
         className
       )}
     >
-      <Archive className="w-3 h-3 text-[#68645D]" />
+      <Archive className="w-3 h-3 text-[#68736B]" />
       <span>Archived</span>
     </span>
   );

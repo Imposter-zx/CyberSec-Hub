@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { roadmaps } from '@/data/roadmaps';
 import { DifficultyBadge } from '@/components/ui/DifficultyBadge';
-import { ArrowRight, Layers } from 'lucide-react';
+import { ArrowRight, Layers, Compass } from 'lucide-react';
 
 export default function RoadmapsIndexPage() {
   return (
@@ -12,10 +12,14 @@ export default function RoadmapsIndexPage() {
 
       {/* Header */}
       <div className="mb-10">
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#242424] dark:text-[#F1EDE4] mb-2">
+        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E58A4E] dark:text-[#EDA574] mb-1.5">
+          <Compass className="w-4 h-4" />
+          <span>Sequenced Career Trajectories</span>
+        </div>
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
           Structured Cybersecurity Learning Roadmaps
         </h1>
-        <p className="text-sm text-[#68645D] dark:text-[#B8B1A5] max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#68645D] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
           Step-by-step career and technical mastery paths. From absolute beginner foundations to specialized offensive, defensive, forensic, and cloud engineering roles.
         </p>
       </div>
@@ -25,47 +29,47 @@ export default function RoadmapsIndexPage() {
         {roadmaps.map((rmap) => (
           <div
             key={rmap.id}
-            className="p-6 rounded-xl bg-[#FFFDF8] dark:bg-[#302E29] border border-[#D8D0C2] dark:border-[#454139] flex flex-col justify-between hover:border-[#66705A] dark:hover:border-[#A5AD8C] hover:shadow-md transition-all shadow-sm"
+            className="p-7 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] flex flex-col justify-between hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg transition-all shadow-xs"
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-[#EAE3D5] dark:bg-[#292722] text-[#242424] dark:text-[#F1EDE4] border border-[#D8D0C2] dark:border-[#454139]">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] border border-[#DDE5DE] dark:border-[#3A4840]">
                   {rmap.category}
                 </span>
                 <DifficultyBadge difficulty={rmap.difficulty} />
               </div>
 
-              <h2 className="text-lg font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
+              <h2 className="text-lg font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">
                 {rmap.title}
               </h2>
 
-              <p className="text-xs text-[#68645D] dark:text-[#B8B1A5] mb-4 leading-relaxed line-clamp-3">
+              <p className="text-xs text-[#68645D] dark:text-[#A0AFA5] mb-4 leading-relaxed line-clamp-3">
                 {rmap.description}
               </p>
 
               {/* Target Role & Sequence */}
               <div className="space-y-2 mb-6">
-                <div className="p-2.5 rounded-lg bg-[#EAE3D5]/40 dark:bg-[#292722]/50 border border-[#D8D0C2]/60 dark:border-[#454139]/60 text-xs">
-                  <span className="font-semibold text-[#242424] dark:text-[#F1EDE4]">Target Role: </span>
-                  <span className="text-[#66705A] dark:text-[#A5AD8C] font-semibold">{rmap.targetRole}</span>
+                <div className="p-3 rounded-xl bg-[#EEF3EE]/60 dark:bg-[#202722]/60 border border-[#DDE5DE]/60 dark:border-[#3A4840]/60 text-xs">
+                  <span className="font-bold text-[#18221C] dark:text-[#E8F0EA]">Target Role: </span>
+                  <span className="text-[#3F7D5A] dark:text-[#6AAF8A] font-bold">{rmap.targetRole}</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-[#EAE3D5]/40 dark:bg-[#292722]/50 border border-[#D8D0C2]/60 dark:border-[#454139]/60 text-[11px] font-mono text-[#68645D] dark:text-[#B8B1A5]">
-                  {rmap.estimatedSequence}
+                <div className="p-3 rounded-xl bg-[#EEF3EE]/60 dark:bg-[#202722]/60 border border-[#DDE5DE]/60 dark:border-[#3A4840]/60 text-[11px] font-mono text-[#68645D] dark:text-[#A0AFA5]">
+                  Sequence: {rmap.estimatedSequence}
                 </div>
               </div>
 
               {/* Step count summary */}
-              <div className="text-xs text-[#68645D] dark:text-[#B8B1A5] mb-4 flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-[#66705A] dark:text-[#A5AD8C]" />
+              <div className="text-xs text-[#68645D] dark:text-[#A0AFA5] mb-4 flex items-center gap-1.5">
+                <Layers className="w-4 h-4 text-[#3F7D5A] dark:text-[#6AAF8A]" />
                 <span>{rmap.steps.length} Sequenced Learning Phases</span>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-[#D8D0C2]/50 dark:border-[#454139]/60 flex items-center justify-between">
-              <span className="text-xs text-[#68645D] dark:text-[#B8B1A5]">Interactive Guide</span>
+            <div className="pt-4 border-t border-[#DDE5DE]/60 dark:border-[#3A4840]/60 flex items-center justify-between">
+              <span className="text-xs text-[#68645D] dark:text-[#A0AFA5]">Interactive Guide</span>
               <Link
                 href={`/roadmaps/${rmap.id}`}
-                className="px-4 py-2 rounded-lg bg-[#66705A] hover:bg-[#56604b] dark:bg-[#A5AD8C] dark:hover:bg-[#929c78] text-[#FFFDF8] dark:text-[#1F1E1B] text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
+                className="px-4 py-2 rounded-xl bg-[#3F7D5A] hover:bg-[#2E5E43] dark:bg-[#6AAF8A] dark:text-[#181C1A] dark:hover:bg-[#589E79] text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
               >
                 <span>View Complete Roadmap</span>
                 <ArrowRight className="w-3.5 h-3.5" />

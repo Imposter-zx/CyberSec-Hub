@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { resources } from '@/data/resources';
 import { ResourceCard } from '@/components/ui/ResourceCard';
 import { Difficulty, Pricing } from '@/types';
-import { Search } from 'lucide-react';
+import { Search, FlaskConical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function LabsPage() {
@@ -70,45 +70,56 @@ export default function LabsPage() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
+        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#4C9A91] dark:text-[#7BB8B2] mb-1.5">
+          <FlaskConical className="w-4 h-4" />
+          <span>Interactive Attack & Defense Environments</span>
+        </div>
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
           Hands-on Cybersecurity Labs & Practice Platforms
         </h1>
-        <p className="text-sm text-[#68645D] dark:text-[#B8B1A5] max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#68645D] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
           The core philosophy of cybersecurity mastery is deliberate practical execution. Browse verified virtual labs, vulnerable wargames, Capture The Flag (CTF) environments, and SOC defense simulators.
         </p>
       </div>
 
       {/* Controls Bar */}
-      <div className="bg-[#FFFDF8] dark:bg-[#302E29] p-4 rounded-xl border border-[#D8D0C2] dark:border-[#454139] mb-8 space-y-4 shadow-sm">
+      <div className="bg-[#FFFFFF] dark:bg-[#262E28] p-5 rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] mb-8 space-y-4 shadow-xs">
         <div className="relative">
-          <Search className="absolute left-3.5 top-3 w-4 h-4 text-[#68645D] dark:text-[#B8B1A5]" />
+          <Search className="absolute left-4 top-3.5 w-4 h-4 text-[#3F7D5A] dark:text-[#6AAF8A]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search lab environments by skill, platform, or vulnerability type..."
-            className="w-full pl-10 pr-4 py-2 bg-[#F5F1E8] dark:bg-[#1F1E1B] text-[#242424] dark:text-[#F1EDE4] placeholder-[#68645D]/60 dark:placeholder-[#B8B1A5]/60 rounded-lg border border-[#D8D0C2] dark:border-[#454139] text-xs focus:outline-none focus:ring-2 focus:ring-[#66705A]/40"
+            className="w-full pl-11 pr-4 py-2.5 bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] placeholder-[#68736B]/70 dark:placeholder-[#A0AFA5]/70 rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-xs focus:outline-none focus:ring-2 focus:ring-[#3F7D5A]/40 transition-all"
           />
         </div>
 
         {/* Quick Tag Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+        <div className="flex flex-wrap items-center gap-2 pt-1">
           {quickTags.map((tag) => (
             <button
               key={tag.id}
               type="button"
               onClick={() => setSelectedTag(tag.id)}
               className={cn(
-                'px-3 py-1 rounded-lg text-xs font-semibold transition-colors',
+                'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
                 selectedTag === tag.id
-                  ? 'bg-[#66705A] text-[#FFFDF8] dark:bg-[#A5AD8C] dark:text-[#1F1E1B] shadow-sm'
-                  : 'bg-[#EAE3D5] dark:bg-[#292722] text-[#242424] dark:text-[#F1EDE4] border border-[#D8D0C2] dark:border-[#454139] hover:bg-[#D8D0C2]'
+                  ? 'bg-[#3F7D5A] text-white shadow-xs'
+                  : 'bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] border border-[#DDE5DE] dark:border-[#3A4840] hover:bg-[#DDE5DE]'
               )}
             >
               {tag.label}
             </button>
           ))}
         </div>
+      </div>
+
+      {/* Results Count */}
+      <div className="flex items-center justify-between mb-6">
+        <span className="text-xs font-bold text-[#68736B] dark:text-[#A0AFA5]">
+          Showing <span className="text-[#3F7D5A] dark:text-[#6AAF8A]">{filteredLabs.length}</span> verified lab environments
+        </span>
       </div>
 
       {/* Grid of Labs */}

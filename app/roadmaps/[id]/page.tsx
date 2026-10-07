@@ -36,7 +36,7 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
       <div className="my-6">
         <Link
           href="/roadmaps"
-          className="inline-flex items-center gap-1 text-xs font-semibold text-[#66705A] dark:text-[#A5AD8C] hover:underline mb-6"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A] hover:underline mb-6"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to All Roadmaps</span>

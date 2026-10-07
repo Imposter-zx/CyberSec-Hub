@@ -1,80 +1,116 @@
 @import "tailwindcss";
 
 @theme {
-  --color-warm-ivory: #F5F1E8;
-  --color-soft-sand: #EAE3D5;
-  --color-warm-white: #FFFDF8;
-  --color-charcoal: #242424;
-  --color-warm-gray: #68645D;
-  --color-warm-border: #D8D0C2;
-  
-  --color-olive: #66705A;
-  --color-olive-hover: #556049;
-  --color-olive-light: #A5AD8C;
-  --color-olive-subtle: #66705A18;
-  
-  --color-copper: #B56F4A;
-  --color-copper-hover: #9E5D3B;
-  --color-copper-light: #C58A68;
-  --color-copper-subtle: #B56F4A18;
-  
-  --color-gold: #B89B62;
-  --color-gold-light: #C9B07A;
-  --color-gold-subtle: #B89B6218;
+  /* =============================================
+     FRESH GREEN-FOCUSED LIGHT PALETTE
+     Background: #F7F9F6  Surface: #FFFFFF
+     Primary accent: #3F7D5A  Secondary: #E58A4E
+     ============================================= */
 
-  --color-dark-bg: #1F1E1B;
-  --color-dark-secondary: #292722;
-  --color-dark-card: #302E29;
-  --color-dark-border: #454139;
-  --color-dark-text: #F1EDE4;
-  --color-dark-muted: #B8B1A5;
+  --color-bg-base: #F7F9F6;
+  --color-bg-soft: #EEF3EE;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #F0F5F0;
 
-  /* Overriding standard slate scales to match warm editorial theme */
-  --color-slate-950: #1F1E1B;
-  --color-slate-900: #292722;
-  --color-slate-850: #302E29;
-  --color-slate-800: #38352F;
-  --color-slate-700: #454139;
-  --color-slate-600: #68645D;
-  --color-slate-500: #888277;
-  --color-slate-400: #B8B1A5;
-  --color-slate-300: #CFC6B8;
-  --color-slate-200: #D8D0C2;
-  --color-slate-100: #EAE3D5;
-  --color-slate-50: #F5F1E8;
+  --color-text-primary: #18221C;
+  --color-text-secondary: #68736B;
+  --color-border: #DDE5DE;
+  --color-border-strong: #C8D5C9;
+
+  /* Primary accent — muted forest green */
+  --color-accent-green: #3F7D5A;
+  --color-accent-green-hover: #335F47;
+  --color-accent-green-light: #6AAF8A;
+  --color-accent-green-subtle: #3F7D5A1A;
+  --color-accent-green-muted: #EBF4EF;
+
+  /* Secondary accent — warm amber/orange */
+  --color-accent-amber: #E58A4E;
+  --color-accent-amber-hover: #C97438;
+  --color-accent-amber-light: #EDA574;
+  --color-accent-amber-subtle: #E58A4E18;
+  --color-accent-amber-muted: #FDF2EA;
+
+  /* Supporting gold */
+  --color-accent-gold: #D7A84B;
+  --color-accent-gold-light: #E4BF74;
+  --color-accent-gold-muted: #FDF6E7;
+
+  /* Optional teal */
+  --color-accent-teal: #4C9A91;
+  --color-accent-teal-light: #7BB8B2;
+  --color-accent-teal-muted: #EBF5F4;
+
+  /* Status colors */
+  --color-success: #3B7A57;
+  --color-success-muted: #EBF4EF;
+  --color-warning: #C28A28;
+  --color-warning-muted: #FDF6E7;
+  --color-error: #B84040;
+  --color-error-muted: #FCEAEA;
+
+  /* Dark mode — warm charcoal */
+  --color-dark-bg: #181C1A;
+  --color-dark-secondary: #202722;
+  --color-dark-card: #262E28;
+  --color-dark-card-raised: #2D3630;
+  --color-dark-border: #3A4840;
+  --color-dark-text: #E8F0EA;
+  --color-dark-muted: #A0AFA5;
+
+  /* Dark accent */
+  --color-dark-accent-green: #6AAF8A;
+  --color-dark-accent-amber: #EDA574;
+  --color-dark-accent-gold: #E4BF74;
+
+  /* Override Tailwind slate scale to match our palette */
+  --color-slate-950: #181C1A;
+  --color-slate-900: #202722;
+  --color-slate-850: #262E28;
+  --color-slate-800: #2D3630;
+  --color-slate-700: #3A4840;
+  --color-slate-600: #68736B;
+  --color-slate-500: #8A9A90;
+  --color-slate-400: #A0AFA5;
+  --color-slate-300: #C0CEC5;
+  --color-slate-200: #DDE5DE;
+  --color-slate-100: #EEF3EE;
+  --color-slate-50: #F7F9F6;
 }
 
 @layer base {
   :root {
-    --background: #F5F1E8;
-    --foreground: #242424;
-    --card: #FFFDF8;
-    --card-foreground: #242424;
-    --primary: #66705A;
-    --primary-foreground: #FFFDF8;
-    --secondary: #EAE3D5;
-    --secondary-foreground: #242424;
-    --border: #D8D0C2;
-    --muted: #EAE3D5;
-    --muted-foreground: #68645D;
-    --accent: #B56F4A;
-    --accent-gold: #B89B62;
+    --background: #F7F9F6;
+    --foreground: #18221C;
+    --card: #FFFFFF;
+    --card-foreground: #18221C;
+    --primary: #3F7D5A;
+    --primary-foreground: #FFFFFF;
+    --secondary: #EEF3EE;
+    --secondary-foreground: #18221C;
+    --border: #DDE5DE;
+    --muted: #EEF3EE;
+    --muted-foreground: #68736B;
+    --accent: #E58A4E;
+    --accent-gold: #D7A84B;
+    --accent-teal: #4C9A91;
   }
 
   html.dark {
-    --background: #1F1E1B;
-    --foreground: #F1EDE4;
-    --card: #302E29;
-    --card-foreground: #F1EDE4;
-    --primary: #A5AD8C;
-    --primary-foreground: #1F1E1B;
-    --secondary: #292722;
-    --secondary-foreground: #F1EDE4;
-    --border: #454139;
-    --muted: #292722;
-    --muted-foreground: #B8B1A5;
-    --accent: #C58A68;
-    --accent-gold: #C9B07A;
+    --background: #181C1A;
+    --foreground: #E8F0EA;
+    --card: #262E28;
+    --card-foreground: #E8F0EA;
+    --primary: #6AAF8A;
+    --primary-foreground: #181C1A;
+    --secondary: #202722;
+    --secondary-foreground: #E8F0EA;
+    --border: #3A4840;
+    --muted: #202722;
+    --muted-foreground: #A0AFA5;
+    --accent: #EDA574;
+    --accent-gold: #E4BF74;
+    --accent-teal: #7BB8B2;
   }
 }
 
@@ -91,41 +127,101 @@ body {
   flex-direction: column;
 }
 
+/* Text selection */
 ::selection {
-  background-color: #66705A;
-  color: #FFFDF8;
+  background-color: #3F7D5A;
+  color: #FFFFFF;
 }
 
 html.dark ::selection {
-  background-color: #A5AD8C;
-  color: #1F1E1B;
+  background-color: #6AAF8A;
+  color: #181C1A;
 }
 
-/* Subtle Technical Paper / Fine Grid Pattern for editorial feel */
-.editorial-grid {
-  background-image: radial-gradient(rgba(104, 100, 93, 0.12) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Subtle dot grid for sections */
+.dot-grid {
+  background-image: radial-gradient(rgba(63, 125, 90, 0.10) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
 }
 
-html.dark .editorial-grid {
-  background-image: radial-gradient(rgba(184, 177, 165, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
+html.dark .dot-grid {
+  background-image: radial-gradient(rgba(106, 175, 138, 0.08) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
 }
 
-/* Subtle architectural line accents */
-.tech-lines {
-  background-image: linear-gradient(to right, rgba(216, 208, 194, 0.4) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(216, 208, 194, 0.4) 1px, transparent 1px);
-  background-size: 48px 48px;
+/* Subtle line grid */
+.line-grid {
+  background-image:
+    linear-gradient(to right, rgba(221, 229, 222, 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(221, 229, 222, 0.5) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-html.dark .tech-lines {
-  background-image: linear-gradient(to right, rgba(69, 65, 57, 0.3) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(69, 65, 57, 0.3) 1px, transparent 1px);
-  background-size: 48px 48px;
+html.dark .line-grid {
+  background-image:
+    linear-gradient(to right, rgba(58, 72, 64, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(58, 72, 64, 0.35) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-/* Custom warm scrollbar */
+/* Hero gradient blob */
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* Animated domain map node pulse */
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.12); }
+}
+
+.node-pulse {
+  animation: node-pulse 3s ease-in-out infinite;
+}
+
+@keyframes node-pulse-delay {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.1); }
+}
+
+.node-pulse-delay {
+  animation: node-pulse-delay 3.5s ease-in-out infinite 0.8s;
+}
+
+@keyframes line-draw {
+  from { stroke-dashoffset: 200; }
+  to { stroke-dashoffset: 0; }
+}
+
+.line-draw {
+  stroke-dasharray: 200;
+  animation: line-draw 2s ease-out forwards;
+}
+
+/* Hover lift card */
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(63, 125, 90, 0.10);
+}
+
+/* Fade in on scroll */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
@@ -136,18 +232,29 @@ html.dark .tech-lines {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D8D0C2;
-  border-radius: 3px;
+  background: #C8D5C9;
+  border-radius: 4px;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #454139;
+  background: #3A4840;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B8B1A5;
+  background: #A0AFA5;
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #68645D;
+  background: #68736B;
 }
+
+/* Quick access card icon backgrounds */
+.icon-bg-green { background: linear-gradient(135deg, #EBF4EF 0%, #d4eadc 100%); }
+.icon-bg-amber { background: linear-gradient(135deg, #FDF2EA 0%, #f7dfcc 100%); }
+.icon-bg-teal  { background: linear-gradient(135deg, #EBF5F4 0%, #d0ecea 100%); }
+.icon-bg-gold  { background: linear-gradient(135deg, #FDF6E7 0%, #f5e5c0 100%); }
+
+html.dark .icon-bg-green { background: rgba(63, 125, 90, 0.18); }
+html.dark .icon-bg-amber { background: rgba(229, 138, 78, 0.16); }
+html.dark .icon-bg-teal  { background: rgba(76, 154, 145, 0.16); }
+html.dark .icon-bg-gold  { background: rgba(215, 168, 75, 0.16); }

@@ -12,11 +12,11 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className }) =>
   return (
     <nav
       aria-label="Breadcrumb"
-      className={cn('flex items-center space-x-1.5 text-xs text-[#68645D] dark:text-[#B8B1A5] py-3', className)}
+      className={cn('flex items-center space-x-1.5 text-xs text-[#68736B] dark:text-[#A0AFA5] py-3.5', className)}
     >
       <Link
         href="/"
-        className="flex items-center gap-1 hover:text-[#66705A] dark:hover:text-[#A5AD8C] transition-colors"
+        className="flex items-center gap-1 hover:text-[#3F7D5A] dark:hover:text-[#6AAF8A] transition-colors"
       >
         <Home className="w-3.5 h-3.5" />
         <span>Home</span>
@@ -27,15 +27,15 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className }) =>
 
         return (
           <React.Fragment key={index}>
-            <ChevronRight className="w-3.5 h-3.5 text-[#68645D]/60 dark:text-[#B8B1A5]/60 shrink-0" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#68736B]/60 dark:text-[#A0AFA5]/60 shrink-0" />
             {isLast || !item.href ? (
-              <span className="font-semibold text-[#242424] dark:text-[#F1EDE4] truncate max-w-[200px] sm:max-w-none">
+              <span className="font-bold text-[#18221C] dark:text-[#E8F0EA] truncate max-w-[200px] sm:max-w-none">
                 {item.label}
               </span>
             ) : (
               <Link
                 href={item.href}
-                className="hover:text-[#66705A] dark:hover:text-[#A5AD8C] transition-colors truncate max-w-[150px] sm:max-w-none"
+                className="hover:text-[#3F7D5A] dark:hover:text-[#6AAF8A] transition-colors truncate max-w-[150px] sm:max-w-none"
               >
                 {item.label}
               </Link>

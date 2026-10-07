@@ -53,8 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} dark`} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col font-sans bg-[#F5F1E8] dark:bg-[#1F1E1B] text-[#242424] dark:text-[#F1EDE4] transition-colors antialiased">
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col font-sans bg-[#F7F9F6] dark:bg-[#181C1A] text-[#18221C] dark:text-[#E8F0EA] transition-colors antialiased selection:bg-[#3F7D5A] selection:text-white">
         <ThemeProvider>
           <I18nProvider>
             <Navbar />

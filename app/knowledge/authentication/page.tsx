@@ -35,71 +35,75 @@ export default function AuthenticationKnowledgePage() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
+        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#4C9A91] dark:text-[#7BB8B2] mb-1.5">
+          <KeyRound className="w-4 h-4" />
+          <span>Identity, Access & Cryptographic Proof</span>
+        </div>
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
           Authentication, Authorization & Modern Access Control
         </h1>
-        <p className="text-sm text-[#68645D] dark:text-[#B8B1A5] max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#68736B] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
           Deep technical breakdown of authentication factors, the AAA security framework, passwordless standards (Passkeys / FIDO2), and enterprise federated identity protocols (OAuth 2.0, OpenID Connect, SAML).
         </p>
       </div>
 
       {/* Visual Conceptual Flow: User -> Authentication -> Authorization -> Resource */}
-      <div className="p-6 rounded-xl bg-[#EAE3D5]/50 dark:bg-[#292722]/60 border border-[#D8D0C2] dark:border-[#454139] mb-10 shadow-sm">
-        <div className="text-xs font-bold uppercase tracking-wider text-[#66705A] dark:text-[#A5AD8C] mb-4 text-center">
-          The Access Control Lifecycle: Conceptual Flow
+      <div className="p-6 md:p-8 rounded-2xl bg-[#EEF3EE]/60 dark:bg-[#202722]/60 border border-[#DDE5DE] dark:border-[#3A4840] mb-10 shadow-xs">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-5 text-center">
+          The Access Control Lifecycle: Architectural Flow
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
           {/* Step 1: User */}
-          <div className="p-4 rounded-xl bg-[#FFFDF8] dark:bg-[#302E29] border border-[#D8D0C2] dark:border-[#454139] text-center shadow-sm">
-            <div className="w-10 h-10 mx-auto rounded-full bg-[#EAE3D5] dark:bg-[#292722] flex items-center justify-center text-[#242424] dark:text-[#F1EDE4] mb-2">
-              <UserCheck className="w-5 h-5" />
+          <div className="p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] text-center shadow-xs">
+            <div className="w-12 h-12 mx-auto rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] flex items-center justify-center text-[#18221C] dark:text-[#E8F0EA] mb-3">
+              <UserCheck className="w-6 h-6 text-[#3F7D5A] dark:text-[#6AAF8A]" />
             </div>
-            <h4 className="text-xs font-bold text-[#242424] dark:text-[#F1EDE4] mb-1">1. User / Client</h4>
-            <p className="text-[11px] text-[#68645D] dark:text-[#B8B1A5]">Presents identity claim (Username, Certificate)</p>
+            <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">1. User / Principal</h4>
+            <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Presents identity claim (Username, Client ID, Cert)</p>
           </div>
 
           {/* Step 2: Authentication */}
-          <div className="p-4 rounded-xl bg-[#FFFDF8] dark:bg-[#302E29] border border-[#66705A]/40 text-center shadow-sm relative">
-            <div className="w-10 h-10 mx-auto rounded-full bg-[#66705A]/15 dark:bg-[#A5AD8C]/15 flex items-center justify-center text-[#66705A] dark:text-[#A5AD8C] mb-2">
-              <KeyRound className="w-5 h-5" />
+          <div className="p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#3F7D5A]/50 text-center shadow-xs relative">
+            <div className="w-12 h-12 mx-auto rounded-2xl bg-[#EBF4EF] dark:bg-[#3F7D5A]/20 flex items-center justify-center text-[#3F7D5A] dark:text-[#6AAF8A] mb-3">
+              <KeyRound className="w-6 h-6" />
             </div>
-            <h4 className="text-xs font-bold text-[#242424] dark:text-[#F1EDE4] mb-1">2. Authentication</h4>
-            <p className="text-[11px] text-[#68645D] dark:text-[#B8B1A5]">"Who are you?" (Password, FIDO2 Key, Biometrics)</p>
+            <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">2. Authentication</h4>
+            <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">"Who are you?" (Password, FIDO2 Key, Biometric)</p>
           </div>
 
           {/* Step 3: Authorization */}
-          <div className="p-4 rounded-xl bg-[#FFFDF8] dark:bg-[#302E29] border border-[#B56F4A]/40 text-center shadow-sm relative">
-            <div className="w-10 h-10 mx-auto rounded-full bg-[#B56F4A]/15 dark:bg-[#C58A68]/15 flex items-center justify-center text-[#B56F4A] dark:text-[#C58A68] mb-2">
-              <ShieldCheck className="w-5 h-5" />
+          <div className="p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#E58A4E]/50 text-center shadow-xs relative">
+            <div className="w-12 h-12 mx-auto rounded-2xl bg-[#FDF2EA] dark:bg-[#E58A4E]/20 flex items-center justify-center text-[#E58A4E] dark:text-[#EDA574] mb-3">
+              <ShieldCheck className="w-6 h-6" />
             </div>
-            <h4 className="text-xs font-bold text-[#242424] dark:text-[#F1EDE4] mb-1">3. Authorization</h4>
-            <p className="text-[11px] text-[#68645D] dark:text-[#B8B1A5]">"What are you allowed to do?" (RBAC/ABAC Policies)</p>
+            <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">3. Authorization</h4>
+            <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">"What are you allowed to do?" (RBAC/ABAC Scopes)</p>
           </div>
 
           {/* Step 4: Resource + Accounting */}
-          <div className="p-4 rounded-xl bg-[#FFFDF8] dark:bg-[#302E29] border border-[#657A58]/40 text-center shadow-sm">
-            <div className="w-10 h-10 mx-auto rounded-full bg-[#657A58]/15 dark:bg-[#657A58]/20 flex items-center justify-center text-[#657A58] dark:text-[#A5AD8C] mb-2">
-              <Lock className="w-5 h-5" />
+          <div className="p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#4C9A91]/50 text-center shadow-xs">
+            <div className="w-12 h-12 mx-auto rounded-2xl bg-[#EBF5F4] dark:bg-[#4C9A91]/20 flex items-center justify-center text-[#4C9A91] dark:text-[#7BB8B2] mb-3">
+              <Lock className="w-6 h-6" />
             </div>
-            <h4 className="text-xs font-bold text-[#242424] dark:text-[#F1EDE4] mb-1">4. Resource Access</h4>
-            <p className="text-[11px] text-[#68645D] dark:text-[#B8B1A5]">Data provided + Immutable audit log created</p>
+            <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">4. Resource & Audit</h4>
+            <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Data delivered + Immutable audit telemetry created</p>
           </div>
         </div>
       </div>
 
       {/* Category Tabs */}
-      <div className="flex flex-wrap items-center gap-2 mb-8 border-b border-[#D8D0C2] dark:border-[#454139] pb-3">
+      <div className="flex flex-wrap items-center gap-2 mb-8 border-b border-[#DDE5DE] dark:border-[#3A4840] pb-3">
         {categories.map((cat) => (
           <button
             key={cat.id}
             type="button"
             onClick={() => setSelectedCategory(cat.id)}
             className={cn(
-              'px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors',
+              'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
               selectedCategory === cat.id
-                ? 'bg-[#66705A] text-[#FFFDF8] dark:bg-[#A5AD8C] dark:text-[#1F1E1B] shadow-sm'
-                : 'text-[#68645D] dark:text-[#B8B1A5] hover:bg-[#EAE3D5] dark:hover:bg-[#292722]'
+                ? 'bg-[#3F7D5A] text-white shadow-xs'
+                : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
             )}
           >
             {cat.label}
@@ -113,51 +117,51 @@ export default function AuthenticationKnowledgePage() {
           <div
             key={concept.id}
             id={concept.id}
-            className="p-6 rounded-xl bg-[#FFFDF8] dark:bg-[#302E29] border border-[#D8D0C2] dark:border-[#454139] flex flex-col justify-between hover:border-[#66705A] dark:hover:border-[#A5AD8C] transition-all scroll-mt-24 shadow-sm"
+            className="p-6.5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] flex flex-col justify-between hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg transition-all scroll-mt-24 shadow-xs"
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-[#EAE3D5] dark:bg-[#292722] text-[#242424] dark:text-[#F1EDE4] border border-[#D8D0C2] dark:border-[#454139]">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] border border-[#DDE5DE] dark:border-[#3A4840]">
                   {concept.category}
                 </span>
               </div>
 
-              <h3 className="text-base font-bold text-[#242424] dark:text-[#F1EDE4] mb-2">
+              <h3 className="text-base font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">
                 {concept.name}
               </h3>
 
-              <p className="text-xs text-[#68645D] dark:text-[#B8B1A5] mb-4 leading-relaxed">
+              <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mb-4 leading-relaxed">
                 {concept.definition}
               </p>
 
               {/* How it works */}
-              <div className="p-3 rounded-lg bg-[#EAE3D5]/40 dark:bg-[#292722]/50 border border-[#D8D0C2]/60 dark:border-[#454139]/60 mb-4 text-xs">
-                <span className="font-semibold text-[#242424] dark:text-[#F1EDE4] block mb-1">
+              <div className="p-3.5 rounded-xl bg-[#EEF3EE]/60 dark:bg-[#202722]/60 border border-[#DDE5DE]/60 dark:border-[#3A4840]/60 mb-4 text-xs">
+                <span className="font-bold text-[#18221C] dark:text-[#E8F0EA] block mb-1">
                   How It Works:
                 </span>
-                <p className="text-[#68645D] dark:text-[#B8B1A5] text-[11px] leading-relaxed">
+                <p className="text-[#68736B] dark:text-[#A0AFA5] text-[11px] leading-relaxed">
                   {concept.howItWorks}
                 </p>
               </div>
 
               {/* Advantages & Limitations Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-xs">
-                <div className="p-2.5 rounded-lg bg-[#657A58]/10 border border-[#657A58]/25">
-                  <span className="font-semibold text-[#445638] dark:text-[#A5AD8C] block mb-1 text-[11px]">
+                <div className="p-3 rounded-xl bg-[#EBF4EF] dark:bg-[#3F7D5A]/15 border border-[#DDE5DE] dark:border-[#3A4840]">
+                  <span className="font-bold text-[#3F7D5A] dark:text-[#6AAF8A] block mb-1 text-[11px]">
                     Advantages:
                   </span>
-                  <ul className="list-disc list-inside text-[11px] text-[#68645D] dark:text-[#B8B1A5] space-y-1">
+                  <ul className="list-disc list-inside text-[11px] text-[#68736B] dark:text-[#A0AFA5] space-y-1">
                     {concept.advantages.map((adv, idx) => (
                       <li key={idx}>{adv}</li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-[#A45143]/10 border border-[#A45143]/25">
-                  <span className="font-semibold text-[#7A3428] dark:text-[#E08A7C] block mb-1 text-[11px]">
+                <div className="p-3 rounded-xl bg-[#FCEAEA] dark:bg-[#B84040]/15 border border-[#F7CDCD] dark:border-[#5C2424]">
+                  <span className="font-bold text-[#B84040] dark:text-[#E07A7A] block mb-1 text-[11px]">
                     Limitations / Attack Risks:
                   </span>
-                  <ul className="list-disc list-inside text-[11px] text-[#68645D] dark:text-[#B8B1A5] space-y-1">
+                  <ul className="list-disc list-inside text-[11px] text-[#68736B] dark:text-[#A0AFA5] space-y-1">
                     {concept.limitations.map((lim, idx) => (
                       <li key={idx}>{lim}</li>
                     ))}
@@ -167,8 +171,8 @@ export default function AuthenticationKnowledgePage() {
             </div>
 
             {/* Use Cases */}
-            <div className="pt-3 border-t border-[#D8D0C2]/50 dark:border-[#454139]/60 flex flex-wrap items-center gap-1">
-              <span className="text-[11px] font-medium text-[#68645D] dark:text-[#B8B1A5] mr-1">Use Cases:</span>
+            <div className="pt-3 border-t border-[#DDE5DE]/60 dark:border-[#3A4840]/60 flex flex-wrap items-center gap-1">
+              <span className="text-[11px] font-bold text-[#68736B] dark:text-[#A0AFA5] mr-1">Use Cases:</span>
               {concept.useCases.map((uc, idx) => (
                 <Tag key={idx} label={uc} />
               ))}

@@ -11,25 +11,25 @@ export const DifficultyBadge: React.FC<DifficultyBadgeProps> = ({ difficulty, cl
   const config = {
     beginner: {
       label: 'Beginner',
-      bg: 'bg-[#657A58]/15 text-[#445638] dark:text-[#A5AD8C] border-[#657A58]/30',
+      bg: 'bg-[#EBF4EF] text-[#3F7D5A] dark:bg-[#3F7D5A]/20 dark:text-[#6AAF8A] border-[#DDE5DE] dark:border-[#3A4840]',
     },
     intermediate: {
       label: 'Intermediate',
-      bg: 'bg-[#B89B62]/15 text-[#82662c] dark:text-[#D1B87F] border-[#B89B62]/30',
+      bg: 'bg-[#FDF6E7] text-[#A67B2E] dark:bg-[#D7A84B]/20 dark:text-[#E4BF74] border-[#F2E5C9] dark:border-[#524426]',
     },
     advanced: {
       label: 'Advanced',
-      bg: 'bg-[#B56F4A]/15 text-[#8C4A28] dark:text-[#E09873] border-[#B56F4A]/30',
+      bg: 'bg-[#FDF2EA] text-[#C97438] dark:bg-[#E58A4E]/20 dark:text-[#EDA574] border-[#F8DCB8] dark:border-[#583925]',
     },
   }[difficulty] || {
     label: difficulty,
-    bg: 'bg-[#68645D]/10 text-[#68645D] dark:text-[#B8B1A5] border-[#D8D0C2] dark:border-[#454139]',
+    bg: 'bg-[#EEF3EE] text-[#68736B] dark:bg-[#202722] dark:text-[#A0AFA5] border-[#DDE5DE] dark:border-[#3A4840]',
   };
 
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold border tracking-wide uppercase',
+        'inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border tracking-wide uppercase',
         config.bg,
         className
       )}
