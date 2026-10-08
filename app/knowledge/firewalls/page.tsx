@@ -3,6 +3,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { firewallTypes } from '@/data/firewalls';
 import { Shield, ShieldCheck, ArrowRight, Server, Globe, Lock, Cpu } from 'lucide-react';
 import { Tag } from '@/components/ui/Tag';
+import { FirewallInspectionDiagram } from '@/components/visuals/SecurityDiagrams';
 
 export default function FirewallsKnowledgePage() {
   return (
@@ -87,6 +88,11 @@ export default function FirewallsKnowledgePage() {
             <div className="text-[10px] text-[#68736B] dark:text-[#A0AFA5]">Workstations & DBs</div>
           </div>
         </div>
+      </div>
+
+      {/* Interactive Firewall Packet Inspection Diagram */}
+      <div className="mb-10">
+        <FirewallInspectionDiagram />
       </div>
 
       {/* 10 Firewall Types Grid */}

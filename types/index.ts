@@ -126,6 +126,8 @@ export interface HackerType {
   careerRoles: string[];
   relatedSkills: string[];
   relatedCertifications: string[];
+  number?: string;
+  subtitle?: string;
 }
 
 export interface AuthenticationConcept {

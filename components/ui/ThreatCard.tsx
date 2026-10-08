@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp, Shield, Activity, Lock, Target } from 'lucide-r
 import { DifficultyBadge } from './DifficultyBadge';
 import { Tag } from './Tag';
 import { cn } from '@/lib/utils';
+import { getThreatIllustration } from '@/components/visuals/ThreatIllustrations';
 
 interface ThreatCardProps {
   threat: Threat;
@@ -17,23 +18,29 @@ export const ThreatCard: React.FC<ThreatCardProps> = ({ threat, className }) => 
     <div
       id={threat.id}
       className={cn(
-        'group bg-[#FFFFFF] dark:bg-[#262E28] rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] p-5.5 hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] transition-all duration-200 scroll-mt-24 shadow-xs',
+        'group bg-[#FFFFFF] dark:bg-[#262E28] rounded-3xl border border-[#DDE5DE] dark:border-[#3A4840] p-6 hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] transition-all duration-200 scroll-mt-24 shadow-xs flex flex-col justify-between',
         expanded && 'ring-2 ring-[#3F7D5A]/40 border-[#3F7D5A] dark:ring-[#6AAF8A]/40 dark:border-[#6AAF8A]',
         className
       )}
     >
-      {/* Category & Difficulty */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#FDF2EA] text-[#C97438] dark:bg-[#E58A4E]/20 dark:text-[#EDA574] border border-[#F8DCB8] dark:border-[#583925]">
-          {threat.category}
-        </span>
-        <DifficultyBadge difficulty={threat.difficulty} />
-      </div>
+      <div>
+        {/* Category & Difficulty */}
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#FDF2EA] text-[#C97438] dark:bg-[#E58A4E]/20 dark:text-[#EDA574] border border-[#F8DCB8] dark:border-[#583925]">
+            {threat.category}
+          </span>
+          <DifficultyBadge difficulty={threat.difficulty} />
+        </div>
 
-      {/* Title */}
-      <h3 className="text-base font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2 group-hover:text-[#3F7D5A] dark:group-hover:text-[#6AAF8A] transition-colors">
-        {threat.name}
-      </h3>
+        {/* Visual Illustration Banner */}
+        <div className="w-full h-36 rounded-2xl bg-gradient-to-b from-[#F7F9F6] to-[#EEF3EE] dark:from-[#202722] dark:to-[#181C1A] border border-[#DDE5DE]/80 dark:border-[#3A4840]/80 p-2.5 mb-4 flex items-center justify-center overflow-hidden group-hover:scale-[1.01] transition-transform duration-200">
+          {getThreatIllustration(threat.id)}
+        </div>
+
+        {/* Title */}
+        <h3 className="text-base font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2 group-hover:text-[#3F7D5A] dark:group-hover:text-[#6AAF8A] transition-colors">
+          {threat.name}
+        </h3>
 
       {/* Definition */}
       <p className="text-xs text-[#68645D] dark:text-[#A0AFA5] mb-4 leading-relaxed">
@@ -129,6 +136,7 @@ export const ThreatCard: React.FC<ThreatCardProps> = ({ threat, className }) => 
           )}
         </div>
       )}
+      </div>
 
       {/* Expand/Collapse Toggle Button */}
       <button

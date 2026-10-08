@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { encryptionConcepts } from '@/data/encryption';
 import { Key, Shield, Lock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { EncryptionFlowDiagram } from '@/components/visuals/SecurityDiagrams';
 
 export default function EncryptionKnowledgePage() {
   const [selectedType, setSelectedType] = useState<string>('all');
@@ -43,6 +44,11 @@ export default function EncryptionKnowledgePage() {
         <p className="text-sm text-[#68645D] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
           Comprehensive guide to modern symmetric ciphers, public-key mathematics, cryptographic hashing, digital signatures, and secure password storage standards.
         </p>
+      </div>
+
+      {/* Interactive Encryption Flow Diagram */}
+      <div className="mb-10">
+        <EncryptionFlowDiagram />
       </div>
 
       {/* Fundamental Cryptographic Distinctions Table */}

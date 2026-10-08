@@ -6,6 +6,7 @@ import { authenticationConcepts } from '@/data/authentication';
 import { KeyRound, ShieldCheck, UserCheck, Lock } from 'lucide-react';
 import { Tag } from '@/components/ui/Tag';
 import { cn } from '@/lib/utils';
+import { getAuthIllustration } from '@/components/visuals/AuthIllustrations';
 
 export default function AuthenticationKnowledgePage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -112,12 +113,12 @@ export default function AuthenticationKnowledgePage() {
       </div>
 
       {/* Grid of Authentication Concepts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredConcepts.map((concept) => (
           <div
             key={concept.id}
             id={concept.id}
-            className="p-6.5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] flex flex-col justify-between hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg transition-all scroll-mt-24 shadow-xs"
+            className="group rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] p-6 flex flex-col justify-between hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg hover:-translate-y-1 transition-all duration-200 scroll-mt-24 shadow-xs"
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
@@ -126,7 +127,12 @@ export default function AuthenticationKnowledgePage() {
                 </span>
               </div>
 
-              <h3 className="text-base font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">
+              {/* Visual Illustration Banner */}
+              <div className="w-full h-36 rounded-2xl bg-gradient-to-b from-[#F7F9F6] to-[#EEF3EE] dark:from-[#202722] dark:to-[#181C1A] border border-[#DDE5DE]/80 dark:border-[#3A4840]/80 p-2.5 mb-4 flex items-center justify-center overflow-hidden group-hover:scale-[1.02] transition-transform duration-200">
+                {getAuthIllustration(concept.id)}
+              </div>
+
+              <h3 className="text-base font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2 group-hover:text-[#3F7D5A] dark:group-hover:text-[#6AAF8A] transition-colors">
                 {concept.name}
               </h3>
 

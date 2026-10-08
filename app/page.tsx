@@ -467,6 +467,125 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
+          VISUAL LEARNING PLATFORM SHOWCASE
+          ========================================================================= */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        {/* Section header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E58A4E] dark:text-[#EDA574] mb-1">
+              <Sparkles className="w-4 h-4" />
+              <span>Visual Learning Platform</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] dark:text-[#E8F0EA]">
+              See Cybersecurity, Not Just Read It
+            </h2>
+            <p className="text-sm text-[#68736B] dark:text-[#A0AFA5] max-w-xl mt-2">
+              Every concept has a visual identity. Explore illustrated hacker archetypes, attack flow diagrams, and interactive cryptographic pipelines.
+            </p>
+          </div>
+          <Link
+            href="/knowledge/hackers"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3F7D5A] hover:bg-[#2E5E43] text-white text-xs font-bold transition-all shadow-xs group shrink-0"
+          >
+            <span>Visual Infographic Series</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        </div>
+
+        {/* Hacker Archetype Preview Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8">
+          {[
+            { label: '01 White Hat', color: '#3F7D5A', bg: '#EBF4EF', darkBg: '#1E2B23', href: '/knowledge/hackers' },
+            { label: '02 Black Hat', color: '#B84040', bg: '#FCEAEA', darkBg: '#2E1E1E', href: '/knowledge/hackers' },
+            { label: '03 Gray Hat', color: '#A67B2E', bg: '#FDF6E7', darkBg: '#2A261E', href: '/knowledge/hackers' },
+            { label: '04 Red Hat', color: '#B84040', bg: '#FCEAEA', darkBg: '#2E1E1E', href: '/knowledge/hackers' },
+            { label: '05 Blue Hat', color: '#3A7B74', bg: '#EBF5F4', darkBg: '#1C2624', href: '/knowledge/hackers' },
+            { label: '06 Green Hat', color: '#3F7D5A', bg: '#EBF4EF', darkBg: '#1E2B23', href: '/knowledge/hackers' },
+          ].map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="group p-4 rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] bg-[#FFFFFF] dark:bg-[#262E28] hover:shadow-md hover:-translate-y-1 transition-all text-center flex flex-col items-center justify-center gap-2"
+            >
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-black font-mono"
+                style={{ backgroundColor: `${item.color}20`, color: item.color }}
+              >
+                {item.label.split(' ')[0]}
+              </div>
+              <span className="text-[11px] font-bold text-[#18221C] dark:text-[#E8F0EA] leading-tight text-center">
+                {item.label.split(' ').slice(1).join(' ')}
+              </span>
+            </Link>
+          ))}
+        </div>
+
+        {/* Visual Feature Cards: 3 highlights */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {/* Visual 1: Hacker Types Infographic */}
+          <Link
+            href="/knowledge/hackers"
+            className="group p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg hover:-translate-y-1 transition-all shadow-xs"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-[#EBF4EF] dark:bg-[#3F7D5A]/20 flex items-center justify-center text-[#3F7D5A] dark:text-[#6AAF8A] mb-4 group-hover:scale-110 transition-transform">
+              <Users className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-black text-[#18221C] dark:text-[#E8F0EA] mb-2 group-hover:text-[#3F7D5A] dark:group-hover:text-[#6AAF8A] transition-colors">
+              Hacker Archetypes Visual Infographic
+            </h3>
+            <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] leading-relaxed mb-4">
+              17 illustrated hacker and security role profiles. Each archetype comes with a unique character illustration, numbered classification, primary objective, and career pathways.
+            </p>
+            <span className="text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A] flex items-center gap-1">
+              <span>Explore infographic</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </span>
+          </Link>
+
+          {/* Visual 2: Attack Flow Diagrams */}
+          <Link
+            href="/knowledge/threats"
+            className="group p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#E58A4E] dark:hover:border-[#EDA574] hover:shadow-lg hover:-translate-y-1 transition-all shadow-xs"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-[#FDF2EA] dark:bg-[#E58A4E]/20 flex items-center justify-center text-[#E58A4E] dark:text-[#EDA574] mb-4 group-hover:scale-110 transition-transform">
+              <Zap className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-black text-[#18221C] dark:text-[#E8F0EA] mb-2 group-hover:text-[#E58A4E] dark:group-hover:text-[#EDA574] transition-colors">
+              Interactive Attack Flow Diagrams
+            </h3>
+            <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] leading-relaxed mb-4">
+              SQL injection tautology chains, XSS session hijacking, and DDoS botnet amplification visually decomposed step-by-step with payload examples.
+            </p>
+            <span className="text-xs font-bold text-[#E58A4E] dark:text-[#EDA574] flex items-center gap-1">
+              <span>See attack flows</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </span>
+          </Link>
+
+          {/* Visual 3: Cryptographic Diagrams */}
+          <Link
+            href="/knowledge/encryption"
+            className="group p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#D7A84B] dark:hover:border-[#E4BF74] hover:shadow-lg hover:-translate-y-1 transition-all shadow-xs"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-[#FDF6E7] dark:bg-[#D7A84B]/20 flex items-center justify-center text-[#D7A84B] dark:text-[#E4BF74] mb-4 group-hover:scale-110 transition-transform">
+              <Lock className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-black text-[#18221C] dark:text-[#E8F0EA] mb-2 group-hover:text-[#D7A84B] dark:group-hover:text-[#E4BF74] transition-colors">
+              Cryptographic Pipeline Visualizer
+            </h3>
+            <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] leading-relaxed mb-4">
+              Toggle between symmetric (AES-256) and asymmetric (RSA/ECC) encryption workflows. Visualize plaintext-to-ciphertext transformations with key roles annotated.
+            </p>
+            <span className="text-xs font-bold text-[#D7A84B] dark:text-[#E4BF74] flex items-center gap-1">
+              <span>Interactive crypto diagram</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      {/* =========================================================================
           17 KNOWLEDGE CATEGORIES TAXONOMY
           ========================================================================= */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
