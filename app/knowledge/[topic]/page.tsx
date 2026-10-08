@@ -5,6 +5,7 @@ import { knowledgeTopics } from '@/data/knowledge';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { DifficultyBadge } from '@/components/ui/DifficultyBadge';
 import { BookOpen, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { TopicDiagramViewer } from '@/components/visuals/SecurityDiagrams';
 
 interface TopicPageProps {
   params: Promise<{ topic: string }>;
@@ -59,6 +60,9 @@ export default async function KnowledgeTopicPage({ params }: TopicPageProps) {
         <div className="p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] text-sm font-semibold text-[#18221C] dark:text-[#E8F0EA] leading-relaxed mb-8 shadow-xs">
           {topic.definition}
         </div>
+
+        {/* Specialized Interactive Diagram if Available */}
+        <TopicDiagramViewer topicId={topic.id} className="mb-8" />
 
         {/* Article Body */}
         <div className="space-y-8 text-sm text-[#18221C] dark:text-[#E8F0EA] leading-relaxed">

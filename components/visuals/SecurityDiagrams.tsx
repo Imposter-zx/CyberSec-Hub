@@ -444,3 +444,197 @@ export const ForensicsTimelineDiagram: React.FC<{ className?: string }> = ({ cla
     </div>
   );
 };
+
+// ==========================================
+// 6. Zero Trust Architecture (ZTA) Pipeline
+// ==========================================
+export const ZeroTrustArchitectureDiagram: React.FC<{ className?: string }> = ({ className }) => {
+  return (
+    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
+      <div className="mb-6">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1">
+          NIST SP 800-207 Architecture
+        </div>
+        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
+          Zero Trust Continuous Verification Engine
+        </h3>
+        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
+          Visualizing dynamic policy evaluation: identity verification, device health posture, and micro-segmentation enforcement before accessing enterprise assets.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+        {/* Step 1 */}
+        <div className="p-4.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#68736B] dark:text-[#A0AFA5] block mb-1">Input Context</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Subject & Telemetry</h4>
+          <ul className="text-[11px] text-[#68736B] dark:text-[#A0AFA5] space-y-1 text-left">
+            <li>• MFA Identity Claim</li>
+            <li>• Device EDR Compliance</li>
+            <li>• Geo-IP / Risk Score</li>
+          </ul>
+        </div>
+
+        {/* Step 2 */}
+        <div className="p-4.5 rounded-2xl bg-[#FDF6E7] dark:bg-[#2A261E] border border-[#F2E5C9] dark:border-[#524426] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#A67B2E] block mb-1">PDP Engine</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Policy Decision Point</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
+            Dynamic rule evaluation against enterprise threat intelligence and sensitivity policies.
+          </p>
+        </div>
+
+        {/* Step 3 */}
+        <div className="p-4.5 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#C97438] block mb-1">PEP Gateway</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Policy Enforcement Point</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
+            Micro-segmented encrypted session tunnel established for authorized asset only.
+          </p>
+        </div>
+
+        {/* Step 4 */}
+        <div className="p-4.5 rounded-2xl bg-[#EBF4EF] dark:bg-[#1E2B23] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#3F7D5A] dark:text-[#6AAF8A] block mb-1">Least Privilege</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Target Workload</h4>
+          <p className="text-[11px] text-[#3F7D5A] dark:text-[#6AAF8A] font-mono font-bold">
+            NO LATERAL MOVEMENT
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ==========================================
+// 7. Active Directory Kerberoasting Attack Chain
+// ==========================================
+export const ActiveDirectoryAttackFlowDiagram: React.FC<{ className?: string }> = ({ className }) => {
+  return (
+    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
+      <div className="mb-6">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#B84040] dark:text-[#E07A7A] mb-1">
+          Enterprise Lateral Movement Vector
+        </div>
+        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
+          Active Directory Kerberoasting Attack Flow
+        </h3>
+        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
+          How an adversary with unprivileged domain user access extracts Kerberos TGS tickets encrypted with service account passwords and cracks them offline.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-center">
+        <div className="p-4 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#68736B] dark:text-[#A0AFA5] block mb-1">Phase 1</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">SPN Discovery</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
+            Query LDAP for accounts registered with ServicePrincipalNames (e.g. MSSQLSvc).
+          </p>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-[#FDF6E7] dark:bg-[#2A261E] border border-[#F2E5C9] dark:border-[#524426] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#A67B2E] block mb-1">Phase 2</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Request TGS</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
+            Domain user requests Kerberos TGS ticket from Domain Controller (KDC).
+          </p>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#C97438] block mb-1">Phase 3</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Offline Hashcat</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
+            Extract RC4/AES encrypted ticket hash from memory and crack offline with GPU.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-[#FCEAEA] dark:bg-[#2E1E1E] border border-[#F7CDCD] dark:border-[#5C2424] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#B84040] block mb-1">Phase 4</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Domain Privilege</h4>
+          <p className="font-mono text-[10px] text-[#B84040] bg-white dark:bg-[#262E28] p-1.5 rounded-lg border border-[#F7CDCD] dark:border-[#5C2424]">
+            Admin Pass Compromised
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ==========================================
+// 8. DevSecOps Shift-Left Pipeline
+// ==========================================
+export const DevSecOpsPipelineDiagram: React.FC<{ className?: string }> = ({ className }) => {
+  return (
+    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
+      <div className="mb-6">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1">
+          CI/CD Security Lifecycle
+        </div>
+        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
+          Shift-Left DevSecOps Continuous Pipeline
+        </h3>
+        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
+          Automated security checkpoints integrated from local developer IDE commits through build, container packaging, and cloud runtime monitoring.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-stretch">
+        <div className="p-3.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#3F7D5A] block mb-1">1. Code</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">IDE & Pre-Commit</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Secret linting & Git hooks (detect hardcoded API keys).</p>
+        </div>
+
+        <div className="p-3.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#3F7D5A] block mb-1">2. Build</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">SAST & SCA</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Static code analysis (Semgrep) & Dependency CVE audit.</p>
+        </div>
+
+        <div className="p-3.5 rounded-2xl bg-[#FDF6E7] dark:bg-[#2A261E] border border-[#F2E5C9] dark:border-[#524426]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#A67B2E] block mb-1">3. Test</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">DAST & Container</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Dynamic endpoint fuzzing & Docker base image scan (Trivy).</p>
+        </div>
+
+        <div className="p-3.5 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#C97438] block mb-1">4. Deploy</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">IaC Security</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Terraform / K8s misconfiguration policy enforcement.</p>
+        </div>
+
+        <div className="p-3.5 rounded-2xl bg-[#EBF4EF] dark:bg-[#1E2B23] border border-[#DDE5DE] dark:border-[#3A4840]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#3F7D5A] block mb-1">5. Run</span>
+          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Runtime CSPM</h4>
+          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Cloud security posture & eBPF behavioral anomaly detection.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ==========================================
+// 9. Helper Function & Component to Map Topics to Specialized Diagrams
+// ==========================================
+export const getTopicDiagram = (topicId: string): React.ReactNode | null => {
+  switch (topicId) {
+    case 'zero-trust':
+      return <ZeroTrustArchitectureDiagram />;
+    case 'active-directory-security':
+      return <ActiveDirectoryAttackFlowDiagram />;
+    case 'devsecops':
+      return <DevSecOpsPipelineDiagram />;
+    case 'incident-response':
+    case 'digital-forensics':
+      return <ForensicsTimelineDiagram />;
+    default:
+      return null;
+  }
+};
+
+export const TopicDiagramViewer: React.FC<{ topicId: string; className?: string }> = ({ topicId, className }) => {
+  const diagram = getTopicDiagram(topicId);
+  if (!diagram) return null;
+  return <div className={className}>{diagram}</div>;
+};
