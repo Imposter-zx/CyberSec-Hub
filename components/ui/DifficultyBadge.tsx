@@ -10,26 +10,26 @@ interface DifficultyBadgeProps {
 export const DifficultyBadge: React.FC<DifficultyBadgeProps> = ({ difficulty, className }) => {
   const config = {
     beginner: {
-      label: 'Beginner',
-      bg: 'bg-[#EBF4EF] text-[#3F7D5A] dark:bg-[#3F7D5A]/20 dark:text-[#6AAF8A] border-[#DDE5DE] dark:border-[#3A4840]',
+      label: 'LVL: BEGINNER',
+      bg: 'bg-[#0D2214] text-[#00FF66] border-[#1B2A1F]',
     },
     intermediate: {
-      label: 'Intermediate',
-      bg: 'bg-[#FDF6E7] text-[#A67B2E] dark:bg-[#D7A84B]/20 dark:text-[#E4BF74] border-[#F2E5C9] dark:border-[#524426]',
+      label: 'LVL: INTERMEDIATE',
+      bg: 'bg-[#241C0E] text-[#D9A441] border-[#382B17]',
     },
     advanced: {
-      label: 'Advanced',
-      bg: 'bg-[#FDF2EA] text-[#C97438] dark:bg-[#E58A4E]/20 dark:text-[#EDA574] border-[#F8DCB8] dark:border-[#583925]',
+      label: 'LVL: ADVANCED',
+      bg: 'bg-[#271211] text-[#FF3B30] border-[#441E1C]',
     },
   }[difficulty] || {
-    label: difficulty,
-    bg: 'bg-[#EEF3EE] text-[#68736B] dark:bg-[#202722] dark:text-[#A0AFA5] border-[#DDE5DE] dark:border-[#3A4840]',
+    label: `LVL: ${difficulty.toUpperCase()}`,
+    bg: 'bg-[#0E1510] text-[#91A596] border-[#1B2A1F]',
   };
 
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border tracking-wide uppercase',
+        'inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold border tracking-wider',
         config.bg,
         className
       )}

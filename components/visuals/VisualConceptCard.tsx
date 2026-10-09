@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Terminal } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export interface VisualConceptCardProps {
@@ -39,25 +39,25 @@ export const VisualConceptCard: React.FC<VisualConceptCardProps> = ({
   className,
 }) => {
   const badgeColors = {
-    green: 'bg-[#EBF4EF] text-[#3F7D5A] border-[#DDE5DE] dark:bg-[#3F7D5A]/20 dark:text-[#6AAF8A] dark:border-[#3A4840]',
-    amber: 'bg-[#FDF2EA] text-[#C97438] border-[#F8DCB8] dark:bg-[#E58A4E]/20 dark:text-[#EDA574] dark:border-[#583925]',
-    gold: 'bg-[#FDF6E7] text-[#A67B2E] border-[#F2E5C9] dark:bg-[#D7A84B]/20 dark:text-[#E4BF74] dark:border-[#524426]',
-    teal: 'bg-[#EBF5F4] text-[#3A7B74] border-[#D3E8E6] dark:bg-[#4C9A91]/20 dark:text-[#7BB8B2] dark:border-[#2F4D49]',
-    red: 'bg-[#FCEAEA] text-[#B84040] border-[#F7CDCD] dark:bg-[#B84040]/20 dark:text-[#E07A7A] dark:border-[#5C2424]',
-    neutral: 'bg-[#EEF3EE] text-[#68736B] border-[#DDE5DE] dark:bg-[#202722] dark:text-[#A0AFA5] dark:border-[#3A4840]',
+    green: 'bg-[#0D2214] text-[#00FF66] border-[#1B2A1F]',
+    amber: 'bg-[#241C0E] text-[#D9A441] border-[#382B17]',
+    gold: 'bg-[#241C0E] text-[#D9A441] border-[#382B17]',
+    teal: 'bg-[#0F2220] text-[#42C2A8] border-[#173834]',
+    red: 'bg-[#271211] text-[#FF3B30] border-[#441E1C]',
+    neutral: 'bg-[#050705] text-[#91A596] border-[#1B2A1F]',
   };
 
   const cardContent = (
     <div
       className={cn(
-        'group flex flex-col justify-between rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] p-6 hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden shadow-xs h-full',
+        'group flex flex-col justify-between rounded-2xl bg-[#0E1510] border border-[#1B2A1F] p-6 hover:border-[#00FF66] hover:bg-[#121B14] hover:shadow-[0_4px_24px_rgba(0,255,102,0.12)] hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden font-mono shadow-xs h-full',
         className
       )}
     >
-      {/* Top Header Row: Number + Category */}
-      <div className="flex items-center justify-between gap-2 mb-4">
+      {/* Top Header Row: Number + Classification */}
+      <div className="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-[#1B2A1F]">
         {number !== undefined && (
-          <span className="font-mono text-xs font-black tracking-widest px-2.5 py-1 rounded-xl bg-[#EEF3EE] dark:bg-[#202722] text-[#3F7D5A] dark:text-[#6AAF8A] border border-[#DDE5DE] dark:border-[#3A4840]">
+          <span className="font-mono text-xs font-black tracking-widest px-2.5 py-0.5 rounded bg-[#050705] text-[#00FF66] border border-[#1B2A1F]">
             {typeof number === 'number' && number < 10 ? `0${number}` : number}
           </span>
         )}
@@ -65,7 +65,7 @@ export const VisualConceptCard: React.FC<VisualConceptCardProps> = ({
           {category && (
             <span
               className={cn(
-                'text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border',
+                'text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border font-mono',
                 badgeColors[badgeVariant]
               )}
             >
@@ -73,54 +73,54 @@ export const VisualConceptCard: React.FC<VisualConceptCardProps> = ({
             </span>
           )}
           {difficulty && (
-            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#EEF3EE] dark:bg-[#202722] text-[#68736B] dark:text-[#A0AFA5] border border-[#DDE5DE] dark:border-[#3A4840]">
+            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#050705] text-[#91A596] border border-[#1B2A1F]">
               {difficulty}
             </span>
           )}
         </div>
       </div>
 
-      {/* Dominant Visual Illustration Area */}
-      <div className="w-full h-44 sm:h-48 rounded-2xl bg-gradient-to-b from-[#F7F9F6] to-[#EEF3EE] dark:from-[#202722] dark:to-[#181C1A] border border-[#DDE5DE]/80 dark:border-[#3A4840]/80 p-3 mb-5 flex items-center justify-center relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-300">
+      {/* Dominant Visual Illustration Container */}
+      <div className="w-full h-44 sm:h-48 rounded-xl bg-[#050705] border border-[#1B2A1F] p-3 mb-4 flex items-center justify-center relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-300">
         {illustration}
       </div>
 
       {/* Concept Title & Subtitle */}
       <div className="mb-3">
-        <h3 className="text-lg font-black text-[#18221C] dark:text-[#E8F0EA] group-hover:text-[#3F7D5A] dark:group-hover:text-[#6AAF8A] transition-colors leading-snug">
+        <h3 className="text-base sm:text-lg font-bold text-[#E8F5E9] group-hover:text-[#00FF66] transition-colors leading-snug">
           {title}
         </h3>
         {subtitle && (
-          <p className="text-xs font-semibold text-[#3F7D5A] dark:text-[#6AAF8A] mt-0.5">
-            {subtitle}
+          <p className="text-xs font-semibold text-[#00FF66] mt-0.5">
+            // {subtitle}
           </p>
         )}
       </div>
 
       {/* Short 1-2 sentence core definition */}
-      <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] leading-relaxed mb-4">
+      <p className="text-xs text-[#91A596] leading-relaxed mb-4 font-sans">
         {shortDescription}
       </p>
 
-      {/* Structured Objective & Activity if provided */}
+      {/* Structured Technical Characteristics */}
       {(objective || typicalActivity) && (
-        <div className="mb-4 p-3 rounded-xl bg-[#EEF3EE]/60 dark:bg-[#202722]/60 border border-[#DDE5DE]/60 dark:border-[#3A4840]/60 space-y-2 text-[11px]">
+        <div className="p-3 rounded-xl bg-[#050705] border border-[#1B2A1F] mb-4 space-y-2 text-xs">
           {objective && (
             <div>
-              <span className="font-bold text-[#18221C] dark:text-[#E8F0EA] block">
-                Primary Objective:
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#00FF66] block mb-0.5">
+                // OBJECTIVE
               </span>
-              <span className="text-[#68736B] dark:text-[#A0AFA5] leading-relaxed">
+              <span className="text-[11px] text-[#91A596] leading-relaxed font-sans block">
                 {objective}
               </span>
             </div>
           )}
           {typicalActivity && (
-            <div className="pt-1.5 border-t border-[#DDE5DE]/60 dark:border-[#3A4840]/60">
-              <span className="font-bold text-[#18221C] dark:text-[#E8F0EA] block">
-                Typical Operation:
+            <div className="pt-2 border-t border-[#1B2A1F]">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#00FF66] block mb-0.5">
+                // TYPICAL ACTIVITY
               </span>
-              <span className="text-[#68736B] dark:text-[#A0AFA5] leading-relaxed">
+              <span className="text-[11px] text-[#91A596] leading-relaxed font-sans block">
                 {typicalActivity}
               </span>
             </div>
@@ -128,39 +128,36 @@ export const VisualConceptCard: React.FC<VisualConceptCardProps> = ({
         </div>
       )}
 
-      {/* Key characteristics tags */}
+      {/* Tag pills */}
       {keyPoints && keyPoints.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {keyPoints.slice(0, 4).map((pt, idx) => (
+        <div className="flex flex-wrap gap-1 mb-4">
+          {keyPoints.slice(0, 3).map((pt, idx) => (
             <span
               key={idx}
-              className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-lg bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] border border-[#DDE5DE] dark:border-[#3A4840]"
+              className="text-[10px] px-2 py-0.5 rounded bg-[#050705] text-[#91A596] border border-[#1B2A1F]"
             >
-              <Sparkles className="w-2.5 h-2.5 text-[#3F7D5A] dark:text-[#6AAF8A]" />
-              <span>{pt}</span>
+              #{pt}
             </span>
           ))}
         </div>
       )}
 
-      {/* Footer action link */}
+      {/* Action Trigger */}
       {href ? (
-        <div className="pt-3 border-t border-[#DDE5DE]/60 dark:border-[#3A4840]/60 flex items-center justify-between text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A]">
-          <span>{actionLabel}</span>
-          <div className="w-6 h-6 rounded-full bg-[#EBF4EF] dark:bg-[#3F7D5A]/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
-            <ArrowRight className="w-3.5 h-3.5" />
-          </div>
+        <div className="pt-3 border-t border-[#1B2A1F] flex items-center justify-between text-xs font-bold text-[#00FF66] group-hover:text-[#5CFF9B] transition-colors mt-auto">
+          <span>&gt; {actionLabel}</span>
+          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
         </div>
-      ) : null}
+      ) : (
+        <div className="pt-3 border-t border-[#1B2A1F] text-[10px] text-[#91A596] mt-auto">
+          STATUS: CLASSIFIED ARCHETYPE
+        </div>
+      )}
     </div>
   );
 
   if (href) {
-    return (
-      <Link href={href} className="block h-full">
-        {cardContent}
-      </Link>
-    );
+    return <Link href={href}>{cardContent}</Link>;
   }
 
   return cardContent;

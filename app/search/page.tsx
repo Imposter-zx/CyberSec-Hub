@@ -8,7 +8,7 @@ import { SearchBar } from '@/components/ui/SearchBar';
 import { globalSearch } from '@/lib/search';
 import { DifficultyBadge } from '@/components/ui/DifficultyBadge';
 import { Tag } from '@/components/ui/Tag';
-import { Search, ExternalLink, ArrowRight, Layers } from 'lucide-react';
+import { Search, ExternalLink, ArrowRight, Layers, Terminal } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 function SearchPageContent() {
@@ -38,19 +38,19 @@ function SearchPageContent() {
   }, [allResults, selectedType]);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-sans">
       <Breadcrumbs items={[{ label: 'Global Search' }]} />
 
       {/* Header & Search Bar */}
       <div className="mb-8">
-        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1.5">
-          <Search className="w-4 h-4" />
-          <span>Unified Cross-Platform Index</span>
+        <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#00FF66] mb-2">
+          <Terminal className="w-4 h-4 text-[#00FF66]" />
+          <span>// UNIFIED_SEARCH // CROSS_PLATFORM_INDEX</span>
         </div>
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#E8F5E9] font-mono tracking-tight mb-2.5">
           Global Cybersecurity Knowledge Search
         </h1>
-        <p className="text-sm text-[#68645D] dark:text-[#A0AFA5] mb-6">
+        <p className="text-sm text-[#91A596] mb-6">
           Search across learning resources, certification guides, threat profiles, tools, YouTube channels, cryptographic algorithms, and learning roadmaps.
         </p>
 
@@ -63,8 +63,8 @@ function SearchPageContent() {
 
       {/* Type Filters & Result Summary */}
       {query && (
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-[#DDE5DE] dark:border-[#3A4840] pb-4">
-          <div className="flex flex-wrap items-center gap-1.5">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-[#1B2A1F] pb-4">
+          <div className="flex flex-wrap items-center gap-1.5 font-mono">
             {types.map((t) => (
               <button
                 key={t}
@@ -73,39 +73,39 @@ function SearchPageContent() {
                 className={cn(
                   'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
                   selectedType === t
-                    ? 'bg-[#3F7D5A] text-white shadow-xs'
-                    : 'bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] hover:bg-[#DDE5DE]'
+                    ? 'bg-[#00FF66] text-[#050705] shadow-[0_0_12px_rgba(0,255,102,0.25)]'
+                    : 'bg-[#050705] text-[#91A596] border border-[#1B2A1F] hover:border-[#00FF66] hover:text-[#E8F5E9]'
                 )}
               >
-                {t === 'all' ? `All Results (${allResults.length})` : t}
+                {t === 'all' ? `ALL (${allResults.length})` : t.toUpperCase()}
               </button>
             ))}
           </div>
 
-          <span className="text-xs text-[#68736B] dark:text-[#A0AFA5] font-bold">
-            Found <span className="text-[#3F7D5A] dark:text-[#6AAF8A]">{filteredResults.length}</span> matching entities
+          <span className="text-xs text-[#91A596] font-mono font-bold">
+            MATCHED: <span className="text-[#00FF66]">{filteredResults.length}</span> ENTITIES
           </span>
         </div>
       )}
 
       {/* Results List */}
       {!query ? (
-        <div className="text-center py-16 bg-[#FFFFFF] dark:bg-[#262E28] rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] p-8 shadow-xs">
-          <Search className="w-12 h-12 mx-auto text-[#3F7D5A] dark:text-[#6AAF8A] mb-3 opacity-60" />
-          <h3 className="text-base font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-            Enter a search term to explore the knowledge base
+        <div className="text-center py-16 bg-[#0E1510] rounded-2xl border border-[#1B2A1F] p-8 shadow-xs">
+          <Search className="w-12 h-12 mx-auto text-[#00FF66] mb-3 opacity-60" />
+          <h3 className="text-base font-bold text-[#E8F5E9] font-mono mb-1">
+            ENTER SEARCH QUERY TO EXPLORE KNOWLEDGE BASE
           </h3>
-          <p className="text-xs text-[#68645D] dark:text-[#A0AFA5] max-w-md mx-auto">
-            Try searching for "OSCP", "Burp Suite", "SQL Injection", "Argon2", "Ransomware", or "Active Directory".
+          <p className="text-xs text-[#91A596] max-w-md mx-auto">
+            Try searching for &quot;OSCP&quot;, &quot;Burp Suite&quot;, &quot;SQL Injection&quot;, &quot;Argon2&quot;, &quot;Ransomware&quot;, or &quot;Active Directory&quot;.
           </p>
         </div>
       ) : filteredResults.length === 0 ? (
-        <div className="text-center py-16 bg-[#FFFFFF] dark:bg-[#262E28] rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] p-8 shadow-xs">
-          <Layers className="w-12 h-12 mx-auto text-[#68736B] dark:text-[#A0AFA5] mb-3 opacity-50" />
-          <h3 className="text-base font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-            No results found for "{query}"
+        <div className="text-center py-16 bg-[#0E1510] rounded-2xl border border-[#1B2A1F] p-8 shadow-xs">
+          <Layers className="w-12 h-12 mx-auto text-[#91A596] mb-3 opacity-50" />
+          <h3 className="text-base font-bold text-[#E8F5E9] font-mono mb-1">
+            NO RESULTS FOUND FOR &quot;{query}&quot;
           </h3>
-          <p className="text-xs text-[#68645D] dark:text-[#A0AFA5] max-w-md mx-auto">
+          <p className="text-xs text-[#91A596] max-w-md mx-auto">
             Check your spelling, try broader keywords, or browse directly through the navigation menu.
           </p>
         </div>
@@ -114,31 +114,31 @@ function SearchPageContent() {
           {filteredResults.map((result) => (
             <div
               key={`${result.type}-${result.id}`}
-              className="p-5.5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg transition-all flex flex-col justify-between shadow-xs"
+              className="p-5.5 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] hover:border-[#00FF66] hover:shadow-[0_4px_24px_rgba(0,255,102,0.08)] transition-all flex flex-col justify-between shadow-xs group"
             >
               <div>
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#EEF3EE] dark:bg-[#202722] text-[#3F7D5A] dark:text-[#6AAF8A] border border-[#DDE5DE] dark:border-[#3A4840]">
+                  <div className="flex items-center gap-2 font-mono">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#050705] text-[#00FF66] border border-[#1B2A1F]">
                       {result.type}
                     </span>
-                    <span className="text-xs font-semibold text-[#68736B] dark:text-[#A0AFA5]">
+                    <span className="text-xs font-semibold text-[#91A596]">
                       {result.category}
                     </span>
                   </div>
                   {result.difficulty && <DifficultyBadge difficulty={result.difficulty} />}
                 </div>
 
-                <h3 className="text-base font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">
+                <h3 className="text-base font-bold text-[#E8F5E9] font-mono mb-2">
                   <Link
                     href={result.internalUrl}
-                    className="hover:text-[#3F7D5A] dark:hover:text-[#6AAF8A] transition-colors"
+                    className="hover:text-[#00FF66] transition-colors"
                   >
                     {result.title}
                   </Link>
                 </h3>
 
-                <p className="text-xs text-[#68645D] dark:text-[#A0AFA5] mb-4 leading-relaxed line-clamp-2">
+                <p className="text-xs text-[#91A596] mb-4 leading-relaxed line-clamp-2">
                   {result.description}
                 </p>
 
@@ -151,12 +151,12 @@ function SearchPageContent() {
                 )}
               </div>
 
-              <div className="pt-3 border-t border-[#DDE5DE]/60 dark:border-[#3A4840]/60 flex items-center justify-between text-xs">
+              <div className="pt-3 border-t border-[#1B2A1F] flex items-center justify-between text-xs font-mono">
                 <Link
                   href={result.internalUrl}
-                  className="font-bold text-[#3F7D5A] dark:text-[#6AAF8A] hover:underline flex items-center gap-1"
+                  className="font-bold text-[#00FF66] hover:underline flex items-center gap-1"
                 >
-                  <span>Open Knowledge Page</span>
+                  <span>&gt; OPEN</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
 
@@ -165,9 +165,9 @@ function SearchPageContent() {
                     href={result.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#68736B] hover:text-[#18221C] dark:text-[#A0AFA5] dark:hover:text-[#E8F0EA] flex items-center gap-1 font-medium"
+                    className="text-[#91A596] hover:text-[#E8F5E9] flex items-center gap-1 font-medium"
                   >
-                    <span>Official External Link</span>
+                    <span>EXTERNAL</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 )}
@@ -182,7 +182,7 @@ function SearchPageContent() {
 
 export default function SearchPage() {
   return (
-    <Suspense fallback={<div className="p-8 text-center text-xs text-[#68736B]">Loading search...</div>}>
+    <Suspense fallback={<div className="p-8 text-center text-xs font-mono text-[#91A596]">Initializing search index...</div>}>
       <SearchPageContent />
     </Suspense>
   );

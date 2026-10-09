@@ -27,584 +27,319 @@ import {
   Server,
   Layers,
   Zap,
+  Activity,
+  AlertTriangle,
+  Flame,
+  Key,
 } from 'lucide-react';
 import { SearchBar } from '@/components/ui/SearchBar';
 import { ResourceCard } from '@/components/ui/ResourceCard';
 import { CertificationCard } from '@/components/ui/CertificationCard';
 import { YouTubeCard } from '@/components/ui/YouTubeCard';
 import { CategoryCard } from '@/components/ui/CategoryCard';
+import { ThreatCard } from '@/components/ui/ThreatCard';
+import { ToolCard } from '@/components/ui/ToolCard';
+import { LabTerminalCard } from '@/components/ui/LabTerminalCard';
+import { HeroTerminalVisual } from '@/components/visuals/HeroTerminalVisual';
+import { MatrixCodeBackground } from '@/components/visuals/MatrixCodeBackground';
 import { resources } from '@/data/resources';
 import { certifications } from '@/data/certifications';
 import { youtubeChannels } from '@/data/youtube';
 import { roadmaps } from '@/data/roadmaps';
+import { threats } from '@/data/threats';
+import { tools } from '@/data/tools';
+import { hackerTypes } from '@/data/hackers';
 
 export default function HomePage() {
-  const featuredFreeResources = resources
-    .filter((r) => r.pricing === 'free' || r.pricing === 'freemium')
-    .slice(0, 6);
+  const labResources = resources.filter(
+    (r) =>
+      r.resourceType === 'lab' ||
+      r.resourceType === 'platform' ||
+      r.resourceType === 'ctf' ||
+      r.resourceType === 'academy'
+  );
 
-  const popularRoadmaps = roadmaps.slice(0, 4);
+  const featuredLabs = labResources.slice(0, 4);
+  const featuredTools = tools.slice(0, 4);
+  const featuredThreats = threats.slice(0, 4);
   const featuredCertifications = certifications.slice(0, 4);
   const featuredYouTube = youtubeChannels.slice(0, 4);
-  const recentlyVerified = resources.slice(0, 4);
+  const popularRoadmaps = roadmaps.slice(0, 4);
 
   const categories = [
     {
-      title: 'Cybersecurity Fundamentals',
-      description: 'Core principles, CIA triad, security hygiene, and foundational computer architecture.',
-      href: '/learn?cat=General+Cybersecurity',
-      icon: <Shield className="w-5 h-5" />,
-      count: 12,
-      tags: ['CIA Triad', 'Threat Models', 'Security Controls'],
-      difficulty: 'beginner' as const,
-    },
-    {
-      title: 'Networking & Defense',
-      description: 'TCP/IP protocols, subnetting, packet analysis, Wireshark, and firewall architectures.',
+      title: 'Network Security',
+      description: 'TCP/IP protocols, subnetting, Wireshark, stateful firewalls, and IDS/IPS architectures.',
       href: '/learn?cat=Networking+%26+Defense',
       icon: <Network className="w-5 h-5" />,
       count: 8,
-      tags: ['TCP/IP', 'Wireshark', 'Subnetting'],
-      difficulty: 'beginner' as const,
+      tags: ['TCP/IP', 'Wireshark', 'Subnetting', 'Firewalls'],
     },
     {
-      title: 'Linux & Fundamentals',
-      description: 'Linux command line, permissions, process administration, hardening, and bash automation.',
-      href: '/learn?cat=Linux+%26+Fundamentals',
-      icon: <Terminal className="w-5 h-5" />,
-      count: 10,
-      tags: ['Bash', 'Permissions', 'SysAdmin'],
-      difficulty: 'beginner' as const,
-    },
-    {
-      title: 'Python for Cybersecurity',
-      description: 'Security automation, exploit prototyping, log parsing, and custom tool development.',
-      href: '/tools',
-      icon: <Cpu className="w-5 h-5" />,
-      count: 6,
-      tags: ['Automation', 'Scapy', 'Sockets'],
-      difficulty: 'intermediate' as const,
-    },
-    {
-      title: 'Web Security',
-      description: 'OWASP Top 10, SQLi, XSS, SSRF, CSRF, IDOR, and modern web application testing.',
-      href: '/knowledge/threats',
+      title: 'Web Application Security',
+      description: 'OWASP Top 10, SQLi, XSS, CSRF, SSRF, authentication flaws, and API vulnerabilities.',
+      href: '/learn?cat=Web+Application+Security',
       icon: <Globe className="w-5 h-5" />,
-      count: 15,
-      tags: ['OWASP Top 10', 'SQLi', 'XSS'],
-      difficulty: 'intermediate' as const,
-    },
-    {
-      title: 'Penetration Testing',
-      description: 'Ethical hacking methodology, enumeration, vulnerability validation, and reporting.',
-      href: '/roadmaps/penetration-tester',
-      icon: <Lock className="w-5 h-5" />,
       count: 14,
-      tags: ['Nmap', 'Metasploit', 'PrivEsc'],
-      difficulty: 'intermediate' as const,
+      tags: ['OWASP', 'SQLi', 'XSS', 'Burp Suite'],
     },
     {
-      title: 'Red Team Operations',
-      description: 'Adversary emulation, C2 infrastructure, EDR evasion, and active lateral movement.',
-      href: '/roadmaps/red-team',
-      icon: <Radio className="w-5 h-5" />,
-      count: 9,
-      tags: ['C2 Frameworks', 'Evasion', 'AD Pivot'],
-      difficulty: 'advanced' as const,
+      title: 'Ethical Hacking & Pentesting',
+      description: 'Offensive methodologies, port scanning, exploitation frameworks, and privileged escalation.',
+      href: '/learn?cat=Ethical+Hacking+%26+Pentesting',
+      icon: <Terminal className="w-5 h-5" />,
+      count: 12,
+      tags: ['Nmap', 'Metasploit', 'Recon', 'Exploits'],
     },
     {
-      title: 'Blue Team & Defense',
-      description: 'Defensive architecture, continuous telemetry monitoring, log analysis, and threat containment.',
-      href: '/roadmaps/blue-team',
+      title: 'SOC & Blue Team Defense',
+      description: 'SIEM log correlation, threat hunting, detection engineering, and incident response.',
+      href: '/learn?cat=SOC+%26+Defensive+Operations',
       icon: <Shield className="w-5 h-5" />,
-      count: 11,
-      tags: ['Hardening', 'Threat Hunting', 'Suricata'],
-      difficulty: 'intermediate' as const,
+      count: 10,
+      tags: ['SIEM', 'EDR', 'Sigma', 'Zeek'],
     },
     {
-      title: 'SOC Operations',
-      description: 'Security Information and Event Management (SIEM), alert triaging, and EDR response.',
-      href: '/learn?cat=SOC+Operations',
-      icon: <Eye className="w-5 h-5" />,
-      count: 7,
-      tags: ['SIEM', 'Splunk', 'Triage'],
-      difficulty: 'beginner' as const,
-    },
-    {
-      title: 'DFIR (Forensics & IR)',
-      description: 'Digital forensics, memory dump analysis with Volatility, and breach root cause analysis.',
-      href: '/roadmaps/dfir',
+      title: 'Digital Forensics & IR (DFIR)',
+      description: 'Memory volatile acquisition, disk bit-stream imaging, super-timeline parsing, and root-cause analysis.',
+      href: '/learn?cat=Digital+Forensics+%26+Incident+Response',
       icon: <FileSearch className="w-5 h-5" />,
       count: 8,
-      tags: ['Memory Analysis', 'Timeline', 'Autopsy'],
-      difficulty: 'advanced' as const,
+      tags: ['Volatility', 'Autopsy', 'Plaso', 'Timeline'],
     },
     {
-      title: 'Malware Analysis',
-      description: 'Static/dynamic triage, sandboxing, behavioral dissection, and YARA signature writing.',
-      href: '/knowledge/threats',
+      title: 'Malware Analysis & Reversing',
+      description: 'Static/dynamic triage, disassembly, x64 assembly, Ghidra, and behavioral sandboxing.',
+      href: '/learn?cat=Malware+Analysis+%26+Reverse+Engineering',
       icon: <Binary className="w-5 h-5" />,
-      count: 10,
-      tags: ['Ghidra', 'Sandboxing', 'YARA'],
-      difficulty: 'advanced' as const,
-    },
-    {
-      title: 'Reverse Engineering',
-      description: 'Binary disassembly, Ghidra decompilation, x86/x64 assembly, and software debugging.',
-      href: '/roadmaps/reverse-engineering',
-      icon: <Terminal className="w-5 h-5" />,
-      count: 7,
-      tags: ['x86/x64', 'Ghidra', 'GDB'],
-      difficulty: 'advanced' as const,
-    },
-    {
-      title: 'Cryptography',
-      description: 'Symmetric ciphers, public-key algorithms, hashing, password derivation, and key exchange.',
-      href: '/knowledge/encryption',
-      icon: <Lock className="w-5 h-5" />,
-      count: 18,
-      tags: ['AES-256', 'RSA', 'Diffie-Hellman'],
-      difficulty: 'intermediate' as const,
+      count: 8,
+      tags: ['Ghidra', 'x64dbg', 'YARA', 'PE Header'],
     },
     {
       title: 'Cloud Security',
-      description: 'AWS, Azure, and GCP IAM hardening, container security, Kubernetes, and CSPM posture.',
-      href: '/roadmaps/cloud-security',
+      description: 'AWS/Azure/GCP IAM policies, S3 misconfigurations, container isolation, and CSPM.',
+      href: '/learn?cat=Cloud+Security',
       icon: <Cloud className="w-5 h-5" />,
-      count: 9,
-      tags: ['AWS IAM', 'K8s', 'CSPM'],
-      difficulty: 'intermediate' as const,
+      count: 7,
+      tags: ['AWS IAM', 'Kubernetes', 'CSPM', 'Terraform'],
     },
     {
       title: 'Active Directory Security',
-      description: 'Kerberos attacks, BloodHound graph analysis, privilege delegation, and domain defense.',
+      description: 'Kerberoasting, BloodHound graph queries, AS-REP roasting, DCSync, and tiered architecture.',
       href: '/knowledge/active-directory-security',
       icon: <Users className="w-5 h-5" />,
       count: 8,
-      tags: ['Kerberoast', 'BloodHound', 'GPO'],
-      difficulty: 'intermediate' as const,
+      tags: ['Kerberos', 'BloodHound', 'DCSync', 'GPO'],
     },
     {
       title: 'Bug Bounty Hunting',
-      description: 'Reconnaissance automation, vulnerability triage, scoped testing, and responsible disclosure.',
+      description: 'Asset discovery, scoped vulnerability triage, automation pipelines, and bounty disclosures.',
       href: '/roadmaps/web-security',
       icon: <Bug className="w-5 h-5" />,
       count: 6,
-      tags: ['Recon', 'Subdomain Enum', 'Bounty'],
-      difficulty: 'intermediate' as const,
+      tags: ['Subdomain Enum', 'HTTP Request Smuggling', 'IDOR'],
     },
     {
-      title: 'CTF (Capture The Flag)',
-      description: 'Competitive security challenges, wargames, exploit development, and crypto puzzles.',
+      title: 'Capture The Flag (CTF)',
+      description: 'Hands-on wargames, exploit development, cryptographic puzzles, and jeopardy arenas.',
       href: '/labs',
       icon: <Flag className="w-5 h-5" />,
       count: 10,
-      tags: ['Jeopardy', 'Attack-Defense', 'Pwn'],
-      difficulty: 'beginner' as const,
+      tags: ['OverTheWire', 'picoCTF', 'HTB', 'RootMe'],
+    },
+    {
+      title: 'Cryptography & Ciphers',
+      description: 'AES-256-GCM, RSA, ECC, Argon2id, digital certificates (X.509), and PKI architectures.',
+      href: '/knowledge/encryption',
+      icon: <Lock className="w-5 h-5" />,
+      count: 9,
+      tags: ['AES', 'RSA', 'Diffie-Hellman', 'Argon2id'],
+    },
+    {
+      title: 'DevSecOps & Supply Chain',
+      description: 'CI/CD automated secret scanning, SAST, DAST, SCA, dependency audits, and container hardening.',
+      href: '/knowledge/devsecops',
+      icon: <Cpu className="w-5 h-5" />,
+      count: 6,
+      tags: ['SAST', 'DAST', 'Trivy', 'SBOM'],
     },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F7F9F6] dark:bg-[#181C1A] text-[#18221C] dark:text-[#E8F0EA]">
-      {/* =========================================================================
-          HERO SECTION: Split Layout (Text + Interactive Domain Visualization)
-          ========================================================================= */}
-      <section className="relative overflow-hidden pt-12 pb-20 border-b border-[#DDE5DE] dark:border-[#3A4840] bg-gradient-to-b from-[#EEF3EE]/60 via-[#F7F9F6] to-[#F7F9F6] dark:from-[#202722]/50 dark:via-[#181C1A] dark:to-[#181C1A]">
-        {/* Subtle dot background grid */}
-        <div className="absolute inset-0 dot-grid pointer-events-none opacity-40" />
+    <div className="flex flex-col min-h-screen bg-[#050705] text-[#E8F5E9] font-mono relative overflow-hidden">
+      {/* Subtle Matrix Code Rain Background */}
+      <MatrixCodeBackground opacity={0.06} />
 
+      {/* =========================================================================
+          1. HERO SECTION: Underground Cybersecurity Laboratory
+          ========================================================================= */}
+      <section className="relative pt-12 pb-20 border-b border-[#1B2A1F] bg-gradient-to-b from-[#0A0F0B]/80 via-[#050705] to-[#050705]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column: Heading, Value Prop, Search, CTAs */}
+            {/* Left Column */}
             <div className="lg:col-span-7 space-y-6">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] text-[#3F7D5A] dark:text-[#6AAF8A] text-xs font-bold shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#3F7D5A] dark:bg-[#6AAF8A] animate-pulse" />
-                <span>Centralized Cybersecurity Learning Platform</span>
-                <span className="text-[10px] bg-[#EBF4EF] dark:bg-[#3F7D5A]/20 px-2 py-0.5 rounded-full font-mono text-[#3F7D5A] dark:text-[#6AAF8A]">v2.5</span>
+              {/* Terminal micro label */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0E1510] border border-[#1B2A1F] text-[#00FF66] text-xs font-mono shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#00FF66] animate-pulse" />
+                <span className="font-bold">&gt; system.init()</span>
+                <span className="text-[10px] text-[#91A596] border-l border-[#1B2A1F] pl-2 font-mono">
+                  SEC_LEVEL: MAX
+                </span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#18221C] dark:text-[#E8F0EA] leading-[1.15]">
-                Learn Cybersecurity with{' '}
-                <span className="text-[#3F7D5A] dark:text-[#6AAF8A] underline decoration-[#E58A4E] decoration-wavy decoration-2">
-                  Structure & Depth
-                </span>
-              </h1>
+              <div className="space-y-2">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-wider text-[#E8F5E9] uppercase leading-[1.1]">
+                  CYBERSECURITY <br />
+                  <span className="text-[#00FF66] text-glow-green">
+                    LEARNING HUB
+                  </span>
+                </h1>
+                <p className="text-sm sm:text-base font-bold text-[#00FF66] font-mono tracking-widest uppercase">
+                  // Learn. Practice. Analyze. Defend.
+                </p>
+              </div>
 
-              {/* Subtitle */}
-              <p className="text-base sm:text-lg text-[#68736B] dark:text-[#A0AFA5] leading-relaxed max-w-2xl">
-                Master cybersecurity from fundamentals to advanced security research. Explore vetted free resources, official certifications, interactive labs, and practical career roadmaps.
+              {/* Description */}
+              <p className="text-xs sm:text-sm text-[#91A596] leading-relaxed max-w-2xl font-sans">
+                A structured visual platform for learning cybersecurity, exploring security concepts, practicing in labs, discovering tools, and preparing for industry certifications.
               </p>
 
               {/* Search Bar Component */}
               <div className="pt-2 max-w-xl">
-                <SearchBar placeholder="Search topics (e.g. OWASP, OSCP, Wireshark, PortSwigger, SIEM)..." />
+                <SearchBar placeholder="search database (e.g. nmap, sql injection, oscp, siem)..." />
               </div>
 
-              {/* Quick Action Badges / CTAs */}
+              {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   href="/learn"
-                  className="px-5 py-3 rounded-xl bg-[#3F7D5A] hover:bg-[#2E5E43] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2 group"
+                  className="px-6 py-3 rounded-xl bg-[#00FF66] hover:bg-[#00CC52] text-[#050705] font-black text-xs sm:text-sm shadow-md hover:shadow-[0_0_20px_rgba(0,255,102,0.4)] transition-all flex items-center gap-2 group font-mono uppercase tracking-wider"
                 >
-                  <span>Start Learning</span>
+                  <span>[ START LEARNING ]</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link
-                  href="/roadmaps"
-                  className="px-5 py-3 rounded-xl bg-[#FFFFFF] dark:bg-[#262E28] hover:bg-[#EEF3EE] dark:hover:bg-[#2D3630] text-[#18221C] dark:text-[#E8F0EA] border border-[#DDE5DE] dark:border-[#3A4840] font-bold text-xs sm:text-sm shadow-xs transition-all flex items-center gap-2"
-                >
-                  <Compass className="w-4 h-4 text-[#E58A4E]" />
-                  <span>Explore Roadmaps</span>
-                </Link>
+
                 <Link
                   href="/labs"
-                  className="px-5 py-3 rounded-xl bg-[#FFFFFF] dark:bg-[#262E28] hover:bg-[#EEF3EE] dark:hover:bg-[#2D3630] text-[#18221C] dark:text-[#E8F0EA] border border-[#DDE5DE] dark:border-[#3A4840] font-bold text-xs sm:text-sm shadow-xs transition-all flex items-center gap-2"
+                  className="px-6 py-3 rounded-xl bg-[#0E1510] hover:bg-[#121B14] text-[#00FF66] border border-[#1B2A1F] hover:border-[#00FF66] font-bold text-xs sm:text-sm transition-all flex items-center gap-2 font-mono uppercase tracking-wider"
                 >
-                  <FlaskConical className="w-4 h-4 text-[#4C9A91]" />
-                  <span>Hands-on Labs</span>
+                  <span>[ ENTER LABS ]</span>
+                  <FlaskConical className="w-4 h-4" />
                 </Link>
               </div>
 
-              {/* Quick Platform Metrics */}
-              <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-[#68736B] dark:text-[#A0AFA5] border-t border-[#DDE5DE]/60 dark:border-[#3A4840]/60">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#3F7D5A] dark:text-[#6AAF8A]" />
-                  <span><strong>100% Verified</strong> Official Links</span>
+              {/* Quick status trust notes */}
+              <div className="flex flex-wrap items-center gap-4 text-[11px] text-[#91A596] pt-1">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00FF66]" />
+                  <span>100% Free &amp; Open Access</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#3F7D5A] dark:text-[#6AAF8A]" />
-                  <span><strong>8 Complete</strong> Career Paths</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00FF66]" />
+                  <span>Zero Sponsored Bias</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#3F7D5A] dark:text-[#6AAF8A]" />
-                  <span><strong>Zero Sponsored</strong> Bias</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00FF66]" />
+                  <span>Interactive Attack Flows</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Animated Cybersecurity Domain Topology Map */}
+            {/* Right Column: Hero Terminal Visual */}
             <div className="lg:col-span-5">
-              <div className="relative p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] shadow-xl overflow-hidden">
-                {/* Decorative background glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#3F7D5A]/10 dark:bg-[#6AAF8A]/10 rounded-full blur-3xl pointer-events-none" />
-
-                {/* Header label */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#DDE5DE] dark:border-[#3A4840]">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#3F7D5A] dark:bg-[#6AAF8A]" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#18221C] dark:text-[#E8F0EA]">
-                      Cybersecurity Domain Map
-                    </span>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#EEF3EE] dark:bg-[#202722] text-[#3F7D5A] dark:text-[#6AAF8A] font-semibold">
-                    INTERCONNECTED
-                  </span>
-                </div>
-
-                {/* SVG Visual Network Graph */}
-                <div className="relative w-full aspect-square max-w-[380px] mx-auto flex items-center justify-center">
-                  <svg className="w-full h-full" viewBox="0 0 400 400" fill="none">
-                    {/* Connecting Lines */}
-                    <line x1="200" y1="200" x2="200" y2="70" stroke="#3F7D5A" strokeWidth="2" strokeDasharray="4 4" className="opacity-40" />
-                    <line x1="200" y1="200" x2="320" y2="130" stroke="#E58A4E" strokeWidth="2" strokeDasharray="4 4" className="opacity-40" />
-                    <line x1="200" y1="200" x2="310" y2="280" stroke="#4C9A91" strokeWidth="2" strokeDasharray="4 4" className="opacity-40" />
-                    <line x1="200" y1="200" x2="200" y2="330" stroke="#D7A84B" strokeWidth="2" strokeDasharray="4 4" className="opacity-40" />
-                    <line x1="200" y1="200" x2="90" y2="280" stroke="#3F7D5A" strokeWidth="2" strokeDasharray="4 4" className="opacity-40" />
-                    <line x1="200" y1="200" x2="80" y2="130" stroke="#E58A4E" strokeWidth="2" strokeDasharray="4 4" className="opacity-40" />
-
-                    {/* Outer Orbit Circle */}
-                    <circle cx="200" cy="200" r="130" stroke="#DDE5DE" strokeWidth="1.5" className="dark:stroke-[#3A4840]" />
-                    <circle cx="200" cy="200" r="80" stroke="#DDE5DE" strokeWidth="1" strokeDasharray="6 6" className="dark:stroke-[#3A4840]" />
-
-                    {/* Central Shield Hub */}
-                    <g className="cursor-pointer">
-                      <circle cx="200" cy="200" r="38" fill="#3F7D5A" className="shadow-lg transition-transform hover:scale-105" />
-                      <circle cx="200" cy="200" r="44" stroke="#3F7D5A" strokeWidth="2" className="opacity-30 node-pulse" />
-                      <Shield className="w-8 h-8 text-white -translate-x-4 -translate-y-4" />
-                    </g>
-
-                    {/* Node 1: Web Security (Top) */}
-                    <g className="cursor-pointer">
-                      <circle cx="200" cy="70" r="24" fill="#FFFFFF" stroke="#3F7D5A" strokeWidth="2.5" className="dark:fill-[#262E28]" />
-                      <text x="200" y="74" textAnchor="middle" fill="#18221C" className="text-[10px] font-bold dark:fill-[#E8F0EA]">WEB</text>
-                    </g>
-
-                    {/* Node 2: Network Defense (Top Right) */}
-                    <g className="cursor-pointer">
-                      <circle cx="320" cy="130" r="24" fill="#FFFFFF" stroke="#E58A4E" strokeWidth="2.5" className="dark:fill-[#262E28]" />
-                      <text x="320" y="134" textAnchor="middle" fill="#18221C" className="text-[10px] font-bold dark:fill-[#E8F0EA]">NET</text>
-                    </g>
-
-                    {/* Node 3: Cloud Sec (Bottom Right) */}
-                    <g className="cursor-pointer">
-                      <circle cx="310" cy="280" r="24" fill="#FFFFFF" stroke="#4C9A91" strokeWidth="2.5" className="dark:fill-[#262E28]" />
-                      <text x="310" y="284" textAnchor="middle" fill="#18221C" className="text-[10px] font-bold dark:fill-[#E8F0EA]">CLOUD</text>
-                    </g>
-
-                    {/* Node 4: DFIR (Bottom) */}
-                    <g className="cursor-pointer">
-                      <circle cx="200" cy="330" r="24" fill="#FFFFFF" stroke="#D7A84B" strokeWidth="2.5" className="dark:fill-[#262E28]" />
-                      <text x="200" y="334" textAnchor="middle" fill="#18221C" className="text-[10px] font-bold dark:fill-[#E8F0EA]">DFIR</text>
-                    </g>
-
-                    {/* Node 5: Red Team (Bottom Left) */}
-                    <g className="cursor-pointer">
-                      <circle cx="90" cy="280" r="24" fill="#FFFFFF" stroke="#3F7D5A" strokeWidth="2.5" className="dark:fill-[#262E28]" />
-                      <text x="90" y="284" textAnchor="middle" fill="#18221C" className="text-[10px] font-bold dark:fill-[#E8F0EA]">RED</text>
-                    </g>
-
-                    {/* Node 6: Binary / Reversing (Top Left) */}
-                    <g className="cursor-pointer">
-                      <circle cx="80" cy="130" r="24" fill="#FFFFFF" stroke="#E58A4E" strokeWidth="2.5" className="dark:fill-[#262E28]" />
-                      <text x="80" y="134" textAnchor="middle" fill="#18221C" className="text-[10px] font-bold dark:fill-[#E8F0EA]">RE</text>
-                    </g>
-                  </svg>
-                </div>
-
-                {/* Subtext info */}
-                <div className="pt-3 text-center">
-                  <p className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">
-                    Comprehensive coverage across all 6 core technical security disciplines
-                  </p>
-                </div>
-              </div>
+              <HeroTerminalVisual />
             </div>
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          QUICK ACCESS SECTION: 6 Large Visual Hub Cards
+          2. SYSTEM STATUS SECTION: Real Project Data Metrics
           ========================================================================= */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full -mt-6 relative z-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {/* Card 1: Learn */}
-          <Link
-            href="/learn"
-            className="group p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg hover:-translate-y-1 transition-all text-center flex flex-col items-center shadow-xs"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-[#EBF4EF] dark:bg-[#3F7D5A]/20 text-[#3F7D5A] dark:text-[#6AAF8A] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-              <BookOpen className="w-6 h-6" />
-            </div>
-            <h3 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-              Resources
-            </h3>
-            <span className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Courses & Docs</span>
-          </Link>
-
-          {/* Card 2: Labs */}
-          <Link
-            href="/labs"
-            className="group p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#4C9A91] dark:hover:border-[#7BB8B2] hover:shadow-lg hover:-translate-y-1 transition-all text-center flex flex-col items-center shadow-xs"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-[#EBF5F4] dark:bg-[#4C9A91]/20 text-[#4C9A91] dark:text-[#7BB8B2] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-              <FlaskConical className="w-6 h-6" />
-            </div>
-            <h3 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-              Labs & CTFs
-            </h3>
-            <span className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Hands-on Arenas</span>
-          </Link>
-
-          {/* Card 3: Roadmaps */}
-          <Link
-            href="/roadmaps"
-            className="group p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#E58A4E] dark:hover:border-[#EDA574] hover:shadow-lg hover:-translate-y-1 transition-all text-center flex flex-col items-center shadow-xs"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-[#FDF2EA] dark:bg-[#E58A4E]/20 text-[#E58A4E] dark:text-[#EDA574] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-              <Compass className="w-6 h-6" />
-            </div>
-            <h3 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-              Roadmaps
-            </h3>
-            <span className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">8 Step Guides</span>
-          </Link>
-
-          {/* Card 4: Certifications */}
-          <Link
-            href="/certifications"
-            className="group p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#D7A84B] dark:hover:border-[#E4BF74] hover:shadow-lg hover:-translate-y-1 transition-all text-center flex flex-col items-center shadow-xs"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-[#FDF6E7] dark:bg-[#D7A84B]/20 text-[#D7A84B] dark:text-[#E4BF74] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-              <Award className="w-6 h-6" />
-            </div>
-            <h3 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-              Certifications
-            </h3>
-            <span className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">CompTIA, OffSec</span>
-          </Link>
-
-          {/* Card 5: Tools */}
-          <Link
-            href="/tools"
-            className="group p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg hover:-translate-y-1 transition-all text-center flex flex-col items-center shadow-xs"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-[#EBF4EF] dark:bg-[#3F7D5A]/20 text-[#3F7D5A] dark:text-[#6AAF8A] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-              <Wrench className="w-6 h-6" />
-            </div>
-            <h3 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-              Security Tools
-            </h3>
-            <span className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Nmap, Burp, Ghidra</span>
-          </Link>
-
-          {/* Card 6: YouTube */}
-          <Link
-            href="/youtube"
-            className="group p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#E58A4E] dark:hover:border-[#EDA574] hover:shadow-lg hover:-translate-y-1 transition-all text-center flex flex-col items-center shadow-xs"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-[#FDF2EA] dark:bg-[#E58A4E]/20 text-[#E58A4E] dark:text-[#EDA574] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-              <Video className="w-6 h-6" />
-            </div>
-            <h3 className="text-sm font-bold text-[#18221C] dark:text-[#E8F0EA] mb-1">
-              YouTube
-            </h3>
-            <span className="text-[11px] text-[#68736B] dark:text-[#A0AFA5]">Curated Channels</span>
-          </Link>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          VISUAL LEARNING PLATFORM SHOWCASE
-          ========================================================================= */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Section header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
-          <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E58A4E] dark:text-[#EDA574] mb-1">
-              <Sparkles className="w-4 h-4" />
-              <span>Visual Learning Platform</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] dark:text-[#E8F0EA]">
-              See Cybersecurity, Not Just Read It
-            </h2>
-            <p className="text-sm text-[#68736B] dark:text-[#A0AFA5] max-w-xl mt-2">
-              Every concept has a visual identity. Explore illustrated hacker archetypes, attack flow diagrams, and interactive cryptographic pipelines.
-            </p>
+      <section className="py-12 border-b border-[#1B2A1F] bg-[#0A0F0B]/90 relative z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 mb-6">
+            <Activity className="w-4 h-4 text-[#00FF66]" />
+            <span className="text-xs font-bold text-[#00FF66] uppercase tracking-wider">
+              // SYSTEM STATUS &amp; REPOSITORY METRICS
+            </span>
           </div>
-          <Link
-            href="/knowledge/hackers"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#3F7D5A] hover:bg-[#2E5E43] text-white text-xs font-bold transition-all shadow-xs group shrink-0"
-          >
-            <span>Visual Infographic Series</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        </div>
 
-        {/* Hacker Archetype Preview Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8">
-          {[
-            { label: '01 White Hat', color: '#3F7D5A', bg: '#EBF4EF', darkBg: '#1E2B23', href: '/knowledge/hackers' },
-            { label: '02 Black Hat', color: '#B84040', bg: '#FCEAEA', darkBg: '#2E1E1E', href: '/knowledge/hackers' },
-            { label: '03 Gray Hat', color: '#A67B2E', bg: '#FDF6E7', darkBg: '#2A261E', href: '/knowledge/hackers' },
-            { label: '04 Red Hat', color: '#B84040', bg: '#FCEAEA', darkBg: '#2E1E1E', href: '/knowledge/hackers' },
-            { label: '05 Blue Hat', color: '#3A7B74', bg: '#EBF5F4', darkBg: '#1C2624', href: '/knowledge/hackers' },
-            { label: '06 Green Hat', color: '#3F7D5A', bg: '#EBF4EF', darkBg: '#1E2B23', href: '/knowledge/hackers' },
-          ].map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="group p-4 rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] bg-[#FFFFFF] dark:bg-[#262E28] hover:shadow-md hover:-translate-y-1 transition-all text-center flex flex-col items-center justify-center gap-2"
-            >
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-black font-mono"
-                style={{ backgroundColor: `${item.color}20`, color: item.color }}
-              >
-                {item.label.split(' ')[0]}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {/* Status 1: Network */}
+            <div className="p-4 rounded-xl bg-[#0E1510] border border-[#1B2A1F]">
+              <span className="text-[10px] text-[#91A596] block mb-1">NETWORK</span>
+              <div className="text-xs font-bold text-[#00FF66] flex items-center justify-between">
+                <span>[██████████]</span>
               </div>
-              <span className="text-[11px] font-bold text-[#18221C] dark:text-[#E8F0EA] leading-tight text-center">
-                {item.label.split(' ').slice(1).join(' ')}
+              <span className="text-[10px] text-[#00FF66] font-bold block mt-1">ONLINE</span>
+            </div>
+
+            {/* Status 2: Firewall */}
+            <div className="p-4 rounded-xl bg-[#0E1510] border border-[#1B2A1F]">
+              <span className="text-[10px] text-[#91A596] block mb-1">FIREWALL</span>
+              <div className="text-xs font-bold text-[#00FF66] flex items-center justify-between">
+                <span>[██████████]</span>
+              </div>
+              <span className="text-[10px] text-[#00FF66] font-bold block mt-1">ACTIVE</span>
+            </div>
+
+            {/* Status 3: Threat Monitor */}
+            <div className="p-4 rounded-xl bg-[#0E1510] border border-[#1B2A1F]">
+              <span className="text-[10px] text-[#91A596] block mb-1">THREAT MONITOR</span>
+              <div className="text-xs font-bold text-[#FF3B30] flex items-center justify-between">
+                <span>[███████░░░]</span>
+              </div>
+              <span className="text-[10px] text-[#FF3B30] font-bold block mt-1">
+                {threats.length} THREATS
               </span>
-            </Link>
-          ))}
-        </div>
-
-        {/* Visual Feature Cards: 3 highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Visual 1: Hacker Types Infographic */}
-          <Link
-            href="/knowledge/hackers"
-            className="group p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg hover:-translate-y-1 transition-all shadow-xs"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-[#EBF4EF] dark:bg-[#3F7D5A]/20 flex items-center justify-center text-[#3F7D5A] dark:text-[#6AAF8A] mb-4 group-hover:scale-110 transition-transform">
-              <Users className="w-6 h-6" />
             </div>
-            <h3 className="text-base font-black text-[#18221C] dark:text-[#E8F0EA] mb-2 group-hover:text-[#3F7D5A] dark:group-hover:text-[#6AAF8A] transition-colors">
-              Hacker Archetypes Visual Infographic
-            </h3>
-            <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] leading-relaxed mb-4">
-              17 illustrated hacker and security role profiles. Each archetype comes with a unique character illustration, numbered classification, primary objective, and career pathways.
-            </p>
-            <span className="text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A] flex items-center gap-1">
-              <span>Explore infographic</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </span>
-          </Link>
 
-          {/* Visual 2: Attack Flow Diagrams */}
-          <Link
-            href="/knowledge/threats"
-            className="group p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#E58A4E] dark:hover:border-[#EDA574] hover:shadow-lg hover:-translate-y-1 transition-all shadow-xs"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-[#FDF2EA] dark:bg-[#E58A4E]/20 flex items-center justify-center text-[#E58A4E] dark:text-[#EDA574] mb-4 group-hover:scale-110 transition-transform">
-              <Zap className="w-6 h-6" />
+            {/* Status 4: Labs Count */}
+            <div className="p-4 rounded-xl bg-[#0E1510] border border-[#1B2A1F]">
+              <span className="text-[10px] text-[#91A596] block mb-1">PRACTICE LABS</span>
+              <div className="text-lg font-black text-[#00FF66]">{labResources.length}</div>
+              <span className="text-[10px] text-[#91A596]">AVAILABLE</span>
             </div>
-            <h3 className="text-base font-black text-[#18221C] dark:text-[#E8F0EA] mb-2 group-hover:text-[#E58A4E] dark:group-hover:text-[#EDA574] transition-colors">
-              Interactive Attack Flow Diagrams
-            </h3>
-            <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] leading-relaxed mb-4">
-              SQL injection tautology chains, XSS session hijacking, and DDoS botnet amplification visually decomposed step-by-step with payload examples.
-            </p>
-            <span className="text-xs font-bold text-[#E58A4E] dark:text-[#EDA574] flex items-center gap-1">
-              <span>See attack flows</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </span>
-          </Link>
 
-          {/* Visual 3: Cryptographic Diagrams */}
-          <Link
-            href="/knowledge/encryption"
-            className="group p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#D7A84B] dark:hover:border-[#E4BF74] hover:shadow-lg hover:-translate-y-1 transition-all shadow-xs"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-[#FDF6E7] dark:bg-[#D7A84B]/20 flex items-center justify-center text-[#D7A84B] dark:text-[#E4BF74] mb-4 group-hover:scale-110 transition-transform">
-              <Lock className="w-6 h-6" />
+            {/* Status 5: Tools Count */}
+            <div className="p-4 rounded-xl bg-[#0E1510] border border-[#1B2A1F]">
+              <span className="text-[10px] text-[#91A596] block mb-1">SECURITY TOOLS</span>
+              <div className="text-lg font-black text-[#00FF66]">{tools.length}</div>
+              <span className="text-[10px] text-[#91A596]">INDEXED</span>
             </div>
-            <h3 className="text-base font-black text-[#18221C] dark:text-[#E8F0EA] mb-2 group-hover:text-[#D7A84B] dark:group-hover:text-[#E4BF74] transition-colors">
-              Cryptographic Pipeline Visualizer
-            </h3>
-            <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] leading-relaxed mb-4">
-              Toggle between symmetric (AES-256) and asymmetric (RSA/ECC) encryption workflows. Visualize plaintext-to-ciphertext transformations with key roles annotated.
-            </p>
-            <span className="text-xs font-bold text-[#D7A84B] dark:text-[#E4BF74] flex items-center gap-1">
-              <span>Interactive crypto diagram</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </span>
-          </Link>
+
+            {/* Status 6: Certifications */}
+            <div className="p-4 rounded-xl bg-[#0E1510] border border-[#1B2A1F]">
+              <span className="text-[10px] text-[#91A596] block mb-1">CERTIFICATIONS</span>
+              <div className="text-lg font-black text-[#D9A441]">{certifications.length}</div>
+              <span className="text-[10px] text-[#91A596]">TRACKED</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* =========================================================================
-          17 KNOWLEDGE CATEGORIES TAXONOMY
+          3. CYBERSECURITY DOMAINS TAXONOMY
           ========================================================================= */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
               <Layers className="w-4 h-4" />
-              <span>Structured Knowledge Base</span>
+              <span>// SECURITY_DOMAINS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] dark:text-[#E8F0EA]">
-              Explore Cybersecurity Domains
+            <h2 className="text-2xl sm:text-3xl font-black text-[#E8F5E9] uppercase tracking-wider">
+              Explore Technical Domains
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-[#68736B] dark:text-[#A0AFA5] max-w-md">
-            Click into any domain to view guided concepts, definitions, tools, labs, and certification roadmaps.
+          <p className="text-xs sm:text-sm text-[#91A596] max-w-md font-sans">
+            Enter specialized security modules detailing technical concepts, attack vectors, defensive hardening, and career roadmaps.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {categories.map((cat, idx) => (
             <CategoryCard
               key={idx}
@@ -614,143 +349,186 @@ export default function HomePage() {
               icon={cat.icon}
               count={cat.count}
               tags={cat.tags}
-              difficulty={cat.difficulty}
             />
           ))}
         </div>
       </section>
 
       {/* =========================================================================
-          FEATURED FREE RESOURCES SECTION
+          4. VISUAL HACKER TYPES INFOGRAPHIC PREVIEW
           ========================================================================= */}
-      <section className="py-16 bg-[#EEF3EE]/50 dark:bg-[#202722]/50 border-y border-[#DDE5DE] dark:border-[#3A4840] w-full">
+      <section className="py-16 border-y border-[#1B2A1F] bg-[#0A0F0B]/80 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-3">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1">
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Zero Cost Learning</span>
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+                <Users className="w-4 h-4" />
+                <span>// HACKER_ARCHETYPES</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] dark:text-[#E8F0EA]">
-                Featured Free & Freemium Resources
+              <h2 className="text-2xl sm:text-3xl font-black text-[#E8F5E9] uppercase tracking-wider">
+                Threat Actors &amp; Operational Roles
               </h2>
             </div>
             <Link
-              href="/learn?pricing=free"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A] hover:underline"
+              href="/knowledge/hackers"
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#00FF66] hover:text-[#5CFF9B] group shrink-0 font-mono"
             >
-              <span>View all free resources</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>[ VIEW ALL 17 PROFILES ]</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredFreeResources.map((res) => (
-              <ResourceCard key={res.id} resource={res} />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {[
+              { num: '01', name: 'White Hat', role: 'AUTHORIZED', color: '#00FF66', href: '/knowledge/hackers' },
+              { num: '02', name: 'Black Hat', role: 'MALICIOUS', color: '#FF3B30', href: '/knowledge/hackers' },
+              { num: '03', name: 'Gray Hat', role: 'UNSANCTIONED', color: '#D9A441', href: '/knowledge/hackers' },
+              { num: '04', name: 'Red Hat', role: 'COUNTER-OPS', color: '#FF3B30', href: '/knowledge/hackers' },
+              { num: '05', name: 'Blue Hat', role: 'AUDITOR', color: '#42C2A8', href: '/knowledge/hackers' },
+              { num: '06', name: 'Green Hat', role: 'APPRENTICE', color: '#00FF66', href: '/knowledge/hackers' },
+            ].map((item) => (
+              <Link
+                key={item.num}
+                href={item.href}
+                className="group p-4 rounded-xl bg-[#0E1510] border border-[#1B2A1F] hover:border-[#00FF66] hover:bg-[#121B14] transition-all text-center flex flex-col items-center gap-2"
+              >
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-xs font-black font-mono border"
+                  style={{ backgroundColor: `${item.color}15`, borderColor: `${item.color}40`, color: item.color }}
+                >
+                  {item.num}
+                </div>
+                <div>
+                  <span className="text-xs font-bold text-[#E8F5E9] block group-hover:text-[#00FF66] transition-colors">
+                    {item.name}
+                  </span>
+                  <span className="text-[9px] text-[#91A596] block uppercase tracking-wider mt-0.5">
+                    {item.role}
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          POPULAR LEARNING PATHS (ROADMAPS)
+          5. THREAT INTELLIGENCE CONSOLE
           ========================================================================= */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-3">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E58A4E] dark:text-[#EDA574] mb-1">
-              <Compass className="w-4 h-4" />
-              <span>Step-by-Step Trajectories</span>
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#FF3B30] mb-1">
+              <AlertTriangle className="w-4 h-4" />
+              <span>// THREAT_INTELLIGENCE_CONSOLE</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] dark:text-[#E8F0EA]">
-              Structured Career Roadmaps
+            <h2 className="text-2xl sm:text-3xl font-black text-[#E8F5E9] uppercase tracking-wider">
+              Security Threats &amp; Attack Vectors
             </h2>
           </div>
           <Link
-            href="/roadmaps"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A] hover:underline"
+            href="/knowledge/threats"
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#00FF66] hover:text-[#5CFF9B] group shrink-0 font-mono"
           >
-            <span>Explore all 8 roadmaps</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>[ OPEN THREAT DATABASE ({threats.length}) ]</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {popularRoadmaps.map((rmap) => (
-            <div
-              key={rmap.id}
-              className="p-7 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] flex flex-col justify-between hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] hover:shadow-lg hover:-translate-y-1 transition-all shadow-xs"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] border border-[#DDE5DE] dark:border-[#3A4840]">
-                    {rmap.category}
-                  </span>
-                  <span className="text-xs font-semibold text-[#3F7D5A] dark:text-[#6AAF8A] bg-[#EBF4EF] dark:bg-[#3F7D5A]/20 px-2.5 py-0.5 rounded-full">
-                    {rmap.steps.length} Learning Phases
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold text-[#18221C] dark:text-[#E8F0EA] mb-2">
-                  {rmap.title}
-                </h3>
-                <p className="text-xs text-[#68736B] dark:text-[#A0AFA5] mb-4 leading-relaxed line-clamp-2">
-                  {rmap.description}
-                </p>
-                <div className="text-[11px] font-mono text-[#68736B] dark:text-[#A0AFA5] mb-5 bg-[#EEF3EE]/60 dark:bg-[#202722]/60 p-3 rounded-xl border border-[#DDE5DE]/60 dark:border-[#3A4840]/60">
-                  Estimated sequence: {rmap.estimatedSequence}
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-[#DDE5DE]/60 dark:border-[#3A4840]/60 flex items-center justify-between">
-                <span className="text-xs text-[#68736B] dark:text-[#A0AFA5]">
-                  Role: <strong className="text-[#18221C] dark:text-[#E8F0EA]">{rmap.targetRole}</strong>
-                </span>
-                <Link
-                  href={`/roadmaps/${rmap.id}`}
-                  className="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#3F7D5A] text-white hover:bg-[#2E5E43] dark:bg-[#6AAF8A] dark:text-[#181C1A] dark:hover:bg-[#589E79] flex items-center gap-1.5 transition-colors shadow-xs"
-                >
-                  <span>Start Roadmap</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {featuredThreats.map((threat) => (
+            <ThreatCard key={threat.id} threat={threat} />
           ))}
         </div>
       </section>
 
       {/* =========================================================================
-          CYBERSECURITY CERTIFICATIONS SHOWCASE
+          6. ACCESS TERMINALS: Popular Labs
           ========================================================================= */}
-      <section className="py-16 bg-[#EEF3EE]/50 dark:bg-[#202722]/50 border-y border-[#DDE5DE] dark:border-[#3A4840] w-full">
+      <section className="py-16 border-y border-[#1B2A1F] bg-[#0A0F0B]/80 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-3">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#D7A84B] dark:text-[#E4BF74] mb-1">
-                <Award className="w-4 h-4" />
-                <span>Industry Credentials</span>
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+                <FlaskConical className="w-4 h-4" />
+                <span>// ACCESS_TERMINALS</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] dark:text-[#E8F0EA]">
-                Top Cybersecurity Certifications
+              <h2 className="text-2xl sm:text-3xl font-black text-[#E8F5E9] uppercase tracking-wider">
+                Hands-on Labs &amp; Wargames
               </h2>
             </div>
-            <div className="flex items-center gap-4">
-              <Link
-                href="/certifications/compare"
-                className="text-xs font-bold text-[#68736B] dark:text-[#A0AFA5] hover:text-[#3F7D5A] dark:hover:text-[#6AAF8A]"
-              >
-                Side-by-Side Comparison
-              </Link>
-              <Link
-                href="/certifications"
-                className="inline-flex items-center gap-1 text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A] hover:underline"
-              >
-                <span>View all certifications</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            <Link
+              href="/labs"
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#00FF66] hover:text-[#5CFF9B] group shrink-0 font-mono"
+            >
+              <span>[ VIEW ALL {labResources.length} LABS ]</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {featuredLabs.map((lab) => (
+              <LabTerminalCard key={lab.id} resource={lab} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          7. SECURITY TOOLKIT: Essential CLI Tools
+          ========================================================================= */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-3">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+              <Wrench className="w-4 h-4" />
+              <span>// SECURITY_TOOLKIT</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-[#E8F5E9] uppercase tracking-wider">
+              Essential Cybersecurity Arsenal
+            </h2>
+          </div>
+          <Link
+            href="/tools"
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#00FF66] hover:text-[#5CFF9B] group shrink-0 font-mono"
+          >
+            <span>[ OPEN TOOLKIT ({tools.length}) ]</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {featuredTools.map((tool) => (
+            <ToolCard key={tool.id} tool={tool} />
+          ))}
+        </div>
+      </section>
+
+      {/* =========================================================================
+          8. CERTIFICATIONS: Security Credentials
+          ========================================================================= */}
+      <section className="py-16 border-y border-[#1B2A1F] bg-[#0A0F0B]/80 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-3">
+            <div>
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#D9A441] mb-1">
+                <Award className="w-4 h-4" />
+                <span>// DEFENSE_CREDENTIALS</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-[#E8F5E9] uppercase tracking-wider">
+                Security Certifications Track
+              </h2>
+            </div>
+            <Link
+              href="/certifications"
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#00FF66] hover:text-[#5CFF9B] group shrink-0 font-mono"
+            >
+              <span>[ VIEW ALL {certifications.length} CERTS ]</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {featuredCertifications.map((cert) => (
               <CertificationCard key={cert.id} certification={cert} />
             ))}
@@ -759,58 +537,83 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          RECOMMENDED YOUTUBE CHANNELS
+          9. SIGNAL CHANNELS: YouTube Directory
           ========================================================================= */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-3">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E58A4E] dark:text-[#EDA574] mb-1">
-              <Video className="w-4 h-4" />
-              <span>Video Education</span>
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+              <Radio className="w-4 h-4" />
+              <span>// SIGNAL_CHANNELS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] dark:text-[#E8F0EA]">
-              Curated YouTube Security Creators
+            <h2 className="text-2xl sm:text-3xl font-black text-[#E8F5E9] uppercase tracking-wider">
+              Curated Video Broadcasts
             </h2>
           </div>
           <Link
             href="/youtube"
-            className="inline-flex items-center gap-1 text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A] hover:underline"
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#00FF66] hover:text-[#5CFF9B] group shrink-0 font-mono"
           >
-            <span>View all channels</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>[ VIEW ALL {youtubeChannels.length} CHANNELS ]</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredYouTube.map((ch) => (
-            <YouTubeCard key={ch.id} channel={ch} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {featuredYouTube.map((channel) => (
+            <YouTubeCard key={channel.id} channel={channel} />
           ))}
         </div>
       </section>
 
       {/* =========================================================================
-          RECENTLY VERIFIED RESOURCES (QUALITY ASSURANCE)
+          10. ROADMAPS: Career Pathways
           ========================================================================= */}
-      <section className="py-16 bg-[#EEF3EE]/50 dark:bg-[#202722]/50 border-t border-[#DDE5DE] dark:border-[#3A4840] w-full">
+      <section className="py-16 border-t border-[#1B2A1F] bg-[#0A0F0B]/90 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-3">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-3">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1">
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Audited External Content</span>
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1">
+                <Compass className="w-4 h-4" />
+                <span>// CAREER_PROGRESSION_ROADMAPS</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] dark:text-[#E8F0EA]">
-                Recently Audited References
+              <h2 className="text-2xl sm:text-3xl font-black text-[#E8F5E9] uppercase tracking-wider">
+                Step-by-Step Learning Roadmaps
               </h2>
             </div>
-            <span className="text-xs text-[#68645D] dark:text-[#A0AFA5]">
-              Every single URL is verified for live accessibility and official author attribution.
-            </span>
+            <Link
+              href="/roadmaps"
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#00FF66] hover:text-[#5CFF9B] group shrink-0 font-mono"
+            >
+              <span>[ VIEW ALL {roadmaps.length} ROADMAPS ]</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {recentlyVerified.map((res) => (
-              <ResourceCard key={res.id} resource={res} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {popularRoadmaps.map((rm) => (
+              <Link
+                key={rm.id}
+                href={`/roadmaps/${rm.id}`}
+                className="group p-5 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] hover:border-[#00FF66] hover:bg-[#121B14] hover:shadow-[0_4px_20px_rgba(0,255,102,0.10)] hover:-translate-y-1 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between text-[10px] text-[#91A596] mb-2 pb-2 border-b border-[#1B2A1F]">
+                    <span>{rm.category.toUpperCase()}</span>
+                    <span className="text-[#00FF66] font-bold">[{rm.steps.length} STAGES]</span>
+                  </div>
+                  <h3 className="text-base font-bold text-[#E8F5E9] group-hover:text-[#00FF66] transition-colors mb-2">
+                    {rm.title}
+                  </h3>
+                  <p className="text-xs text-[#91A596] line-clamp-2 leading-relaxed mb-4 font-sans">
+                    {rm.description}
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-[#1B2A1F] flex items-center justify-between text-xs font-bold text-[#00FF66]">
+                  <span>&gt; VIEW ROADMAP</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>

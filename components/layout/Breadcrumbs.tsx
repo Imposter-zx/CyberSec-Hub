@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ChevronRight, Home } from 'lucide-react';
+import { ChevronRight, Terminal } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface BreadcrumbsProps {
@@ -12,14 +12,14 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className }) =>
   return (
     <nav
       aria-label="Breadcrumb"
-      className={cn('flex items-center space-x-1.5 text-xs text-[#68736B] dark:text-[#A0AFA5] py-3.5', className)}
+      className={cn('flex items-center space-x-1.5 text-xs text-[#91A596] py-3.5 font-mono', className)}
     >
       <Link
         href="/"
-        className="flex items-center gap-1 hover:text-[#3F7D5A] dark:hover:text-[#6AAF8A] transition-colors"
+        className="flex items-center gap-1 hover:text-[#00FF66] transition-colors"
       >
-        <Home className="w-3.5 h-3.5" />
-        <span>Home</span>
+        <Terminal className="w-3.5 h-3.5 text-[#00FF66]" />
+        <span>root</span>
       </Link>
 
       {items.map((item, index) => {
@@ -27,15 +27,15 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className }) =>
 
         return (
           <React.Fragment key={index}>
-            <ChevronRight className="w-3.5 h-3.5 text-[#68736B]/60 dark:text-[#A0AFA5]/60 shrink-0" />
+            <span className="text-[#91A596]/60">&gt;</span>
             {isLast || !item.href ? (
-              <span className="font-bold text-[#18221C] dark:text-[#E8F0EA] truncate max-w-[200px] sm:max-w-none">
+              <span className="font-bold text-[#00FF66] truncate max-w-[200px] sm:max-w-none">
                 {item.label}
               </span>
             ) : (
               <Link
                 href={item.href}
-                className="hover:text-[#3F7D5A] dark:hover:text-[#6AAF8A] transition-colors truncate max-w-[150px] sm:max-w-none"
+                className="hover:text-[#00FF66] transition-colors truncate max-w-[150px] sm:max-w-none"
               >
                 {item.label}
               </Link>

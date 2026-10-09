@@ -6,7 +6,7 @@ import { hackerTypes } from '@/data/hackers';
 import { VisualConceptCard } from '@/components/visuals/VisualConceptCard';
 import { getHackerIllustration } from '@/components/visuals/HackerIllustrations';
 import { HackerCard } from '@/components/ui/HackerCard';
-import { Shield, Scale, Users, LayoutGrid, ListFilter, Sparkles } from 'lucide-react';
+import { Shield, Scale, Users, LayoutGrid, ListFilter, Terminal } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function HackersKnowledgePage() {
@@ -44,7 +44,7 @@ export default function HackersKnowledgePage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-mono">
       <Breadcrumbs
         items={[
           { label: 'Knowledge Base', href: '/knowledge' },
@@ -54,109 +54,68 @@ export default function HackersKnowledgePage() {
 
       {/* Header */}
       <div className="mb-8">
-        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1.5">
-          <Sparkles className="w-4 h-4" />
-          <span>Visual Learning Infographic Series</span>
+        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1.5">
+          <Terminal className="w-4 h-4" />
+          <span>// CLASSIFIED_ARCHETYPE_DIRECTORY</span>
         </div>
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
-          Types of Hackers & Threat Actor Taxonomy
+        <h1 className="text-2xl sm:text-4xl font-black text-[#E8F5E9] uppercase tracking-wider mb-2.5">
+          Types of Hackers &amp; Threat Actors
         </h1>
-        <p className="text-sm text-[#68736B] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
-          Educational visual infographic series illustrating cybersecurity threat actors, ethical boundaries, and industry operational roles. Understand who attacks, who defends, and who explores.
+        <p className="text-sm text-[#91A596] max-w-3xl leading-relaxed font-sans">
+          Technical classification of 17 cybersecurity archetypes, threat actor tiers, and defensive operations. Visual infographic representations illustrate authorized ethical boundaries, criminal methodologies, and industrial roles.
         </p>
       </div>
 
-      {/* Educational & Legal Scope Notice */}
-      <div className="p-4.5 rounded-2xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] mb-8 text-xs text-[#18221C] dark:text-[#E8F0EA] flex items-start gap-3.5 leading-relaxed shadow-xs">
-        <Scale className="w-5 h-5 text-[#3F7D5A] dark:text-[#6AAF8A] shrink-0 mt-0.5" />
-        <div>
-          <span className="font-bold block mb-1">
-            Educational Scope & Legal Authority Notice
-          </span>
-          All technical profiles presented here are strictly for educational and defense awareness. Probing, attacking, or exfiltrating data without written permission violates national and international cyber laws (e.g., Computer Fraud and Abuse Act) and carries severe criminal penalties.
-        </div>
-      </div>
-
-      {/* Filter and View Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-8 border-b border-[#DDE5DE] dark:border-[#3A4840] pb-4">
-        {/* Category Filters */}
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setFilter('all')}
-            className={cn(
-              'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
-              filter === 'all'
-                ? 'bg-[#3F7D5A] text-white shadow-xs'
-                : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
-            )}
-          >
-            All Profiles ({hackerTypes.length})
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilter('core-10')}
-            className={cn(
-              'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
-              filter === 'core-10'
-                ? 'bg-[#3F7D5A] text-white shadow-xs'
-                : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
-            )}
-          >
-            Core 10 Archetypes (Infographic Grid)
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilter('authorized')}
-            className={cn(
-              'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
-              filter === 'authorized'
-                ? 'bg-[#3F7D5A] text-white shadow-xs'
-                : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
-            )}
-          >
-            Authorized Defenders & Researchers
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilter('adversary')}
-            className={cn(
-              'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
-              filter === 'adversary'
-                ? 'bg-[#3F7D5A] text-white shadow-xs'
-                : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
-            )}
-          >
-            Threat Actors & Adversaries
-          </button>
+      {/* Controls Bar: Filter by Scope + View Mode Toggle */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#0E1510] border border-[#1B2A1F] mb-8">
+        {/* Filter Pills */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          {[
+            { id: 'all', label: 'All 17 Archetypes' },
+            { id: 'core-10', label: 'Core 10 Hats' },
+            { id: 'authorized', label: 'Authorized Defenders' },
+            { id: 'adversary', label: 'Threat Actors' },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setFilter(tab.id as any)}
+              className={cn(
+                'px-3 py-1.5 rounded-lg text-xs font-bold transition-all border',
+                filter === tab.id
+                  ? 'bg-[#00FF66] text-[#050705] border-[#00FF66] shadow-xs'
+                  : 'bg-[#050705] text-[#91A596] hover:text-[#E8F5E9] border-[#1B2A1F]'
+              )}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         {/* View Mode Toggle */}
-        <div className="inline-flex rounded-xl p-1 bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840]">
+        <div className="inline-flex rounded-lg p-1 bg-[#050705] border border-[#1B2A1F] shrink-0">
           <button
             type="button"
             onClick={() => setViewMode('infographic')}
             className={cn(
-              'flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold transition-all',
+              'px-3 py-1 rounded-md text-xs font-bold flex items-center gap-1.5 transition-all',
               viewMode === 'infographic'
-                ? 'bg-[#3F7D5A] text-white shadow-xs'
-                : 'text-[#68736B] dark:text-[#A0AFA5] hover:text-[#18221C]'
+                ? 'bg-[#00FF66] text-[#050705]'
+                : 'text-[#91A596] hover:text-[#E8F5E9]'
             )}
-            title="Visual Infographic Cards"
           >
             <LayoutGrid className="w-3.5 h-3.5" />
-            <span>Visual Cards</span>
+            <span>Infographic Grid</span>
           </button>
           <button
             type="button"
             onClick={() => setViewMode('detailed')}
             className={cn(
-              'flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold transition-all',
+              'px-3 py-1 rounded-md text-xs font-bold flex items-center gap-1.5 transition-all',
               viewMode === 'detailed'
-                ? 'bg-[#3F7D5A] text-white shadow-xs'
-                : 'text-[#68736B] dark:text-[#A0AFA5] hover:text-[#18221C]'
+                ? 'bg-[#00FF66] text-[#050705]'
+                : 'text-[#91A596] hover:text-[#E8F5E9]'
             )}
-            title="Detailed Technical Dossier"
           >
             <ListFilter className="w-3.5 h-3.5" />
             <span>Technical Dossier</span>
@@ -164,9 +123,9 @@ export default function HackersKnowledgePage() {
         </div>
       </div>
 
-      {/* Grid Content */}
-      {viewMode === 'infographic' ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Infographic View: Dominant Visual Cards */}
+      {viewMode === 'infographic' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredHackers.map((hacker) => (
             <VisualConceptCard
               key={hacker.id}
@@ -175,20 +134,55 @@ export default function HackersKnowledgePage() {
               subtitle={hacker.subtitle}
               shortDescription={hacker.definition}
               illustration={getHackerIllustration(hacker.id)}
+              category={hacker.careerRoles?.[0] || 'Security Role'}
               objective={hacker.objectives}
               typicalActivity={hacker.activities}
+              keyPoints={hacker.commonTechniques}
               badgeVariant={getBadgeVariant(hacker.id)}
-              category={hacker.careerRoles?.[0] || 'Security Profile'}
             />
           ))}
         </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      )}
+
+      {/* Detailed View: Full Technical Cards */}
+      {viewMode === 'detailed' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredHackers.map((hacker) => (
             <HackerCard key={hacker.id} hacker={hacker} />
           ))}
         </div>
       )}
+
+      {/* Legal & Ethical Boundaries Reference Section */}
+      <div className="mt-16 p-6 rounded-2xl bg-[#0E1510] border border-[#1B2A1F]">
+        <h3 className="text-base font-bold text-[#00FF66] mb-2 flex items-center gap-2">
+          <Scale className="w-4 h-4 text-[#00FF66]" />
+          <span>// LEGAL &amp; ETHICAL FRAMEWORK BOUNDARIES (CFAA &amp; COMPUTER MISUSE ACT)</span>
+        </h3>
+        <p className="text-xs text-[#91A596] leading-relaxed font-sans mb-4">
+          The decisive line separating ethical research from unlawful cybercrime is <strong>authorization</strong>. Under laws such as the US Computer Fraud and Abuse Act (CFAA § 1030), UK Computer Misuse Act (CMA 1990), and EU Directive 2013/40/EU, accessing any computing system, service, or API without explicit written permission is illegal regardless of motivation.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+            <span className="font-bold text-[#00FF66] block mb-1">Authorized (In-Scope)</span>
+            <span className="text-[#91A596] text-[11px] font-sans">
+              Explicit ROE (Rules of Engagement), written contracts, authorized bug bounty scope with Safe Harbor protections.
+            </span>
+          </div>
+          <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
+            <span className="font-bold text-[#D9A441] block mb-1">Unauthorized (Gray Zone)</span>
+            <span className="text-[#91A596] text-[11px] font-sans">
+              Testing production systems without consent even if intending to report findings. Carries severe civil and criminal liabilities.
+            </span>
+          </div>
+          <div className="p-3.5 rounded-xl bg-[#271211] border border-[#441E1C]">
+            <span className="font-bold text-[#FF3B30] block mb-1">Malicious (Adversary)</span>
+            <span className="text-[#91A596] text-[11px] font-sans">
+              Unauthorized access for financial extortion, data exfiltration, service disruption, espionage, or destructive payloads.
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

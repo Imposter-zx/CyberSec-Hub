@@ -10,26 +10,26 @@ interface PricingBadgeProps {
 export const PricingBadge: React.FC<PricingBadgeProps> = ({ pricing, className }) => {
   const config = {
     free: {
-      label: 'Free',
-      bg: 'bg-[#EBF4EF] text-[#3F7D5A] dark:bg-[#3F7D5A]/20 dark:text-[#6AAF8A] border-[#DDE5DE] dark:border-[#3A4840]',
+      label: 'FREE',
+      bg: 'bg-[#0D2214] text-[#00FF66] border-[#1B2A1F]',
     },
     freemium: {
-      label: 'Freemium',
-      bg: 'bg-[#EBF5F4] text-[#3A7B74] dark:bg-[#4C9A91]/20 dark:text-[#7BB8B2] border-[#D3E8E6] dark:border-[#2F4D49]',
+      label: 'FREEMIUM',
+      bg: 'bg-[#0F2220] text-[#42C2A8] border-[#173834]',
     },
     paid: {
-      label: 'Paid',
-      bg: 'bg-[#EEF3EE] text-[#68736B] dark:bg-[#202722] dark:text-[#A0AFA5] border-[#DDE5DE] dark:border-[#3A4840]',
+      label: 'COMMERCIAL',
+      bg: 'bg-[#0E1510] text-[#91A596] border-[#1B2A1F]',
     },
   }[pricing] || {
-    label: pricing,
-    bg: 'bg-[#EEF3EE] text-[#68736B] dark:bg-[#202722] dark:text-[#A0AFA5] border-[#DDE5DE] dark:border-[#3A4840]',
+    label: pricing.toUpperCase(),
+    bg: 'bg-[#0E1510] text-[#91A596] border-[#1B2A1F]',
   };
 
   return (
     <span
       className={cn(
-        'inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border tracking-wide uppercase',
+        'inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold border tracking-wider',
         config.bg,
         className
       )}

@@ -9,36 +9,36 @@ interface IllustrationProps {
 // 01. White Hat Hacker (Ethical Security Specialist)
 export const WhiteHatIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#F0F7F3" className="dark:fill-[#1E2822]" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
     {/* Background Grid Accent */}
-    <circle cx="120" cy="80" r="56" fill="#3F7D5A" fillOpacity="0.12" />
-    <path d="M60 140h120" stroke="#3F7D5A" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" opacity="0.4" />
+    <circle cx="120" cy="80" r="56" fill="#00FF66" fillOpacity="0.08" />
+    <path d="M60 140h120" stroke="#1B2A1F" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
     
     {/* Laptop base */}
-    <rect x="75" y="112" width="90" height="10" rx="3" fill="#DDE5DE" className="dark:fill-[#3A4840]" />
-    <rect x="98" y="118" width="44" height="2" rx="1" fill="#3F7D5A" />
-    <rect x="85" y="80" width="70" height="34" rx="4" fill="#FFFFFF" stroke="#3F7D5A" strokeWidth="2" className="dark:fill-[#262E28]" />
-    <path d="M93 92l6 4-6 4M104 100h12" stroke="#3F7D5A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <rect x="75" y="112" width="90" height="10" rx="3" fill="#0E1510" stroke="#1B2A1F" strokeWidth="1.5" />
+    <rect x="98" y="118" width="44" height="2" rx="1" fill="#00FF66" />
+    <rect x="85" y="80" width="70" height="34" rx="4" fill="#0A0F0B" stroke="#00FF66" strokeWidth="1.5" />
+    <path d="M93 92l6 4-6 4M104 100h12" stroke="#00FF66" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 
     {/* Ethical Hacker Character */}
     {/* Body / Shoulders */}
-    <path d="M96 78c0-8 10-14 24-14s24 6 24 14v4H96v-4z" fill="#3F7D5A" />
+    <path d="M96 78c0-8 10-14 24-14s24 6 24 14v4H96v-4z" fill="#0E1510" stroke="#1B2A1F" strokeWidth="1.5" />
     {/* Head */}
-    <circle cx="120" cy="56" r="14" fill="#FCEAD4" />
+    <circle cx="120" cy="56" r="14" fill="#1B2A1F" />
     {/* Glasses */}
-    <rect x="110" y="52" width="8" height="6" rx="2" fill="#3F7D5A" />
-    <rect x="122" y="52" width="8" height="6" rx="2" fill="#3F7D5A" />
-    <path d="M118 55h4" stroke="#3F7D5A" strokeWidth="1.5" />
+    <rect x="110" y="52" width="8" height="6" rx="2" fill="#00FF66" />
+    <rect x="122" y="52" width="8" height="6" rx="2" fill="#00FF66" />
+    <path d="M118 55h4" stroke="#00FF66" strokeWidth="1.5" />
     {/* Distinct White Fedora/Hat with Green Band */}
-    <path d="M100 48c0-10 8-16 20-16s20 6 20 16" fill="#FFFFFF" stroke="#3F7D5A" strokeWidth="2" />
-    <ellipse cx="120" cy="48" rx="28" ry="5" fill="#FFFFFF" stroke="#3F7D5A" strokeWidth="2" />
-    <rect x="108" y="44" width="24" height="3" fill="#3F7D5A" />
+    <path d="M100 48c0-10 8-16 20-16s20 6 20 16" fill="#E8F5E9" stroke="#00FF66" strokeWidth="1.5" />
+    <ellipse cx="120" cy="48" rx="28" ry="5" fill="#E8F5E9" stroke="#00FF66" strokeWidth="1.5" />
+    <rect x="108" y="44" width="24" height="3" fill="#00FF66" />
 
     {/* Floating Verification Shield with Checkmark */}
     <g transform="translate(162, 38)">
-      <circle cx="18" cy="18" r="18" fill="#3F7D5A" />
-      <path d="M18 7l9 4v7c0 7-5 12-9 14-4-2-9-7-9-14v-7l9-4z" fill="#FFFFFF" />
-      <path d="M14 18l3 3 6-6" stroke="#3F7D5A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="18" cy="18" r="18" fill="#0E1510" stroke="#00FF66" strokeWidth="1.5" />
+      <path d="M18 7l9 4v7c0 7-5 12-9 14-4-2-9-7-9-14v-7l9-4z" fill="#0D2214" stroke="#00FF66" strokeWidth="1.5" />
+      <path d="M14 18l3 3 6-6" stroke="#00FF66" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </g>
   </svg>
 );
@@ -46,266 +46,269 @@ export const WhiteHatIllustration: React.FC<IllustrationProps> = ({ className = 
 // 02. Black Hat Hacker (Malicious Cybercriminal)
 export const BlackHatIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#FDF3F3" className="dark:fill-[#261C1C]" />
-    <circle cx="120" cy="80" r="56" fill="#B84040" fillOpacity="0.10" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
+    <circle cx="120" cy="80" r="56" fill="#FF3B30" fillOpacity="0.08" />
 
     {/* Dark Terminal Screen */}
-    <rect x="80" y="78" width="80" height="42" rx="4" fill="#181C1A" stroke="#B84040" strokeWidth="2" />
-    <circle cx="88" cy="85" r="2" fill="#B84040" />
-    <circle cx="94" cy="85" r="2" fill="#E58A4E" />
-    <circle cx="100" cy="85" r="2" fill="#6AAF8A" />
-    <path d="M88 96l4 3-4 3M96 102h12" stroke="#B84040" strokeWidth="1.5" strokeLinecap="round" />
+    <rect x="80" y="78" width="80" height="42" rx="4" fill="#050705" stroke="#FF3B30" strokeWidth="1.5" />
+    <circle cx="88" cy="85" r="2" fill="#FF3B30" />
+    <circle cx="94" cy="85" r="2" fill="#D9A441" />
+    <circle cx="100" cy="85" r="2" fill="#00FF66" />
+    <path d="M88 96l4 3-4 3M96 102h12" stroke="#FF3B30" strokeWidth="1.5" strokeLinecap="round" />
     {/* Glitch lines */}
-    <line x1="88" y1="110" x2="148" y2="110" stroke="#B84040" strokeWidth="1" strokeDasharray="6 2" opacity="0.6" />
+    <line x1="88" y1="110" x2="148" y2="110" stroke="#FF3B30" strokeWidth="1" strokeDasharray="6 2" opacity="0.8" />
 
     {/* Malicious Hacker Figure (Hoodie & Black Hat) */}
-    <path d="M94 76c0-10 11-16 26-16s26 6 26 16v6H94v-6z" fill="#242424" />
+    <path d="M94 76c0-10 11-16 26-16s26 6 26 16v6H94v-6z" fill="#0E1510" stroke="#1B2A1F" strokeWidth="1.5" />
     {/* Shadowed Face */}
-    <circle cx="120" cy="54" r="14" fill="#3A3835" />
-    <circle cx="115" cy="54" r="2" fill="#B84040" />
-    <circle cx="125" cy="54" r="2" fill="#B84040" />
+    <circle cx="120" cy="54" r="14" fill="#050705" stroke="#FF3B30" strokeWidth="1" />
+    <circle cx="115" cy="54" r="2" fill="#FF3B30" />
+    <circle cx="125" cy="54" r="2" fill="#FF3B30" />
     {/* Dark Fedora Hat with Red Ribbon */}
-    <path d="M102 46c0-12 8-18 18-18s18 6 18 18" fill="#181C1A" stroke="#B84040" strokeWidth="1.5" />
-    <ellipse cx="120" cy="46" rx="28" ry="5" fill="#181C1A" stroke="#B84040" strokeWidth="1.5" />
-    <rect x="108" y="42" width="24" height="3" fill="#B84040" />
+    <path d="M102 46c0-12 8-18 18-18s18 6 18 18" fill="#050705" stroke="#FF3B30" strokeWidth="1.5" />
+    <ellipse cx="120" cy="46" rx="28" ry="5" fill="#050705" stroke="#FF3B30" strokeWidth="1.5" />
+    <rect x="108" y="42" width="24" height="3" fill="#FF3B30" />
 
     {/* Warning Triangle Symbol */}
     <g transform="translate(162, 36)">
-      <polygon points="18,4 34,32 2,32" fill="#B84040" />
-      <rect x="16.5" y="14" width="3" height="9" rx="1.5" fill="#FFFFFF" />
-      <circle cx="18" cy="27" r="1.5" fill="#FFFFFF" />
+      <polygon points="18,4 34,32 2,32" fill="#271211" stroke="#FF3B30" strokeWidth="2" />
+      <rect x="16.5" y="14" width="3" height="9" rx="1.5" fill="#FF3B30" />
+      <circle cx="18" cy="27" r="1.5" fill="#FF3B30" />
     </g>
   </svg>
 );
 
-// 03. Gray Hat Hacker (Ambiguous / Independent)
+// 03. Gray Hat Hacker (Uncoordinated / Boundary Prober)
 export const GrayHatIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#F4F5F7" className="dark:fill-[#1F2226]" />
-    <circle cx="120" cy="80" r="56" fill="#68736B" fillOpacity="0.12" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
+    <circle cx="120" cy="80" r="56" fill="#D9A441" fillOpacity="0.08" />
 
-    {/* Split Background Indicator */}
-    <path d="M120 24v112" stroke="#68736B" strokeWidth="2" strokeDasharray="4 4" opacity="0.4" />
+    {/* Dual split background line */}
+    <line x1="120" y1="20" x2="120" y2="140" stroke="#1B2A1F" strokeWidth="1.5" strokeDasharray="4 4" />
 
-    {/* Laptop */}
-    <rect x="80" y="86" width="80" height="38" rx="4" fill="#FFFFFF" stroke="#68736B" strokeWidth="2" className="dark:fill-[#262E28]" />
-    <rect x="74" y="122" width="92" height="6" rx="2" fill="#DDE5DE" className="dark:fill-[#3A4840]" />
-    {/* Split display: Green / Amber */}
-    <rect x="86" y="94" width="30" height="22" fill="#EBF4EF" className="dark:fill-[#3F7D5A]/20" />
-    <rect x="124" y="94" width="30" height="22" fill="#FDF2EA" className="dark:fill-[#E58A4E]/20" />
+    {/* Split character body */}
+    <path d="M96 78c0-8 10-14 24-14v18H96v-4z" fill="#0E1510" stroke="#00FF66" strokeWidth="1.5" />
+    <path d="M120 64c14 0 24 6 24 14v4h-24v-18z" fill="#0E1510" stroke="#FF3B30" strokeWidth="1.5" />
 
-    {/* Character with Split Hat */}
-    <path d="M96 82c0-8 10-14 24-14s24 6 24 14v4H96v-4z" fill="#7A847D" />
-    <circle cx="120" cy="58" r="14" fill="#F0DFC9" />
-    
-    {/* Dual-tone Fedora Hat: Left White, Right Dark */}
-    <path d="M102 50c0-10 6-16 18-16v16h-18z" fill="#FFFFFF" stroke="#68736B" strokeWidth="1.5" />
-    <path d="M120 34c12 0 18 6 18 16h-18V34z" fill="#242424" stroke="#68736B" strokeWidth="1.5" />
-    <ellipse cx="120" cy="50" rx="26" ry="5" fill="#7A847D" stroke="#68736B" strokeWidth="1.5" />
+    {/* Face with dual eye color */}
+    <circle cx="120" cy="54" r="14" fill="#0A0F0B" stroke="#1B2A1F" strokeWidth="1.5" />
+    <circle cx="115" cy="54" r="2.5" fill="#00FF66" />
+    <circle cx="125" cy="54" r="2.5" fill="#FF3B30" />
 
-    {/* Scale of Justice Symbol */}
-    <g transform="translate(160, 34)">
-      <circle cx="18" cy="18" r="18" fill="#D7A84B" />
-      <path d="M18 10v16M11 15h14M11 15l-3 6h6l-3-6zM25 15l-3 6h6l-3-6z" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    {/* Split Fedora Hat (Light left, Dark right) */}
+    <path d="M102 46c0-12 8-18 18-18v18h-18z" fill="#E8F5E9" stroke="#00FF66" strokeWidth="1.5" />
+    <path d="M120 28c10 0 18 6 18 18h-18v-18z" fill="#050705" stroke="#FF3B30" strokeWidth="1.5" />
+    <ellipse cx="120" cy="46" rx="28" ry="5" fill="#91A596" stroke="#D9A441" strokeWidth="1.5" />
+
+    {/* Scales of Justice balance symbol */}
+    <g transform="translate(164, 38)">
+      <circle cx="16" cy="16" r="16" fill="#0E1510" stroke="#D9A441" strokeWidth="1.5" />
+      <line x1="8" y1="12" x2="24" y2="12" stroke="#D9A441" strokeWidth="2" />
+      <line x1="16" y1="8" x2="16" y2="24" stroke="#D9A441" strokeWidth="2" />
+      <circle cx="9" cy="18" r="3" fill="#00FF66" />
+      <circle cx="23" cy="18" r="3" fill="#FF3B30" />
     </g>
   </svg>
 );
 
-// 04. Red Hat Hacker (Vigilante / Aggressive Defense)
+// 04. Red Hat Hacker (Aggressive Vigilante Defense)
 export const RedHatIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#FDF4F0" className="dark:fill-[#291E1A]" />
-    <circle cx="120" cy="80" r="56" fill="#C97438" fillOpacity="0.12" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
+    <circle cx="120" cy="80" r="56" fill="#FF3B30" fillOpacity="0.08" />
 
-    {/* Red Battle Barrier / Firewall Shield */}
-    <path d="M85 75l35-15 35 15v35c0 20-35 30-35 30s-35-10-35-30V75z" fill="#FFFFFF" stroke="#C97438" strokeWidth="2.5" className="dark:fill-[#262E28]" />
-    <path d="M120 70v56M95 90h50" stroke="#C97438" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
+    {/* Firewall Sword / Barrier Shield */}
+    <path d="M120 74v46M106 102h28" stroke="#FF3B30" strokeWidth="2.5" strokeLinecap="round" />
+    
+    {/* Vigilante Character */}
+    <path d="M96 78c0-8 10-14 24-14s24 6 24 14v4H96v-4z" fill="#271211" stroke="#FF3B30" strokeWidth="1.5" />
+    <circle cx="120" cy="56" r="14" fill="#0A0F0B" stroke="#FF3B30" strokeWidth="1.5" />
+    
+    {/* Red Fedora Hat */}
+    <path d="M102 48c0-10 8-16 18-16s18 6 18 16" fill="#FF3B30" stroke="#FF6B63" strokeWidth="1.5" />
+    <ellipse cx="120" cy="48" rx="28" ry="5" fill="#FF3B30" stroke="#FF6B63" strokeWidth="1.5" />
+    <rect x="108" y="44" width="24" height="3" fill="#050705" />
 
-    {/* Heroic Red Hat Character */}
-    <circle cx="120" cy="46" r="13" fill="#F2DEC7" />
-    <path d="M102 38c0-10 8-16 18-16s18 6 18 16" fill="#C97438" stroke="#8C4A28" strokeWidth="1.5" />
-    <ellipse cx="120" cy="38" rx="25" ry="5" fill="#C97438" stroke="#8C4A28" strokeWidth="1.5" />
-    <rect x="110" y="34" width="20" height="3" fill="#FFFFFF" />
-
-    {/* Crossed Swords / Strike Vector */}
+    {/* Counter-Exploit Target Symbol */}
     <g transform="translate(164, 38)">
-      <circle cx="16" cy="16" r="16" fill="#C97438" />
-      <path d="M10 10l12 12M22 10L10 22" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="16" cy="16" r="16" fill="#0E1510" stroke="#FF3B30" strokeWidth="1.5" />
+      <line x1="16" y1="6" x2="16" y2="26" stroke="#FF3B30" strokeWidth="1.5" />
+      <line x1="6" y1="16" x2="26" y2="16" stroke="#FF3B30" strokeWidth="1.5" />
+      <circle cx="16" cy="16" r="5" stroke="#FF3B30" strokeWidth="1.5" />
     </g>
   </svg>
 );
 
-// 05. Blue Hat Hacker (Authorized External Bug Hunter / Vendor Invitee)
+// 05. Blue Hat Hacker (Invited Vendor Bug Hunter)
 export const BlueHatIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#EEF6F8" className="dark:fill-[#1A2528]" />
-    <circle cx="120" cy="80" r="56" fill="#4C9A91" fillOpacity="0.12" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
+    <circle cx="120" cy="80" r="56" fill="#42C2A8" fillOpacity="0.08" />
 
-    {/* Workstation Target Board */}
-    <rect x="80" y="80" width="80" height="42" rx="4" fill="#FFFFFF" stroke="#4C9A91" strokeWidth="2" className="dark:fill-[#262E28]" />
-    <circle cx="120" cy="101" r="12" stroke="#4C9A91" strokeWidth="2" fill="none" />
-    <circle cx="120" cy="101" r="5" fill="#4C9A91" />
-    <line x1="120" y1="84" x2="120" y2="118" stroke="#4C9A91" strokeWidth="1" strokeDasharray="2 2" />
-    <line x1="103" y1="101" x2="137" y2="101" stroke="#4C9A91" strokeWidth="1" strokeDasharray="2 2" />
+    {/* Target Grid / Magnifier */}
+    <rect x="80" y="80" width="80" height="38" rx="4" fill="#0E1510" stroke="#42C2A8" strokeWidth="1.5" />
+    <path d="M90 94l6 5-6 5M104 104h14" stroke="#42C2A8" strokeWidth="2" strokeLinecap="round" />
 
-    {/* Blue Hat Figure */}
-    <path d="M96 78c0-8 10-14 24-14s24 6 24 14v4H96v-4z" fill="#3A7B74" />
-    <circle cx="120" cy="56" r="14" fill="#FCEAD4" />
-    <path d="M102 48c0-10 8-16 18-16s18 6 18 16" fill="#4C9A91" stroke="#2F6660" strokeWidth="1.5" />
-    <ellipse cx="120" cy="48" rx="26" ry="5" fill="#4C9A91" stroke="#2F6660" strokeWidth="1.5" />
+    {/* Blue Hat Character */}
+    <path d="M96 78c0-8 10-14 24-14s24 6 24 14v4H96v-4z" fill="#0F2220" stroke="#42C2A8" strokeWidth="1.5" />
+    <circle cx="120" cy="56" r="14" fill="#0A0F0B" stroke="#42C2A8" strokeWidth="1.5" />
+    
+    {/* Blue Fedora Hat */}
+    <path d="M102 48c0-10 8-16 18-16s18 6 18 16" fill="#42C2A8" stroke="#7BB8B2" strokeWidth="1.5" />
+    <ellipse cx="120" cy="48" rx="28" ry="5" fill="#42C2A8" stroke="#7BB8B2" strokeWidth="1.5" />
+    <rect x="108" y="44" width="24" height="3" fill="#050705" />
 
-    {/* Magnifying Glass Symbol */}
-    <g transform="translate(162, 36)">
-      <circle cx="16" cy="16" r="16" fill="#4C9A91" />
-      <circle cx="14" cy="14" r="6" stroke="#FFFFFF" strokeWidth="2" fill="none" />
-      <line x1="18.5" y1="18.5" x2="24" y2="24" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
+    {/* Magnifying Glass Bug Finder */}
+    <g transform="translate(164, 38)">
+      <circle cx="16" cy="16" r="16" fill="#0E1510" stroke="#42C2A8" strokeWidth="1.5" />
+      <circle cx="14" cy="14" r="6" stroke="#42C2A8" strokeWidth="2" fill="none" />
+      <line x1="18" y1="18" x2="24" y2="24" stroke="#42C2A8" strokeWidth="2" strokeLinecap="round" />
     </g>
   </svg>
 );
 
-// 06. Green Hat Hacker (Eager Cybersecurity Learner / Novice)
+// 06. Green Hat Hacker (Cybersecurity Learner / Apprentice)
 export const GreenHatIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#F0F7F1" className="dark:fill-[#1A261D]" />
-    <circle cx="120" cy="80" r="56" fill="#6AAF8A" fillOpacity="0.14" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
+    <circle cx="120" cy="80" r="56" fill="#00FF66" fillOpacity="0.08" />
 
-    {/* Open Study Books & Terminal */}
-    <path d="M85 110c12-4 24-1 35 4v16c-11-5-23-8-35-4v-16z" fill="#FFFFFF" stroke="#3F7D5A" strokeWidth="1.5" className="dark:fill-[#262E28]" />
-    <path d="M155 110c-12-4-24-1-35 4v16c11-5 23-8 35-4v-16z" fill="#FFFFFF" stroke="#3F7D5A" strokeWidth="1.5" className="dark:fill-[#262E28]" />
+    {/* Study books / Terminal */}
+    <rect x="75" y="112" width="90" height="10" rx="3" fill="#0E1510" stroke="#1B2A1F" strokeWidth="1.5" />
+    <rect x="85" y="80" width="70" height="34" rx="4" fill="#0A0F0B" stroke="#00FF66" strokeWidth="1.5" />
+    <path d="M92 90h16M92 96h24M92 102h12" stroke="#00FF66" strokeWidth="1.5" strokeLinecap="round" />
+
+    {/* Apprentice Character */}
+    <path d="M96 78c0-8 10-14 24-14s24 6 24 14v4H96v-4z" fill="#0D2214" stroke="#00FF66" strokeWidth="1.5" />
+    <circle cx="120" cy="56" r="14" fill="#0A0F0B" stroke="#00FF66" strokeWidth="1.5" />
     
-    {/* Terminal Window with Learning Prompt */}
-    <rect x="85" y="78" width="70" height="30" rx="4" fill="#18221C" stroke="#6AAF8A" strokeWidth="1.5" />
-    <path d="M92 88l4 3-4 3M102 94h14" stroke="#6AAF8A" strokeWidth="1.5" strokeLinecap="round" />
+    {/* Green Fedora with Small Sprout / Seedling */}
+    <path d="M102 48c0-10 8-16 18-16s18 6 18 16" fill="#00FF66" stroke="#5CFF9B" strokeWidth="1.5" />
+    <ellipse cx="120" cy="48" rx="28" ry="5" fill="#00FF66" stroke="#5CFF9B" strokeWidth="1.5" />
+    <rect x="108" y="44" width="24" height="3" fill="#050705" />
+    {/* Sprout seedling */}
+    <path d="M120 32c-2-6-8-6-8-6s0 6 8 6zM120 32c2-6 8-6 8-6s0 6-8 6z" fill="#5CFF9B" />
 
-    {/* Green Hat Student Figure */}
-    <circle cx="120" cy="56" r="13" fill="#FCEAD4" />
-    <path d="M104 48c0-10 7-15 16-15s16 5 16 15" fill="#6AAF8A" stroke="#3F7D5A" strokeWidth="1.5" />
-    <ellipse cx="120" cy="48" rx="24" ry="5" fill="#6AAF8A" stroke="#3F7D5A" strokeWidth="1.5" />
-    {/* Sprout / Seedling Icon on Hat */}
-    <path d="M120 33c0-6 4-9 8-7-1 4-4 7-8 7z" fill="#3F7D5A" />
-    <path d="M120 33c0-6-4-9-8-7 1 4 4 7 8 7z" fill="#3F7D5A" />
-
-    {/* Question / Learning Badge */}
-    <g transform="translate(162, 36)">
-      <circle cx="16" cy="16" r="16" fill="#6AAF8A" />
-      <text x="16" y="22" textAnchor="middle" fill="#FFFFFF" fontSize="16" fontWeight="bold">?</text>
+    {/* Question Mark / Discovery Badge */}
+    <g transform="translate(164, 38)">
+      <circle cx="16" cy="16" r="16" fill="#0E1510" stroke="#00FF66" strokeWidth="1.5" />
+      <text x="16" y="22" fill="#00FF66" fontSize="16" fontWeight="bold" textAnchor="middle" fontFamily="monospace">?</text>
     </g>
   </svg>
 );
 
-// 07. Script Kiddie (Amateur Tool User)
+// 07. Script Kiddie (Unskilled / Public Tool User)
 export const ScriptKiddieIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#FDF8EE" className="dark:fill-[#26221A]" />
-    <circle cx="120" cy="80" r="56" fill="#D7A84B" fillOpacity="0.12" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
+    <circle cx="120" cy="80" r="56" fill="#D9A441" fillOpacity="0.08" />
 
-    {/* Laptop with Big "Pwn / Run Script" Button */}
-    <rect x="75" y="80" width="90" height="46" rx="4" fill="#FFFFFF" stroke="#D7A84B" strokeWidth="2" className="dark:fill-[#262E28]" />
-    <rect x="70" y="126" width="100" height="6" rx="2" fill="#DDE5DE" className="dark:fill-[#3A4840]" />
-    {/* Huge prominent Red Run Button */}
-    <rect x="95" y="92" width="50" height="20" rx="4" fill="#B84040" />
-    <text x="120" y="106" textAnchor="middle" fill="#FFFFFF" fontSize="9" fontWeight="bold">EXECUTE</text>
-    <path d="M84 94l4 3-4 3" stroke="#D7A84B" strokeWidth="1.5" />
+    {/* One-Click Big "EXECUTE / RUN" button screen */}
+    <rect x="75" y="74" width="90" height="46" rx="6" fill="#0E1510" stroke="#D9A441" strokeWidth="1.5" />
+    <rect x="90" y="86" width="60" height="22" rx="4" fill="#241C0E" stroke="#D9A441" strokeWidth="1.5" />
+    <text x="120" y="101" fill="#D9A441" fontSize="9" fontWeight="900" textAnchor="middle" fontFamily="monospace">
+      [ EXECUTE ]
+    </text>
 
-    {/* Figure with Backward Cap */}
-    <circle cx="120" cy="54" r="13" fill="#FCEAD4" />
-    <path d="M106 48c0-8 6-12 14-12s14 4 14 12" fill="#E58A4E" />
-    <path d="M134 46l8 3-8 3" fill="#E58A4E" />
+    {/* Backward Baseball Cap Character */}
+    <path d="M96 74c0-8 10-14 24-14s24 6 24 14v2H96v-2z" fill="#0A0F0B" stroke="#1B2A1F" strokeWidth="1.5" />
+    <circle cx="120" cy="52" r="14" fill="#0A0F0B" stroke="#D9A441" strokeWidth="1.5" />
+    {/* Cap visor pointing backwards */}
+    <path d="M106 48c0-8 6-12 14-12s14 4 14 12" fill="#D9A441" stroke="#ECC06A" strokeWidth="1.5" />
+    <ellipse cx="120" cy="48" rx="16" ry="4" fill="#D9A441" />
+    <path d="M98 48h14" stroke="#D9A441" strokeWidth="3" strokeLinecap="round" />
 
-    {/* Tool Box / Puzzle Symbol */}
-    <g transform="translate(162, 34)">
-      <circle cx="16" cy="16" r="16" fill="#D7A84B" />
-      <rect x="9" y="11" width="14" height="11" rx="2" fill="#FFFFFF" />
-      <path d="M13 11V9a3 3 0 016 0v2" stroke="#FFFFFF" strokeWidth="1.5" fill="none" />
+    {/* Script Tag */}
+    <g transform="translate(164, 38)">
+      <circle cx="16" cy="16" r="16" fill="#0E1510" stroke="#D9A441" strokeWidth="1.5" />
+      <text x="16" y="20" fill="#D9A441" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="monospace">.sh</text>
     </g>
   </svg>
 );
 
-// 08. State-Sponsored Hacker (Advanced Persistent Threat - APT)
+// 08. State-Sponsored Hacker (APT / Geopolitical Operator)
 export const StateSponsoredIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#F0F4F6" className="dark:fill-[#1A2226]" />
-    <circle cx="120" cy="80" r="56" fill="#3B5360" fillOpacity="0.12" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
+    <circle cx="120" cy="80" r="56" fill="#00FF66" fillOpacity="0.08" />
 
-    {/* Government Capitol / Embassy Silhouette Columns */}
-    <path d="M60 126h120v4H60v-4z" fill="#3B5360" opacity="0.3" />
-    <rect x="74" y="90" width="8" height="36" fill="#3B5360" opacity="0.25" />
-    <rect x="94" y="90" width="8" height="36" fill="#3B5360" opacity="0.25" />
-    <rect x="138" y="90" width="8" height="36" fill="#3B5360" opacity="0.25" />
-    <rect x="158" y="90" width="8" height="36" fill="#3B5360" opacity="0.25" />
-    <polygon points="120,62 68,88 172,88" fill="#3B5360" opacity="0.25" />
+    {/* Government / Capitol Building Pillars */}
+    <g transform="translate(90, 78)" stroke="#1B2A1F" strokeWidth="1.5" fill="#0E1510">
+      <polygon points="30,0 0,16 60,16" fill="#0E1510" stroke="#00FF66" strokeWidth="1.5" />
+      <rect x="6" y="16" width="8" height="28" />
+      <rect x="26" y="16" width="8" height="28" />
+      <rect x="46" y="16" width="8" height="28" />
+      <rect x="0" y="44" width="60" height="6" fill="#00FF66" stroke="#00FF66" />
+    </g>
 
-    {/* Server Stack & Satellite Dish */}
-    <rect x="105" y="86" width="30" height="38" rx="3" fill="#18221C" stroke="#3F7D5A" strokeWidth="1.5" />
-    <circle cx="112" cy="94" r="1.5" fill="#6AAF8A" />
-    <circle cx="112" cy="102" r="1.5" fill="#6AAF8A" />
-    <circle cx="112" cy="110" r="1.5" fill="#E58A4E" />
+    {/* Strategic Satellite Network Link */}
+    <line x1="50" y1="40" x2="90" y2="78" stroke="#00FF66" strokeWidth="1.5" strokeDasharray="3 3" />
+    <circle cx="50" cy="40" r="12" fill="#0E1510" stroke="#00FF66" strokeWidth="1.5" />
+    <line x1="42" y1="40" x2="58" y2="40" stroke="#00FF66" strokeWidth="2" />
+    <line x1="50" y1="32" x2="50" y2="48" stroke="#00FF66" strokeWidth="2" />
 
-    {/* Satellite Dish Orbiting */}
-    <g transform="translate(160, 32)">
-      <circle cx="18" cy="18" r="18" fill="#3B5360" />
-      <path d="M12 24c6-6 12-4 15 2" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" fill="none" />
-      <line x1="20" y1="16" x2="26" y2="10" stroke="#FFFFFF" strokeWidth="2" />
+    {/* Classified Stamp */}
+    <g transform="translate(162, 36)">
+      <rect x="0" y="0" width="34" height="24" rx="4" fill="#0E1510" stroke="#FF3B30" strokeWidth="1.5" />
+      <text x="17" y="16" fill="#FF3B30" fontSize="8" fontWeight="800" textAnchor="middle" fontFamily="monospace">
+        APT
+      </text>
     </g>
   </svg>
 );
 
-// 09. Hacktivist (Ideological / Social Activist)
+// 09. Hacktivist (Ideological Activist)
 export const HacktivistIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#FDF3ED" className="dark:fill-[#261E1A]" />
-    <circle cx="120" cy="80" r="56" fill="#E58A4E" fillOpacity="0.12" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
+    <circle cx="120" cy="80" r="56" fill="#D9A441" fillOpacity="0.08" />
 
-    {/* Megaphone / Broadcast Waves */}
-    <path d="M70 100l25-14v28l-25-14z" fill="#E58A4E" />
-    <rect x="62" y="95" width="8" height="10" rx="2" fill="#C97438" />
-    <path d="M102 92c4 4 4 12 0 16M108 86c8 8 8 24 0 32" stroke="#E58A4E" strokeWidth="2" strokeLinecap="round" fill="none" />
+    {/* Activist Silhouette with Anonymity Guy Fawkes-style Mask */}
+    <path d="M96 82c0-8 10-14 24-14s24 6 24 14v4H96v-4z" fill="#0E1510" stroke="#1B2A1F" strokeWidth="1.5" />
+    <circle cx="120" cy="56" r="16" fill="#E8F5E9" stroke="#1B2A1F" strokeWidth="1.5" />
+    {/* Stylized Moustache & Beard on mask */}
+    <path d="M112 58c3 4 8 4 8 4s5 0 8-4" stroke="#050705" strokeWidth="2" strokeLinecap="round" />
+    <polygon points="120,64 117,68 123,68" fill="#050705" />
+    {/* Dark Hoodie */}
+    <path d="M102 44c0-12 8-16 18-16s18 4 18 16v16h-36V44z" fill="#050705" opacity="0.4" />
 
-    {/* Guy Fawkes / Mask Figure */}
-    <circle cx="130" cy="68" r="18" fill="#FFFFFF" stroke="#242424" strokeWidth="1.5" />
-    <path d="M122 66c2 2 5 2 7 0M131 66c2 2 5 2 7 0" stroke="#242424" strokeWidth="1.5" strokeLinecap="round" />
-    {/* Mustache curve */}
-    <path d="M120 74c5 3 10-1 10-1s5 4 10 1" stroke="#242424" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-    {/* Dark Hood */}
-    <path d="M110 56c0-12 9-18 20-18s20 6 20 18" stroke="#242424" strokeWidth="3" fill="none" />
-
-    {/* Globe Network Badge */}
-    <g transform="translate(162, 34)">
-      <circle cx="16" cy="16" r="16" fill="#E58A4E" />
-      <circle cx="16" cy="16" r="10" stroke="#FFFFFF" strokeWidth="1.5" fill="none" />
-      <ellipse cx="16" cy="16" rx="5" ry="10" stroke="#FFFFFF" strokeWidth="1.5" fill="none" />
-      <line x1="6" y1="16" x2="26" y2="16" stroke="#FFFFFF" strokeWidth="1.5" />
+    {/* Megaphone / Protest Broadcast Icon */}
+    <g transform="translate(160, 36)">
+      <circle cx="16" cy="16" r="16" fill="#0E1510" stroke="#D9A441" strokeWidth="1.5" />
+      <path d="M10 14l10-4v12l-10-4v-4z" fill="#D9A441" />
+      <rect x="8" y="14" width="4" height="4" fill="#D9A441" />
+      <path d="M22 12c2 2 2 6 0 8" stroke="#D9A441" strokeWidth="1.5" strokeLinecap="round" />
     </g>
   </svg>
 );
 
-// 10. Insider Threat (Authorized Employee Privilege Abuse)
+// 10. Insider Threat (Internal Malicious / Negligent Employee)
 export const InsiderThreatIllustration: React.FC<IllustrationProps> = ({ className = 'w-full h-full' }) => (
   <svg viewBox="0 0 240 160" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="160" rx="16" fill="#FDF3F3" className="dark:fill-[#261C1C]" />
-    <circle cx="120" cy="80" r="56" fill="#B84040" fillOpacity="0.10" />
+    <rect width="240" height="160" rx="14" fill="#050705" />
+    <circle cx="120" cy="80" r="56" fill="#FF3B30" fillOpacity="0.08" />
 
-    {/* Office Corporate Workstation */}
-    <rect x="70" y="80" width="80" height="42" rx="4" fill="#FFFFFF" stroke="#3A4840" strokeWidth="2" className="dark:fill-[#262E28]" />
-    <rect x="65" y="122" width="90" height="6" rx="2" fill="#DDE5DE" className="dark:fill-[#3A4840]" />
+    {/* Office Desktop & Server */}
+    <rect x="70" y="86" width="80" height="36" rx="4" fill="#0E1510" stroke="#1B2A1F" strokeWidth="1.5" />
     
     {/* USB Drive Exfiltrating Data */}
-    <rect x="145" y="98" width="16" height="8" rx="2" fill="#B84040" />
-    <rect x="161" y="100" width="4" height="4" fill="#DDE5DE" />
-    <path d="M120 95l14 6-14 6" stroke="#B84040" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <rect x="145" y="98" width="16" height="8" rx="2" fill="#FF3B30" />
+    <rect x="161" y="100" width="4" height="4" fill="#E8F5E9" />
+    <path d="M120 95l14 6-14 6" stroke="#FF3B30" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 
     {/* Employee Badge Lanyard */}
-    <rect x="108" y="52" width="24" height="28" rx="3" fill="#FFFFFF" stroke="#B84040" strokeWidth="1.5" />
-    <circle cx="120" cy="62" r="4" fill="#68736B" />
-    <rect x="113" y="70" width="14" height="4" rx="1" fill="#B84040" />
+    <rect x="108" y="52" width="24" height="28" rx="3" fill="#0E1510" stroke="#FF3B30" strokeWidth="1.5" />
+    <circle cx="120" cy="62" r="4" fill="#91A596" />
+    <rect x="113" y="70" width="14" height="4" rx="1" fill="#FF3B30" />
     {/* Lanyard straps */}
-    <path d="M120 34v18M116 34l4 18M124 34l-4 18" stroke="#B84040" strokeWidth="1.5" />
+    <path d="M120 34v18M116 34l4 18M124 34l-4 18" stroke="#FF3B30" strokeWidth="1.5" />
 
     {/* Exclamation Badge */}
     <g transform="translate(164, 34)">
-      <circle cx="16" cy="16" r="16" fill="#B84040" />
-      <rect x="14.5" y="8" width="3" height="10" rx="1.5" fill="#FFFFFF" />
-      <circle cx="16" cy="22" r="1.5" fill="#FFFFFF" />
+      <circle cx="16" cy="16" r="16" fill="#271211" stroke="#FF3B30" strokeWidth="1.5" />
+      <rect x="14.5" y="8" width="3" height="10" rx="1.5" fill="#FF3B30" />
+      <circle cx="16" cy="22" r="1.5" fill="#FF3B30" />
     </g>
   </svg>
 );

@@ -3,9 +3,9 @@
 import React, { useState, useMemo } from 'react';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { resources } from '@/data/resources';
-import { ResourceCard } from '@/components/ui/ResourceCard';
+import { LabTerminalCard } from '@/components/ui/LabTerminalCard';
 import { Difficulty, Pricing } from '@/types';
-import { Search, FlaskConical } from 'lucide-react';
+import { Search, Terminal, Filter } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function LabsPage() {
@@ -55,43 +55,43 @@ export default function LabsPage() {
   }, [labResources, searchQuery, selectedDifficulty, selectedPricing, selectedTag]);
 
   const quickTags = [
-    { id: 'all', label: 'All Labs' },
-    { id: 'web', label: 'Web Security' },
-    { id: 'linux', label: 'Linux & SSH' },
-    { id: 'blue team', label: 'Blue Team & SOC' },
-    { id: 'active directory', label: 'Active Directory' },
-    { id: 'ctf', label: 'CTF Challenges' },
-    { id: 'forensics', label: 'DFIR & Forensics' },
+    { id: 'all', label: 'ALL LABS' },
+    { id: 'web', label: 'WEB EXPLOITATION' },
+    { id: 'linux', label: 'LINUX / PRIV ESC' },
+    { id: 'blue team', label: 'BLUE TEAM / SOC' },
+    { id: 'active directory', label: 'ACTIVE DIRECTORY' },
+    { id: 'ctf', label: 'CTF ARENAS' },
+    { id: 'forensics', label: 'DFIR & FORENSICS' },
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Breadcrumbs items={[{ label: 'Labs & Hands-on Practice' }]} />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-sans">
+      <Breadcrumbs items={[{ label: 'Labs & Attack Environments' }]} />
 
       {/* Header */}
       <div className="mb-8">
-        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#4C9A91] dark:text-[#7BB8B2] mb-1.5">
-          <FlaskConical className="w-4 h-4" />
-          <span>Interactive Attack & Defense Environments</span>
+        <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#00FF66] mb-2">
+          <Terminal className="w-4 h-4 text-[#00FF66]" />
+          <span>// ACCESS_TERMINALS // LIVE_ENVIRONMENTS</span>
         </div>
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
-          Hands-on Cybersecurity Labs & Practice Platforms
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#E8F5E9] font-mono tracking-tight mb-2.5">
+          Interactive Cybersecurity Labs &amp; CTF Arenas
         </h1>
-        <p className="text-sm text-[#68645D] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
-          The core philosophy of cybersecurity mastery is deliberate practical execution. Browse verified virtual labs, vulnerable wargames, Capture The Flag (CTF) environments, and SOC defense simulators.
+        <p className="text-sm text-[#91A596] max-w-3xl leading-relaxed">
+          Deliberate practical execution in isolated attack and defense environments. Browse verified virtualization platforms, vulnerable wargames, Capture The Flag arenas, and SOC defense simulators.
         </p>
       </div>
 
       {/* Controls Bar */}
-      <div className="bg-[#FFFFFF] dark:bg-[#262E28] p-5 rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] mb-8 space-y-4 shadow-xs">
+      <div className="bg-[#0E1510] p-5 rounded-2xl border border-[#1B2A1F] mb-8 space-y-4 shadow-xs">
         <div className="relative">
-          <Search className="absolute left-4 top-3.5 w-4 h-4 text-[#3F7D5A] dark:text-[#6AAF8A]" />
+          <Search className="absolute left-4 top-3.5 w-4 h-4 text-[#00FF66]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search lab environments by skill, platform, or vulnerability type..."
-            className="w-full pl-11 pr-4 py-2.5 bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] placeholder-[#68736B]/70 dark:placeholder-[#A0AFA5]/70 rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-xs focus:outline-none focus:ring-2 focus:ring-[#3F7D5A]/40 transition-all"
+            placeholder="Search lab environments by skill, platform, or vulnerability vector..."
+            className="w-full pl-11 pr-4 py-2.5 bg-[#050705] text-[#E8F5E9] placeholder-[#91A596]/50 rounded-xl border border-[#1B2A1F] text-xs font-mono focus:outline-none focus:border-[#00FF66] focus:ring-1 focus:ring-[#00FF66]/30 transition-all"
           />
         </div>
 
@@ -103,10 +103,10 @@ export default function LabsPage() {
               type="button"
               onClick={() => setSelectedTag(tag.id)}
               className={cn(
-                'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all',
+                'px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all',
                 selectedTag === tag.id
-                  ? 'bg-[#3F7D5A] text-white shadow-xs'
-                  : 'bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] border border-[#DDE5DE] dark:border-[#3A4840] hover:bg-[#DDE5DE]'
+                  ? 'bg-[#00FF66] text-[#050705] shadow-[0_0_12px_rgba(0,255,102,0.25)]'
+                  : 'bg-[#050705] text-[#91A596] border border-[#1B2A1F] hover:border-[#00FF66] hover:text-[#E8F5E9]'
               )}
             >
               {tag.label}
@@ -116,16 +116,16 @@ export default function LabsPage() {
       </div>
 
       {/* Results Count */}
-      <div className="flex items-center justify-between mb-6">
-        <span className="text-xs font-bold text-[#68736B] dark:text-[#A0AFA5]">
-          Showing <span className="text-[#3F7D5A] dark:text-[#6AAF8A]">{filteredLabs.length}</span> verified lab environments
+      <div className="flex items-center justify-between mb-6 font-mono text-xs">
+        <span className="text-[#91A596]">
+          QUERY RESULT: <span className="text-[#00FF66] font-bold">{filteredLabs.length}</span> ACTIVE LAB ENVIRONMENTS
         </span>
       </div>
 
       {/* Grid of Labs */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredLabs.map((lab) => (
-          <ResourceCard key={lab.id} resource={lab} />
+          <LabTerminalCard key={lab.id} resource={lab} />
         ))}
       </div>
     </div>

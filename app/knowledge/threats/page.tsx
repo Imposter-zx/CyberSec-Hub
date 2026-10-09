@@ -6,7 +6,7 @@ import { ThreatCard } from '@/components/ui/ThreatCard';
 import { threats } from '@/data/threats';
 import { filterThreats } from '@/lib/filters';
 import { Difficulty } from '@/types';
-import { Search, RefreshCw, ShieldAlert, GitBranch, LayoutGrid } from 'lucide-react';
+import { Search, RefreshCw, ShieldAlert, GitBranch, LayoutGrid, Terminal } from 'lucide-react';
 import { SqlInjectionAttackFlow, XssAttackFlow } from '@/components/visuals/SecurityDiagrams';
 import { cn } from '@/lib/utils';
 
@@ -36,7 +36,7 @@ export default function ThreatsKnowledgePage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-mono">
       <Breadcrumbs
         items={[
           { label: 'Knowledge Base', href: '/knowledge' },
@@ -46,74 +46,82 @@ export default function ThreatsKnowledgePage() {
 
       {/* Header */}
       <div className="mb-8">
-        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E58A4E] dark:text-[#EDA574] mb-1.5">
+        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#FF3B30] mb-1.5">
           <ShieldAlert className="w-4 h-4" />
-          <span>Visual Attack Taxonomy & Defenses</span>
+          <span>// THREAT_DATABASE_&amp;_ATTACK_TAXONOMY</span>
         </div>
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
-          Security Threats, Vulnerabilities & MITRE ATT&CK Taxonomy
+        <h1 className="text-2xl sm:text-4xl font-black text-[#E8F5E9] uppercase tracking-wider mb-2.5">
+          Security Threats &amp; MITRE ATT&CK Taxonomy
         </h1>
-        <p className="text-sm text-[#68736B] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
-          Comprehensive encyclopedia of technical attack mechanisms, adversary vectors, detection telemetry, and defensive controls mapped to the MITRE ATT&CK matrix and OWASP Top 10 standards.
+        <p className="text-sm text-[#91A596] max-w-3xl leading-relaxed font-sans">
+          Technical encyclopedia of attack mechanisms, adversary vectors, detection telemetry, and defensive controls mapped to the MITRE ATT&amp;CK matrix and OWASP Top 10 standards.
         </p>
       </div>
 
-      {/* Tab Navigation: Catalog vs Visual Attack Flows */}
-      <div className="flex items-center gap-2 mb-8 border-b border-[#DDE5DE] dark:border-[#3A4840] pb-3">
+      {/* Mode Switcher Tabs */}
+      <div className="flex items-center gap-2 mb-6 border-b border-[#1B2A1F] pb-3">
         <button
           type="button"
           onClick={() => setActiveTab('catalog')}
           className={cn(
-            'flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all',
+            'px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border',
             activeTab === 'catalog'
-              ? 'bg-[#3F7D5A] text-white shadow-xs'
-              : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
+              ? 'bg-[#00FF66] text-[#050705] border-[#00FF66] shadow-xs'
+              : 'bg-[#0E1510] text-[#91A596] hover:text-[#E8F5E9] border-[#1B2A1F]'
           )}
         >
-          <LayoutGrid className="w-3.5 h-3.5" />
-          <span>Visual Threat Catalog ({threats.length})</span>
+          <LayoutGrid className="w-4 h-4" />
+          <span>Visual Threat Catalog ({filteredThreats.length})</span>
         </button>
+
         <button
           type="button"
           onClick={() => setActiveTab('diagrams')}
           className={cn(
-            'flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all',
+            'px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border',
             activeTab === 'diagrams'
-              ? 'bg-[#3F7D5A] text-white shadow-xs'
-              : 'text-[#68736B] dark:text-[#A0AFA5] hover:bg-[#EEF3EE] dark:hover:bg-[#202722]'
+              ? 'bg-[#00FF66] text-[#050705] border-[#00FF66] shadow-xs'
+              : 'bg-[#0E1510] text-[#91A596] hover:text-[#E8F5E9] border-[#1B2A1F]'
           )}
         >
-          <GitBranch className="w-3.5 h-3.5" />
+          <GitBranch className="w-4 h-4" />
           <span>Interactive Attack Flow Diagrams</span>
         </button>
       </div>
 
-      {activeTab === 'catalog' ? (
+      {/* Tab Content: Attack Flow Diagrams */}
+      {activeTab === 'diagrams' && (
+        <div className="space-y-8 animate-in fade-in-50 duration-200">
+          <SqlInjectionAttackFlow />
+          <XssAttackFlow />
+        </div>
+      )}
+
+      {/* Tab Content: Threat Catalog Grid */}
+      {activeTab === 'catalog' && (
         <>
-          {/* Controls */}
-          <div className="bg-[#FFFFFF] dark:bg-[#262E28] p-5 rounded-2xl border border-[#DDE5DE] dark:border-[#3A4840] mb-8 space-y-4 shadow-xs">
-            {/* Search */}
+          {/* Controls Bar */}
+          <div className="bg-[#0E1510] p-5 rounded-2xl border border-[#1B2A1F] mb-8 space-y-4 shadow-xs">
             <div className="relative">
-              <Search className="absolute left-4 top-3.5 w-4 h-4 text-[#3F7D5A] dark:text-[#6AAF8A]" />
+              <Search className="absolute left-4 top-3.5 w-4 h-4 text-[#00FF66]" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search threats by name (e.g. Ransomware, SQL Injection, SSRF, Phishing)..."
-                className="w-full pl-11 pr-4 py-2.5 bg-[#EEF3EE] dark:bg-[#202722] text-[#18221C] dark:text-[#E8F0EA] placeholder-[#68736B]/70 dark:placeholder-[#A0AFA5]/70 rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-xs focus:outline-none focus:ring-2 focus:ring-[#3F7D5A]/40 transition-all"
+                placeholder="Search threats by name (e.g. Ransomware, SQLi, Phishing, Zero-Day)..."
+                className="w-full pl-11 pr-4 py-2.5 bg-[#050705] text-[#E8F5E9] placeholder-[#91A596]/60 rounded-xl border border-[#1B2A1F] text-xs focus:outline-none focus:border-[#00FF66] transition-all font-mono"
               />
             </div>
 
-            {/* Category & Difficulty Filters */}
             <div className="flex flex-wrap items-center gap-3 text-xs">
               <div className="flex-1 min-w-[200px]">
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full p-2 bg-[#EEF3EE] dark:bg-[#202722] rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-[#18221C] dark:text-[#E8F0EA] focus:outline-none font-medium text-xs"
+                  className="w-full p-2 bg-[#050705] rounded-xl border border-[#1B2A1F] text-[#E8F5E9] focus:outline-none font-medium text-xs font-mono"
                 >
                   {categories.map((c) => (
-                    <option key={c} value={c}>
+                    <option key={c} value={c} className="bg-[#050705]">
                       {c === 'all' ? 'All Threat Categories' : c}
                     </option>
                   ))}
@@ -124,12 +132,12 @@ export default function ThreatsKnowledgePage() {
                 <select
                   value={selectedDifficulty}
                   onChange={(e) => setSelectedDifficulty(e.target.value as Difficulty | 'all')}
-                  className="w-full p-2 bg-[#EEF3EE] dark:bg-[#202722] rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-[#18221C] dark:text-[#E8F0EA] focus:outline-none font-medium text-xs"
+                  className="w-full p-2 bg-[#050705] rounded-xl border border-[#1B2A1F] text-[#E8F5E9] focus:outline-none font-medium text-xs font-mono"
                 >
-                  <option value="all">All Complexities</option>
-                  <option value="beginner">Beginner</option>
-                  <option value="intermediate">Intermediate</option>
-                  <option value="advanced">Advanced</option>
+                  <option value="all" className="bg-[#050705]">All Difficulties</option>
+                  <option value="beginner" className="bg-[#050705]">Beginner</option>
+                  <option value="intermediate" className="bg-[#050705]">Intermediate</option>
+                  <option value="advanced" className="bg-[#050705]">Advanced</option>
                 </select>
               </div>
 
@@ -137,34 +145,35 @@ export default function ThreatsKnowledgePage() {
                 <button
                   type="button"
                   onClick={resetFilters}
-                  className="p-2 rounded-xl border border-[#DDE5DE] dark:border-[#3A4840] text-[#68736B] hover:text-[#18221C] dark:text-[#A0AFA5] dark:hover:text-[#E8F0EA] bg-[#EEF3EE] dark:bg-[#202722] transition-colors"
-                  title="Reset filters"
+                  className="p-2 text-xs font-mono text-[#FF3B30] hover:underline flex items-center gap-1 shrink-0"
                 >
-                  <RefreshCw className="w-4 h-4" />
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  <span>[RESET_FILTERS]</span>
                 </button>
               )}
             </div>
           </div>
 
-          {/* Results Count */}
-          <div className="flex items-center justify-between mb-6">
-            <span className="text-xs font-bold text-[#68736B] dark:text-[#A0AFA5]">
-              Showing <span className="text-[#3F7D5A] dark:text-[#6AAF8A]">{filteredThreats.length}</span> of {threats.length} security threats
-            </span>
-          </div>
-
-          {/* Threats Grid with Vector Illustrations */}
+          {/* Threats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredThreats.map((threat) => (
               <ThreatCard key={threat.id} threat={threat} />
             ))}
           </div>
+
+          {filteredThreats.length === 0 && (
+            <div className="text-center py-16 bg-[#0E1510] rounded-2xl border border-[#1B2A1F]">
+              <p className="text-sm text-[#91A596]">No security threats match your query.</p>
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="mt-3 text-xs font-bold text-[#00FF66] hover:underline"
+              >
+                Reset query parameters
+              </button>
+            </div>
+          )}
         </>
-      ) : (
-        <div className="space-y-8">
-          <SqlInjectionAttackFlow />
-          <XssAttackFlow />
-        </div>
       )}
     </div>
   );

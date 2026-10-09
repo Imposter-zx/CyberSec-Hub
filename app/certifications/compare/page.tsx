@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { ComparisonTable } from '@/components/ui/ComparisonTable';
 import { certifications } from '@/data/certifications';
-import { RefreshCw, Award } from 'lucide-react';
+import { RefreshCw, Award, Terminal } from 'lucide-react';
 
 function CompareContent() {
   const searchParams = useSearchParams();
@@ -34,83 +34,83 @@ function CompareContent() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-sans">
       <Breadcrumbs
         items={[
           { label: 'Certifications', href: '/certifications' },
-          { label: 'Certification Comparison Tool' },
+          { label: 'Certification Comparison Matrix' },
         ]}
       />
 
       {/* Header */}
       <div className="mb-8">
-        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3F7D5A] dark:text-[#6AAF8A] mb-1.5">
-          <Award className="w-4 h-4" />
-          <span>Credential Evaluation Matrix</span>
+        <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#00FF66] mb-2">
+          <Terminal className="w-4 h-4 text-[#00FF66]" />
+          <span>// EVALUATION_MATRIX // BENCHMARK_COMPARISON</span>
         </div>
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F0EA] mb-2.5">
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#E8F5E9] font-mono tracking-tight mb-2.5">
           Cybersecurity Certification Comparison Tool
         </h1>
-        <p className="text-sm text-[#68645D] dark:text-[#A0AFA5] max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#91A596] max-w-3xl leading-relaxed">
           Compare exam formats, practical vs theoretical styles, costs, duration, renewal policies, and required experience side-by-side to make informed career decisions.
         </p>
       </div>
 
       {/* Preset Comparisons */}
-      <div className="p-5 rounded-2xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] mb-8 shadow-xs">
-        <div className="text-xs font-bold uppercase tracking-wider text-[#68736B] dark:text-[#A0AFA5] mb-3">
-          Popular Benchmark Comparisons
+      <div className="p-5 rounded-2xl bg-[#0E1510] border border-[#1B2A1F] mb-8 shadow-xs font-mono">
+        <div className="text-xs font-bold uppercase tracking-wider text-[#91A596] mb-3">
+          POPULAR BENCHMARK COMPARISONS:
         </div>
         <div className="flex flex-wrap gap-2 text-xs">
           <button
             type="button"
             onClick={() => loadPreset(['comptia-security-plus', 'comptia-cysa-plus'])}
-            className="px-3.5 py-1.5 rounded-xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] font-bold text-[#18221C] dark:text-[#E8F0EA] transition-all"
+            className="px-3.5 py-1.5 rounded-xl bg-[#050705] border border-[#1B2A1F] hover:border-[#00FF66] font-bold text-[#E8F5E9] transition-all"
           >
-            Security+ vs CySA+
+            &gt; Security+ vs CySA+
           </button>
           <button
             type="button"
             onClick={() => loadPreset(['ine-ejpt', 'tcm-pnpt', 'oscp-plus'])}
-            className="px-3.5 py-1.5 rounded-xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] font-bold text-[#18221C] dark:text-[#E8F0EA] transition-all"
+            className="px-3.5 py-1.5 rounded-xl bg-[#050705] border border-[#1B2A1F] hover:border-[#00FF66] font-bold text-[#E8F5E9] transition-all"
           >
-            eJPT vs PNPT vs OSCP+
+            &gt; eJPT vs PNPT vs OSCP+
           </button>
           <button
             type="button"
             onClick={() => loadPreset(['oswa', 'oswe'])}
-            className="px-3.5 py-1.5 rounded-xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] font-bold text-[#18221C] dark:text-[#E8F0EA] transition-all"
+            className="px-3.5 py-1.5 rounded-xl bg-[#050705] border border-[#1B2A1F] hover:border-[#00FF66] font-bold text-[#E8F5E9] transition-all"
           >
-            OSWA (Web Black-Box) vs OSWE (White-Box Code Audit)
+            &gt; OSWA (Black-Box) vs OSWE (White-Box Code Audit)
           </button>
           <button
             type="button"
             onClick={() => loadPreset(['giac-gsec', 'isc2-cissp', 'isaca-cism'])}
-            className="px-3.5 py-1.5 rounded-xl bg-[#EEF3EE] dark:bg-[#202722] border border-[#DDE5DE] dark:border-[#3A4840] hover:border-[#3F7D5A] dark:hover:border-[#6AAF8A] font-bold text-[#18221C] dark:text-[#E8F0EA] transition-all"
+            className="px-3.5 py-1.5 rounded-xl bg-[#050705] border border-[#1B2A1F] hover:border-[#00FF66] font-bold text-[#E8F5E9] transition-all"
           >
-            GSEC vs CISSP vs CISM
+            &gt; GSEC vs CISSP vs CISM
           </button>
         </div>
       </div>
 
       {/* Add Certification Dropdown */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 font-mono">
         <div className="flex items-center gap-2.5">
-          <label className="text-xs font-bold text-[#18221C] dark:text-[#E8F0EA]">
-            Add Certification to Matrix:
+          <label className="text-xs font-bold text-[#E8F5E9]">
+            ADD TO MATRIX:
           </label>
           <select
             onChange={(e) => {
               addCert(e.target.value);
               e.target.value = '';
             }}
-            className="p-2 text-xs rounded-xl bg-[#FFFFFF] dark:bg-[#262E28] border border-[#DDE5DE] dark:border-[#3A4840] text-[#18221C] dark:text-[#E8F0EA] focus:outline-none font-medium"
+            className="p-2 text-xs rounded-xl bg-[#0E1510] border border-[#1B2A1F] text-[#E8F5E9] focus:outline-none focus:border-[#00FF66] font-medium"
           >
-            <option value="">-- Choose a Certification --</option>
+            <option value="" className="bg-[#050705]">-- Choose a Certification --</option>
             {certifications
               .filter((c) => !selectedIds.includes(c.id))
               .map((c) => (
-                <option key={c.id} value={c.id}>
+                <option key={c.id} value={c.id} className="bg-[#0E1510] text-[#E8F5E9]">
                   {c.name} ({c.provider})
                 </option>
               ))}
@@ -121,10 +121,10 @@ function CompareContent() {
           <button
             type="button"
             onClick={() => setSelectedIds([])}
-            className="text-xs text-[#68736B] hover:text-[#B84040] dark:text-[#A0AFA5] dark:hover:text-[#E07A7A] flex items-center gap-1 font-bold transition-colors"
+            className="text-xs text-[#91A596] hover:text-[#FF3B30] flex items-center gap-1 font-bold transition-colors"
           >
             <RefreshCw className="w-3.5 h-3.5" />
-            <span>Clear Matrix</span>
+            <span>CLEAR MATRIX</span>
           </button>
         )}
       </div>
@@ -137,7 +137,7 @@ function CompareContent() {
 
 export default function ComparePage() {
   return (
-    <Suspense fallback={<div className="p-8 text-center text-xs text-[#68736B]">Loading comparison matrix...</div>}>
+    <Suspense fallback={<div className="p-8 text-center text-xs font-mono text-[#91A596]">Loading comparison matrix...</div>}>
       <CompareContent />
     </Suspense>
   );

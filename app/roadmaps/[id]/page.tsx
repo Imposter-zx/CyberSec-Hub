@@ -25,7 +25,7 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-sans">
       <Breadcrumbs
         items={[
           { label: 'Roadmaps', href: '/roadmaps' },
@@ -36,10 +36,10 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
       <div className="my-6">
         <Link
           href="/roadmaps"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#3F7D5A] dark:text-[#6AAF8A] hover:underline mb-6"
+          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#00FF66] hover:text-[#5CFF9B] hover:underline mb-6"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to All Roadmaps</span>
+          <span>&gt; BACK TO ALL ROADMAPS</span>
         </Link>
 
         {/* Roadmap Interactive Timeline */}
