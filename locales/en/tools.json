@@ -1,0 +1,10 @@
+{
+  "tools_badge": "// SECURITY_ARSENAL // CLI_AND_UTILITIES",
+  "tools_title": "Essential Cybersecurity Tools Directory",
+  "tools_subtitle": "Curated directory of industry-standard tools for network enumeration, web application auditing, active directory assessment, memory forensics, and binary reverse engineering.",
+  "ethics_title": "[ETHICAL TOOL USAGE & LEGAL SAFETY PROTOCOL]",
+  "ethics_body": "These software tools are documented strictly for defense, authorized auditing, vulnerability assessment, and educational research in isolated lab environments. Never execute active reconnaissance or offensive payloads against systems or networks without explicit, documented written authorization from the asset owner.",
+  "search_placeholder": "Search tools by name (e.g. Nmap, Burp Suite, Ghidra, Volatility, Hashcat)...",
+  "open_tool_btn": "> OPEN TOOL",
+  "command_syntax": "SYNTAX & USAGE:"
+}

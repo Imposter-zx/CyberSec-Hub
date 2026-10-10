@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '@/components/theme/ThemeProvider';
 
 interface MatrixCodeBackgroundProps {
   opacity?: number;
@@ -8,10 +9,11 @@ interface MatrixCodeBackgroundProps {
 }
 
 export const MatrixCodeBackground: React.FC<MatrixCodeBackgroundProps> = ({
-  opacity = 0.08,
+  opacity,
   className = 'absolute inset-0 pointer-events-none overflow-hidden z-0',
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -32,13 +34,12 @@ export const MatrixCodeBackground: React.FC<MatrixCodeBackgroundProps> = ({
 
     window.addEventListener('resize', handleResize);
 
-    // Characters: Binary, Hex, and Unix shell characters
+    const isLight = resolvedTheme === 'light';
     const chars = '01ABCDEF0123456789_#@*&%$<>{}[]/\\~';
     const fontSize = 13;
     const columns = Math.floor(width / fontSize);
     const drops: number[] = [];
 
-    // Initialize drop positions with random distribution
     for (let i = 0; i < columns; i++) {
       drops[i] = Math.floor(Math.random() * -50);
     }
@@ -47,9 +48,9 @@ export const MatrixCodeBackground: React.FC<MatrixCodeBackgroundProps> = ({
 
     const render = () => {
       frameCount++;
-      // Render every 2 frames for smooth, slower movement (non-distracting)
+      // Render every 2 frames for smooth, slower movement
       if (frameCount % 2 === 0) {
-        ctx.fillStyle = 'rgba(5, 7, 5, 0.12)';
+        ctx.fillStyle = isLight ? 'rgba(247, 249, 246, 0.18)' : 'rgba(5, 7, 5, 0.12)';
         ctx.fillRect(0, 0, width, height);
 
         ctx.font = `${fontSize}px monospace`;
@@ -59,8 +60,7 @@ export const MatrixCodeBackground: React.FC<MatrixCodeBackgroundProps> = ({
           const x = i * fontSize;
           const y = drops[i] * fontSize;
 
-          // Head of drop is slightly brighter green
-          ctx.fillStyle = '#00FF66';
+          ctx.fillStyle = isLight ? '#267747' : '#00FF66';
           ctx.fillText(text, x, y);
 
           if (y > height && Math.random() > 0.985) {
@@ -79,10 +79,12 @@ export const MatrixCodeBackground: React.FC<MatrixCodeBackgroundProps> = ({
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [resolvedTheme]);
+
+  const effectiveOpacity = opacity !== undefined ? opacity : resolvedTheme === 'light' ? 0.025 : 0.07;
 
   return (
-    <div className={className} style={{ opacity }}>
+    <div className={className} style={{ opacity: effectiveOpacity }}>
       <canvas ref={canvasRef} className="w-full h-full block" />
     </div>
   );

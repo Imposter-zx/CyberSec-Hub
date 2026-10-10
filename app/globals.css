@@ -1,137 +1,159 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  /* =============================================
-     MATRIX + MR. ROBOT UNDERGROUND CYBERSECURITY THEME
-     Primary BG: #050705 | Secondary: #0A0F0B
-     Panels: #0E1510 | Raised: #121B14
-     Text: #E8F5E9 | Muted: #91A596
-     Matrix Accent: #00FF66 | Alert Red: #FF3B30
-     Amber: #D9A441 | Muted Green: #6FAF7B
-     Borders: #1B2A1F
-     ============================================= */
+  /* Dynamic CSS Variable References */
+  --color-bg-base: var(--bg-base);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
 
-  --color-bg-base: #050705;
-  --color-bg-soft: #0A0F0B;
-  --color-surface: #0E1510;
-  --color-surface-raised: #121B14;
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-subtle: var(--border);
+  --color-border-strong: var(--border-strong);
 
-  --color-text-primary: #E8F5E9;
-  --color-text-secondary: #91A596;
-  --color-border: #1B2A1F;
-  --color-border-strong: #25382A;
+  /* Primary Accent */
+  --color-accent-green: var(--accent-green);
+  --color-accent-green-hover: var(--accent-green-hover);
+  --color-accent-green-light: var(--accent-green-light);
 
-  /* Primary Matrix Accent */
-  --color-accent-green: #00FF66;
-  --color-accent-green-hover: #00CC52;
-  --color-accent-green-light: #5CFF9B;
-  --color-accent-green-subtle: rgba(0, 255, 102, 0.12);
-  --color-accent-green-muted: #0D2214;
+  /* Alert / Danger */
+  --color-accent-red: var(--accent-red);
 
-  /* Mr. Robot Alert Accent */
-  --color-accent-red: #FF3B30;
-  --color-accent-red-hover: #E03026;
-  --color-accent-red-light: #FF6B63;
-  --color-accent-red-subtle: rgba(255, 59, 48, 0.12);
-  --color-accent-red-muted: #271211;
-
-  /* Supporting Amber */
-  --color-accent-amber: #D9A441;
-  --color-accent-amber-hover: #BF8C2E;
-  --color-accent-amber-light: #ECC06A;
-  --color-accent-amber-subtle: rgba(217, 164, 65, 0.12);
-  --color-accent-amber-muted: #241C0E;
-
-  /* Muted Green */
-  --color-accent-muted-green: #6FAF7B;
-  --color-accent-teal: #42C2A8;
-
-  /* Status Colors */
-  --color-success: #00FF66;
-  --color-success-muted: #0D2214;
-  --color-warning: #D9A441;
-  --color-warning-muted: #241C0E;
-  --color-error: #FF3B30;
-  --color-error-muted: #271211;
-
-  /* Dark scale mapped to underground matrix palette */
-  --color-slate-950: #050705;
-  --color-slate-900: #0A0F0B;
-  --color-slate-850: #0E1510;
-  --color-slate-800: #121B14;
-  --color-slate-700: #1B2A1F;
-  --color-slate-600: #2C4233;
-  --color-slate-500: #6FAF7B;
-  --color-slate-400: #91A596;
-  --color-slate-300: #B4C7B8;
-  --color-slate-200: #D0E0D4;
-  --color-slate-100: #E8F5E9;
-  --color-slate-50: #F4FAF5;
+  /* Amber */
+  --color-accent-amber: var(--accent-amber);
 }
 
-@layer base {
-  :root {
-    --background: #050705;
-    --foreground: #E8F5E9;
-    --card: #0E1510;
-    --card-foreground: #E8F5E9;
-    --primary: #00FF66;
-    --primary-foreground: #050705;
-    --secondary: #0A0F0B;
-    --secondary-foreground: #E8F5E9;
-    --border: #1B2A1F;
-    --muted: #0A0F0B;
-    --muted-foreground: #91A596;
-    --accent: #00FF66;
-    --accent-red: #FF3B30;
-    --accent-amber: #D9A441;
-    --accent-gold: #D9A441;
-    --accent-teal: #42C2A8;
-  }
+:root {
+  /* LIGHT MODE PALETTE (Clean, Editorial, Eye-friendly) */
+  --bg-base: #F7F9F6;
+  --bg-soft: #EEF3EE;
+  --surface: #FFFFFF;
+  --surface-raised: #FFFFFF;
+  --surface-hover: #F0F4F1;
 
-  html.dark, html {
-    --background: #050705;
-    --foreground: #E8F5E9;
-    --card: #0E1510;
-    --card-foreground: #E8F5E9;
-    --primary: #00FF66;
-    --primary-foreground: #050705;
-    --secondary: #0A0F0B;
-    --secondary-foreground: #E8F5E9;
-    --border: #1B2A1F;
-    --muted: #0A0F0B;
-    --muted-foreground: #91A596;
-    --accent: #00FF66;
-    --accent-red: #FF3B30;
-    --accent-amber: #D9A441;
-    --accent-gold: #D9A441;
-    --accent-teal: #42C2A8;
-  }
+  --text-primary: #18221C;
+  --text-secondary: #5F6B62;
+  --text-muted: #88968C;
+
+  --border: #DDE5DE;
+  --border-strong: #C2CEC3;
+
+  --accent-green: #267747;
+  --accent-green-hover: #1E6038;
+  --accent-green-light: #34965C;
+  --accent-green-subtle: rgba(38, 119, 71, 0.08);
+  --accent-green-muted: #E8F5EE;
+
+  --accent-red: #C62828;
+  --accent-red-hover: #B71C1C;
+  --accent-red-subtle: rgba(198, 40, 40, 0.08);
+  --accent-red-muted: #FFEBEE;
+
+  --accent-amber: #D97745;
+  --accent-amber-subtle: rgba(217, 119, 69, 0.08);
+  --accent-amber-muted: #FFF3E0;
+
+  --accent-teal: #1E7E72;
+
+  --grid-line: rgba(221, 229, 222, 0.7);
+  --matrix-canvas-opacity: 0.015;
+  --scanline-display: none;
+
+  color-scheme: light;
+}
+
+html.dark, [data-theme="dark"] {
+  /* DARK MODE PALETTE (Matrix / Mr. Robot Cinematic Terminal) */
+  --bg-base: #050705;
+  --bg-soft: #0A0F0B;
+  --surface: #0E1510;
+  --surface-raised: #121B14;
+  --surface-hover: #151F17;
+
+  --text-primary: #E8F5E9;
+  --text-secondary: #91A596;
+  --text-muted: #647568;
+
+  --border: #1B2A1F;
+  --border-strong: #25382A;
+
+  --accent-green: #00FF66;
+  --accent-green-hover: #00CC52;
+  --accent-green-light: #5CFF9B;
+  --accent-green-subtle: rgba(0, 255, 102, 0.12);
+  --accent-green-muted: #0D2214;
+
+  --accent-red: #FF3B30;
+  --accent-red-hover: #E03026;
+  --accent-red-light: #FF6B63;
+  --accent-red-subtle: rgba(255, 59, 48, 0.12);
+  --accent-red-muted: #271211;
+
+  --accent-amber: #D9A441;
+  --accent-amber-hover: #BF8C2E;
+  --accent-amber-light: #ECC06A;
+  --accent-amber-subtle: rgba(217, 164, 65, 0.12);
+  --accent-amber-muted: #241C0E;
+
+  --accent-teal: #42C2A8;
+
+  --grid-line: rgba(27, 42, 31, 0.55);
+  --matrix-canvas-opacity: 0.06;
+  --scanline-display: block;
+
+  color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #050705;
-  color-scheme: dark;
+  background-color: var(--bg-base);
 }
 
 body {
-  background-color: #050705;
-  color: #E8F5E9;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Matrix Text selection */
+/* RTL Typography & Direction overrides */
+[dir="rtl"] {
+  font-family: var(--font-arabic), var(--font-inter), system-ui, -apple-system, sans-serif;
+  text-align: right;
+}
+
+/* Keep code, terminal syntax, IP addresses, URLs strictly LTR in all languages */
+code,
+pre,
+.font-mono,
+[data-mono],
+.code-block,
+kbd {
+  font-family: var(--font-mono), monospace !important;
+  direction: ltr !important;
+  unicode-bidi: isolate;
+  text-align: left !important;
+}
+
+/* Text Selection */
 ::selection {
-  background-color: #00FF66;
+  background-color: var(--accent-green);
   color: #050705;
 }
 
-/* Subtle Matrix scanline effect */
+html.light ::selection {
+  background-color: #267747;
+  color: #FFFFFF;
+}
+
+/* Matrix Scanline Overlay */
 .scanlines {
+  display: var(--scanline-display);
   background: linear-gradient(
     rgba(18, 27, 20, 0) 50%, 
     rgba(0, 0, 0, 0.25) 50%
@@ -145,41 +167,41 @@ body {
   pointer-events: none;
 }
 
-/* Subtle technical grid overlay */
+/* Technical Grid */
 .tech-grid {
   background-image: 
-    linear-gradient(to right, rgba(27, 42, 31, 0.55) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(27, 42, 31, 0.55) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 .tech-dots {
-  background-image: radial-gradient(rgba(0, 255, 102, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(var(--accent-green-subtle) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Matrix Glow Accent */
+/* Glow Effects */
 .glow-green {
   box-shadow: 0 0 20px rgba(0, 255, 102, 0.18), inset 0 0 10px rgba(0, 255, 102, 0.05);
+}
+
+html.light .glow-green {
+  box-shadow: 0 4px 14px rgba(38, 119, 71, 0.12);
 }
 
 .glow-red {
   box-shadow: 0 0 20px rgba(255, 59, 48, 0.22), inset 0 0 10px rgba(255, 59, 48, 0.08);
 }
 
+html.light .glow-red {
+  box-shadow: 0 4px 14px rgba(198, 40, 40, 0.12);
+}
+
 .glow-amber {
   box-shadow: 0 0 20px rgba(217, 164, 65, 0.18);
 }
 
-.text-glow-green {
-  text-shadow: 0 0 8px rgba(0, 255, 102, 0.5);
-}
-
-.text-glow-red {
-  text-shadow: 0 0 8px rgba(255, 59, 48, 0.6);
-}
-
-/* Terminal Cursor Blink */
+/* Cursor Blink Animation */
 @keyframes terminal-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -189,51 +211,31 @@ body {
   animation: terminal-blink 1s steps(2, start) infinite;
 }
 
-/* Subtle matrix code rain stream */
-@keyframes matrix-stream {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
-}
-
-/* Terminal Node Pulse */
+/* Terminal Pulse */
 @keyframes cyber-pulse {
   0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.08); filter: drop-shadow(0 0 6px rgba(0, 255, 102, 0.5)); }
+  50% { opacity: 1; transform: scale(1.08); }
 }
 
 .cyber-pulse {
   animation: cyber-pulse 3s ease-in-out infinite;
 }
 
-/* Hover lift card */
-.terminal-card {
-  background-color: #0E1510;
-  border: 1px solid #1B2A1F;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.terminal-card:hover {
-  background-color: #121B14;
-  border-color: #00FF66;
-  box-shadow: 0 6px 20px rgba(0, 255, 102, 0.10);
-  transform: translateY(-2px);
-}
-
-/* Custom terminal scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #050705;
+  background: var(--bg-base);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1B2A1F;
+  background: var(--border);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00FF66;
+  background: var(--accent-green);
 }

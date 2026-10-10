@@ -5,16 +5,17 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { resources } from '@/data/resources';
 import { LabTerminalCard } from '@/components/ui/LabTerminalCard';
 import { Difficulty, Pricing } from '@/types';
-import { Search, Terminal, Filter } from 'lucide-react';
+import { Search, Terminal } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 export default function LabsPage() {
+  const { t, isRTL } = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDifficulty] = useState<Difficulty | 'all'>('all');
   const [selectedPricing] = useState<Pricing | 'all'>('all');
   const [selectedTag, setSelectedTag] = useState<string>('all');
 
-  // Filter resources to those that are interactive labs, platforms, or CTFs
   const labResources = useMemo(() => {
     return resources.filter(
       (r) =>
@@ -55,48 +56,51 @@ export default function LabsPage() {
   }, [labResources, searchQuery, selectedDifficulty, selectedPricing, selectedTag]);
 
   const quickTags = [
-    { id: 'all', label: 'ALL LABS' },
-    { id: 'web', label: 'WEB EXPLOITATION' },
-    { id: 'linux', label: 'LINUX / PRIV ESC' },
-    { id: 'blue team', label: 'BLUE TEAM / SOC' },
-    { id: 'active directory', label: 'ACTIVE DIRECTORY' },
-    { id: 'ctf', label: 'CTF ARENAS' },
-    { id: 'forensics', label: 'DFIR & FORENSICS' },
+    { id: 'all', labelKey: 'tag_all' },
+    { id: 'web', labelKey: 'tag_web' },
+    { id: 'linux', labelKey: 'tag_linux' },
+    { id: 'blue team', labelKey: 'tag_blue_team' },
+    { id: 'active directory', labelKey: 'tag_active_directory' },
+    { id: 'ctf', labelKey: 'tag_ctf' },
+    { id: 'forensics', labelKey: 'tag_forensics' },
   ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-sans">
-      <Breadcrumbs items={[{ label: 'Labs & Attack Environments' }]} />
+      <Breadcrumbs items={[{ label: t('nav_labs') }]} />
 
       {/* Header */}
       <div className="mb-8">
-        <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#00FF66] mb-2">
-          <Terminal className="w-4 h-4 text-[#00FF66]" />
-          <span>// ACCESS_TERMINALS // LIVE_ENVIRONMENTS</span>
+        <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#267747] dark:text-[#00FF66] mb-2">
+          <Terminal className="w-4 h-4 text-[#267747] dark:text-[#00FF66]" />
+          <span>{t('labs_badge')}</span>
         </div>
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#E8F5E9] font-mono tracking-tight mb-2.5">
-          Interactive Cybersecurity Labs &amp; CTF Arenas
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-[#18221C] dark:text-[#E8F5E9] font-mono tracking-tight mb-2.5">
+          {t('labs_title')}
         </h1>
-        <p className="text-sm text-[#91A596] max-w-3xl leading-relaxed">
-          Deliberate practical execution in isolated attack and defense environments. Browse verified virtualization platforms, vulnerable wargames, Capture The Flag arenas, and SOC defense simulators.
+        <p className="text-sm text-[#5F6B62] dark:text-[#91A596] max-w-3xl leading-relaxed">
+          {t('labs_subtitle')}
         </p>
       </div>
 
       {/* Controls Bar */}
-      <div className="bg-[#0E1510] p-5 rounded-2xl border border-[#1B2A1F] mb-8 space-y-4 shadow-xs">
+      <div className="bg-[#FFFFFF] dark:bg-[#0E1510] p-5 rounded-2xl border border-[#DDE5DE] dark:border-[#1B2A1F] mb-8 space-y-4 shadow-xs">
         <div className="relative">
-          <Search className="absolute left-4 top-3.5 w-4 h-4 text-[#00FF66]" />
+          <Search className={cn('absolute top-3.5 w-4 h-4 text-[#267747] dark:text-[#00FF66]', isRTL ? 'right-4' : 'left-4')} />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search lab environments by skill, platform, or vulnerability vector..."
-            className="w-full pl-11 pr-4 py-2.5 bg-[#050705] text-[#E8F5E9] placeholder-[#91A596]/50 rounded-xl border border-[#1B2A1F] text-xs font-mono focus:outline-none focus:border-[#00FF66] focus:ring-1 focus:ring-[#00FF66]/30 transition-all"
+            placeholder={t('search_placeholder')}
+            className={cn(
+              'w-full py-2.5 bg-[#F7F9F6] dark:bg-[#050705] text-[#18221C] dark:text-[#E8F5E9] placeholder-[#5F6B62]/50 dark:placeholder-[#91A596]/50 rounded-xl border border-[#DDE5DE] dark:border-[#1B2A1F] text-xs font-mono focus:outline-none focus:border-[#267747] dark:focus:border-[#00FF66] focus:ring-1 focus:ring-[#267747]/30 dark:focus:ring-[#00FF66]/30 transition-all',
+              isRTL ? 'pr-11 pl-4 text-right' : 'pl-11 pr-4 text-left'
+            )}
           />
         </div>
 
         {/* Quick Tag Pills */}
-        <div className="flex flex-wrap items-center gap-2 pt-1">
+        <div className="flex flex-wrap items-center gap-2 pt-1 font-mono">
           {quickTags.map((tag) => (
             <button
               key={tag.id}
@@ -105,11 +109,11 @@ export default function LabsPage() {
               className={cn(
                 'px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all',
                 selectedTag === tag.id
-                  ? 'bg-[#00FF66] text-[#050705] shadow-[0_0_12px_rgba(0,255,102,0.25)]'
-                  : 'bg-[#050705] text-[#91A596] border border-[#1B2A1F] hover:border-[#00FF66] hover:text-[#E8F5E9]'
+                  ? 'bg-[#267747] dark:bg-[#00FF66] text-white dark:text-[#050705] shadow-xs'
+                  : 'bg-[#EEF3EE] dark:bg-[#050705] text-[#5F6B62] dark:text-[#91A596] border border-[#DDE5DE] dark:border-[#1B2A1F] hover:border-[#267747] dark:hover:border-[#00FF66] hover:text-[#18221C] dark:hover:text-[#E8F5E9]'
               )}
             >
-              {tag.label}
+              {t(tag.labelKey)}
             </button>
           ))}
         </div>
@@ -117,8 +121,8 @@ export default function LabsPage() {
 
       {/* Results Count */}
       <div className="flex items-center justify-between mb-6 font-mono text-xs">
-        <span className="text-[#91A596]">
-          QUERY RESULT: <span className="text-[#00FF66] font-bold">{filteredLabs.length}</span> ACTIVE LAB ENVIRONMENTS
+        <span className="text-[#5F6B62] dark:text-[#91A596]">
+          {t('results_count', { count: filteredLabs.length })}
         </span>
       </div>
 

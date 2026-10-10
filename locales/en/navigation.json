@@ -1,0 +1,22 @@
+{
+  "nav_home": "HOME",
+  "nav_learn": "LEARN",
+  "nav_knowledge": "KNOWLEDGE",
+  "nav_certifications": "CERTIFICATIONS",
+  "nav_youtube": "YOUTUBE",
+  "nav_labs": "LABS",
+  "nav_tools": "TOOLS",
+  "nav_roadmaps": "ROADMAPS",
+  "nav_about": "ABOUT",
+  "nav_search": "SEARCH",
+  "nav_overview": "Overview",
+  "nav_hackers": "Hacker Types (01-10+)",
+  "nav_threats": "Threat Taxonomy & MITRE",
+  "nav_auth": "Authentication & AAA",
+  "nav_encryption": "Encryption & Ciphers",
+  "nav_firewalls": "Firewalls & Network Defenses",
+  "nav_compare_cert": "Certification Comparison",
+  "nav_offsec": "OffSec Certifications",
+  "console_subsystems": "// KNOWLEDGE_SUBSYSTEMS",
+  "console_navigation": "// CONSOLE_NAVIGATION"
+}

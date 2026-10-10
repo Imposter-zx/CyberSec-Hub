@@ -1,0 +1,23 @@
+{
+  "certs_badge": "// CREDENTIAL_MATRIX // VERIFIED_EXAMS",
+  "certs_title": "Cybersecurity Certification Explorer",
+  "certs_subtitle": "Unbiased technical directory of verified industry certifications across OffSec, CompTIA, (ISC)², GIAC/SANS, Cisco, and Cloud providers.",
+  "compare_matrix_btn": "> COMPARE MATRIX ({count})",
+  "offsec_hub_btn": "[OFFSEC HUB]",
+  "search_placeholder": "Search certifications by name (e.g. OSCP+, Security+, CISSP, eJPT) or provider...",
+  "domain_specialization": "Domain / Specialization",
+  "experience_level": "Experience Level",
+  "compare_title": "Cybersecurity Certification Comparison Tool",
+  "compare_subtitle": "Compare exam formats, practical vs theoretical styles, costs, duration, renewal policies, and required experience side-by-side to make informed career decisions.",
+  "preset_comparisons": "POPULAR BENCHMARK COMPARISONS:",
+  "add_to_matrix": "ADD TO MATRIX:",
+  "clear_matrix": "CLEAR MATRIX",
+  "no_certs_selected": "NO CERTIFICATIONS SELECTED FOR MATRIX",
+  "no_certs_hint": "Select 2 to 4 certifications using the \"+ Compare\" button to view side-by-side technical differences, costs, and formats.",
+  "metric_header": "METRIC / FEATURE",
+  "offsec_badge": "// OFFSEC_CATALOG // HANDS_ON_DEFENSE_AND_OFFENSE",
+  "offsec_title": "OffSec Cybersecurity Certifications",
+  "offsec_subtitle": "The complete portfolio of OffSec hands-on performance-based certifications, from the industry-benchmark OSCP+ to specialized Web, Red Teaming, Defense, and Exploit Development.",
+  "offsec_notice_title": "[AUTHORITATIVE PROVIDER NOTICE & POLICY TRANSPARENCY]",
+  "offsec_notice_body": "OffSec certification exam lengths, retake requirements, course access bundles (e.g. Learn One, Learn Unlimited), and renewal policies evolve. For current official pricing and active exam policies, consult the"
+}

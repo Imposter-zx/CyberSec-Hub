@@ -1,0 +1,16 @@
+{
+  "labs_badge": "// ACCESS_TERMINALS // LIVE_ENVIRONMENTS",
+  "labs_title": "Interactive Cybersecurity Labs & CTF Arenas",
+  "labs_subtitle": "Deliberate practical execution in isolated attack and defense environments. Browse verified virtualization platforms, vulnerable wargames, Capture The Flag arenas, and SOC defense simulators.",
+  "search_placeholder": "Search lab environments by skill, platform, or vulnerability vector...",
+  "tag_all": "ALL LABS",
+  "tag_web": "WEB EXPLOITATION",
+  "tag_linux": "LINUX / PRIV ESC",
+  "tag_blue_team": "BLUE TEAM / SOC",
+  "tag_active_directory": "ACTIVE DIRECTORY",
+  "tag_ctf": "CTF ARENAS",
+  "tag_forensics": "DFIR & FORENSICS",
+  "results_count": "QUERY RESULT: {count} ACTIVE LAB ENVIRONMENTS",
+  "enter_lab_btn": "> ENTER LAB",
+  "type_prefix": "TYPE:"
+}

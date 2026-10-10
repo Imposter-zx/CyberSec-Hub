@@ -1,0 +1,16 @@
+{
+  "labs_badge": "// TERMINAUX_ACCES // ENVIRONNEMENTS_DIRECTS",
+  "labs_title": "Laboratoires Pratiques & Arènes CTF",
+  "labs_subtitle": "Mise en pratique délibérée dans des environnements d'attaque et de défense isolés. Parcourez plateformes de virtualisation, machines vulnérables et simulateurs SOC.",
+  "search_placeholder": "Rechercher par compétence, plateforme ou vecteur de vulnérabilité...",
+  "tag_all": "TOUS LES LABS",
+  "tag_web": "EXPLOITATION WEB",
+  "tag_linux": "LINUX / PRIV ESC",
+  "tag_blue_team": "BLUE TEAM / SOC",
+  "tag_active_directory": "ACTIVE DIRECTORY",
+  "tag_ctf": "ARÈNES CTF",
+  "tag_forensics": "DFIR & ANALYSE FORENSIC",
+  "results_count": "RÉSULTAT DE LA REQUÊTE : {count} ENVIRONNEMENTS ACTIFS",
+  "enter_lab_btn": "> ENTRER DANS LE LAB",
+  "type_prefix": "TYPE :"
+}

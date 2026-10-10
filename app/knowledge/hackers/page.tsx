@@ -6,10 +6,12 @@ import { hackerTypes } from '@/data/hackers';
 import { VisualConceptCard } from '@/components/visuals/VisualConceptCard';
 import { getHackerIllustration } from '@/components/visuals/HackerIllustrations';
 import { HackerCard } from '@/components/ui/HackerCard';
-import { Shield, Scale, Users, LayoutGrid, ListFilter, Terminal } from 'lucide-react';
+import { Scale, LayoutGrid, ListFilter, Terminal } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 export default function HackersKnowledgePage() {
+  const { t } = useI18n();
   const [filter, setFilter] = useState<'all' | 'core-10' | 'authorized' | 'adversary'>('all');
   const [viewMode, setViewMode] = useState<'infographic' | 'detailed'>('infographic');
 
@@ -47,27 +49,27 @@ export default function HackersKnowledgePage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-mono">
       <Breadcrumbs
         items={[
-          { label: 'Knowledge Base', href: '/knowledge' },
+          { label: t('nav.knowledge') || 'Knowledge Base', href: '/knowledge' },
           { label: 'Types of Hackers & Threat Actors' },
         ]}
       />
 
       {/* Header */}
       <div className="mb-8">
-        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#00FF66] mb-1.5">
+        <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#267747] dark:text-[#00FF66] mb-1.5">
           <Terminal className="w-4 h-4" />
           <span>// CLASSIFIED_ARCHETYPE_DIRECTORY</span>
         </div>
-        <h1 className="text-2xl sm:text-4xl font-black text-[#E8F5E9] uppercase tracking-wider mb-2.5">
+        <h1 className="text-2xl sm:text-4xl font-black text-[#18221C] dark:text-[#E8F5E9] uppercase tracking-wider mb-2.5">
           Types of Hackers &amp; Threat Actors
         </h1>
-        <p className="text-sm text-[#91A596] max-w-3xl leading-relaxed font-sans">
+        <p className="text-sm text-[#5F6B62] dark:text-[#91A596] max-w-3xl leading-relaxed font-sans">
           Technical classification of 17 cybersecurity archetypes, threat actor tiers, and defensive operations. Visual infographic representations illustrate authorized ethical boundaries, criminal methodologies, and industrial roles.
         </p>
       </div>
 
       {/* Controls Bar: Filter by Scope + View Mode Toggle */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#0E1510] border border-[#1B2A1F] mb-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl bg-[#FFFFFF] dark:bg-[#0E1510] border border-[#DDE5DE] dark:border-[#1B2A1F] mb-8 shadow-xs">
         {/* Filter Pills */}
         <div className="flex flex-wrap items-center gap-1.5">
           {[
@@ -81,10 +83,10 @@ export default function HackersKnowledgePage() {
               type="button"
               onClick={() => setFilter(tab.id as any)}
               className={cn(
-                'px-3 py-1.5 rounded-lg text-xs font-bold transition-all border',
+                'px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border',
                 filter === tab.id
-                  ? 'bg-[#00FF66] text-[#050705] border-[#00FF66] shadow-xs'
-                  : 'bg-[#050705] text-[#91A596] hover:text-[#E8F5E9] border-[#1B2A1F]'
+                  ? 'bg-[#267747] text-white border-[#267747] dark:bg-[#00FF66] dark:text-[#050705] dark:border-[#00FF66] shadow-xs'
+                  : 'bg-[#F7F9F6] text-[#5F6B62] border-[#DDE5DE] hover:text-[#18221C] dark:bg-[#050705] dark:text-[#91A596] dark:hover:text-[#E8F5E9] dark:border-[#1B2A1F]'
               )}
             >
               {tab.label}
@@ -93,15 +95,15 @@ export default function HackersKnowledgePage() {
         </div>
 
         {/* View Mode Toggle */}
-        <div className="inline-flex rounded-lg p-1 bg-[#050705] border border-[#1B2A1F] shrink-0">
+        <div className="inline-flex rounded-xl p-1 bg-[#F7F9F6] dark:bg-[#050705] border border-[#DDE5DE] dark:border-[#1B2A1F] shrink-0">
           <button
             type="button"
             onClick={() => setViewMode('infographic')}
             className={cn(
-              'px-3 py-1 rounded-md text-xs font-bold flex items-center gap-1.5 transition-all',
+              'px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all',
               viewMode === 'infographic'
-                ? 'bg-[#00FF66] text-[#050705]'
-                : 'text-[#91A596] hover:text-[#E8F5E9]'
+                ? 'bg-[#267747] text-white dark:bg-[#00FF66] dark:text-[#050705]'
+                : 'text-[#5F6B62] hover:text-[#18221C] dark:text-[#91A596] dark:hover:text-[#E8F5E9]'
             )}
           >
             <LayoutGrid className="w-3.5 h-3.5" />
@@ -111,10 +113,10 @@ export default function HackersKnowledgePage() {
             type="button"
             onClick={() => setViewMode('detailed')}
             className={cn(
-              'px-3 py-1 rounded-md text-xs font-bold flex items-center gap-1.5 transition-all',
+              'px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all',
               viewMode === 'detailed'
-                ? 'bg-[#00FF66] text-[#050705]'
-                : 'text-[#91A596] hover:text-[#E8F5E9]'
+                ? 'bg-[#267747] text-white dark:bg-[#00FF66] dark:text-[#050705]'
+                : 'text-[#5F6B62] hover:text-[#18221C] dark:text-[#91A596] dark:hover:text-[#E8F5E9]'
             )}
           >
             <ListFilter className="w-3.5 h-3.5" />
@@ -154,30 +156,30 @@ export default function HackersKnowledgePage() {
       )}
 
       {/* Legal & Ethical Boundaries Reference Section */}
-      <div className="mt-16 p-6 rounded-2xl bg-[#0E1510] border border-[#1B2A1F]">
-        <h3 className="text-base font-bold text-[#00FF66] mb-2 flex items-center gap-2">
-          <Scale className="w-4 h-4 text-[#00FF66]" />
+      <div className="mt-16 p-6 rounded-2xl bg-[#FFFFFF] dark:bg-[#0E1510] border border-[#DDE5DE] dark:border-[#1B2A1F] shadow-xs">
+        <h3 className="text-base font-bold text-[#267747] dark:text-[#00FF66] mb-2 flex items-center gap-2">
+          <Scale className="w-4 h-4 text-[#267747] dark:text-[#00FF66]" />
           <span>// LEGAL &amp; ETHICAL FRAMEWORK BOUNDARIES (CFAA &amp; COMPUTER MISUSE ACT)</span>
         </h3>
-        <p className="text-xs text-[#91A596] leading-relaxed font-sans mb-4">
+        <p className="text-xs text-[#5F6B62] dark:text-[#91A596] leading-relaxed font-sans mb-4">
           The decisive line separating ethical research from unlawful cybercrime is <strong>authorization</strong>. Under laws such as the US Computer Fraud and Abuse Act (CFAA § 1030), UK Computer Misuse Act (CMA 1990), and EU Directive 2013/40/EU, accessing any computing system, service, or API without explicit written permission is illegal regardless of motivation.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-          <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
-            <span className="font-bold text-[#00FF66] block mb-1">Authorized (In-Scope)</span>
-            <span className="text-[#91A596] text-[11px] font-sans">
+          <div className="p-3.5 rounded-xl bg-[#F7F9F6] dark:bg-[#050705] border border-[#DDE5DE] dark:border-[#1B2A1F]">
+            <span className="font-bold text-[#267747] dark:text-[#00FF66] block mb-1">Authorized (In-Scope)</span>
+            <span className="text-[#5F6B62] dark:text-[#91A596] text-[11px] font-sans">
               Explicit ROE (Rules of Engagement), written contracts, authorized bug bounty scope with Safe Harbor protections.
             </span>
           </div>
-          <div className="p-3.5 rounded-xl bg-[#050705] border border-[#1B2A1F]">
-            <span className="font-bold text-[#D9A441] block mb-1">Unauthorized (Gray Zone)</span>
-            <span className="text-[#91A596] text-[11px] font-sans">
+          <div className="p-3.5 rounded-xl bg-[#F7F9F6] dark:bg-[#050705] border border-[#DDE5DE] dark:border-[#1B2A1F]">
+            <span className="font-bold text-[#D97745] dark:text-[#D9A441] block mb-1">Unauthorized (Gray Zone)</span>
+            <span className="text-[#5F6B62] dark:text-[#91A596] text-[11px] font-sans">
               Testing production systems without consent even if intending to report findings. Carries severe civil and criminal liabilities.
             </span>
           </div>
-          <div className="p-3.5 rounded-xl bg-[#271211] border border-[#441E1C]">
-            <span className="font-bold text-[#FF3B30] block mb-1">Malicious (Adversary)</span>
-            <span className="text-[#91A596] text-[11px] font-sans">
+          <div className="p-3.5 rounded-xl bg-[#FDEDEC] dark:bg-[#271211] border border-[#F5C6CB] dark:border-[#441E1C]">
+            <span className="font-bold text-[#C62828] dark:text-[#FF3B30] block mb-1">Malicious (Adversary)</span>
+            <span className="text-[#5F6B62] dark:text-[#91A596] text-[11px] font-sans">
               Unauthorized access for financial extortion, data exfiltration, service disruption, espionage, or destructive payloads.
             </span>
           </div>

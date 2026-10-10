@@ -216,4 +216,4 @@ export interface SearchResult {
   internalUrl: string;
 }
 
-export type Language = 'en' | 'fr' | 'ar';
+export type Language = 'en' | 'fr' | 'ar' | 'es';

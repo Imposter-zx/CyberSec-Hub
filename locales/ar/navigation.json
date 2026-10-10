@@ -1,0 +1,22 @@
+{
+  "nav_home": "الرئيسية",
+  "nav_learn": "تعلم",
+  "nav_knowledge": "قاعدة المعرفة",
+  "nav_certifications": "الشهادات",
+  "nav_youtube": "يوتيوب",
+  "nav_labs": "المختبرات",
+  "nav_tools": "الأدوات",
+  "nav_roadmaps": "المسارات",
+  "nav_about": "عن المنصة",
+  "nav_search": "البحث",
+  "nav_overview": "نظرة عامة",
+  "nav_hackers": "أنواع المخترقين (01-10+)",
+  "nav_threats": "تصنيف التهديدات و MITRE",
+  "nav_auth": "المصادقة والتحقق AAA",
+  "nav_encryption": "التشفير والتعمية",
+  "nav_firewalls": "الجدران النارية والدفاع الشبكي",
+  "nav_compare_cert": "مقارنة الشهادات",
+  "nav_offsec": "شهادات OffSec",
+  "console_subsystems": "// الأنظمة_الفرعية_للمعرفة",
+  "console_navigation": "// ملاحة_وحدة_التحكم"
+}

@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import { Difficulty } from '@/types';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 interface DifficultyBadgeProps {
   difficulty: Difficulty;
@@ -8,22 +11,24 @@ interface DifficultyBadgeProps {
 }
 
 export const DifficultyBadge: React.FC<DifficultyBadgeProps> = ({ difficulty, className }) => {
+  const { t } = useI18n();
+
   const config = {
     beginner: {
-      label: 'LVL: BEGINNER',
-      bg: 'bg-[#0D2214] text-[#00FF66] border-[#1B2A1F]',
+      label: t('difficulty_beginner').toUpperCase(),
+      bg: 'bg-[#E8F5EE] text-[#267747] border-[#C4E1CF] dark:bg-[#0D2214] dark:text-[#00FF66] dark:border-[#1B2A1F]',
     },
     intermediate: {
-      label: 'LVL: INTERMEDIATE',
-      bg: 'bg-[#241C0E] text-[#D9A441] border-[#382B17]',
+      label: t('difficulty_intermediate').toUpperCase(),
+      bg: 'bg-[#FFF3E0] text-[#D97745] border-[#FBD7B5] dark:bg-[#241C0E] dark:text-[#D9A441] dark:border-[#382B17]',
     },
     advanced: {
-      label: 'LVL: ADVANCED',
-      bg: 'bg-[#271211] text-[#FF3B30] border-[#441E1C]',
+      label: t('difficulty_advanced').toUpperCase(),
+      bg: 'bg-[#FFEBEE] text-[#C62828] border-[#FFCDD2] dark:bg-[#271211] dark:text-[#FF3B30] dark:border-[#441E1C]',
     },
   }[difficulty] || {
-    label: `LVL: ${difficulty.toUpperCase()}`,
-    bg: 'bg-[#0E1510] text-[#91A596] border-[#1B2A1F]',
+    label: difficulty.toUpperCase(),
+    bg: 'bg-[#EEF3EE] text-[#5F6B62] border-[#DDE5DE] dark:bg-[#0E1510] dark:text-[#91A596] dark:border-[#1B2A1F]',
   };
 
   return (

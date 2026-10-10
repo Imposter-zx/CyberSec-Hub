@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Noto_Sans_Arabic } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
 import { I18nProvider } from '@/lib/i18n';
@@ -16,6 +16,12 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-mono',
+});
+
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ['arabic'],
+  display: 'swap',
+  variable: '--font-arabic',
 });
 
 export const metadata: Metadata = {
@@ -59,8 +65,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col font-sans bg-[#050705] text-[#E8F5E9] transition-colors antialiased selection:bg-[#00FF66] selection:text-[#050705]">
+    <html
+      lang="en"
+      className={`dark ${inter.variable} ${jetbrainsMono.variable} ${notoSansArabic.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var storedTheme = localStorage.getItem('cybersec_theme');
+                  var isDark = storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                  document.documentElement.classList.remove('light', 'dark');
+                  document.documentElement.classList.add(isDark ? 'dark' : 'light');
+                  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+                  
+                  var storedLang = localStorage.getItem('cybersec_lang') || 'en';
+                  document.documentElement.lang = storedLang;
+                  document.documentElement.dir = storedLang === 'ar' ? 'rtl' : 'ltr';
+                  document.documentElement.setAttribute('data-lang', storedLang);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col font-sans bg-[#F7F9F6] dark:bg-[#050705] text-[#18221C] dark:text-[#E8F5E9] transition-colors duration-150 antialiased selection:bg-[#267747] selection:text-white dark:selection:bg-[#00FF66] dark:selection:text-[#050705]">
         <ThemeProvider>
           <I18nProvider>
             <Navbar />

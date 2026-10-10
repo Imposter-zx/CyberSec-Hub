@@ -1,0 +1,10 @@
+{
+  "tools_badge": "// ARSENAL_SEGURIDAD // CLI_Y_UTILIDADES",
+  "tools_title": "Directorio de Herramientas Esenciales de Ciberseguridad",
+  "tools_subtitle": "Directorio seleccionado de herramientas estándar para enumeración de redes, auditoría de aplicaciones web, evaluación de Active Directory, análisis forense en memoria e ingeniería inversa.",
+  "ethics_title": "[USO ÉTICO Y PROTOCOLO DE CUMPLIMIENTO LEGAL]",
+  "ethics_body": "Estas herramientas de software se documentan estrictamente para la defensa, auditorías autorizadas, evaluación de vulnerabilidades e investigación académica en entornos de laboratorio aislados. Nunca ejecutes reconocimiento activo o cargas ofensivas sin autorización previa por escrito del propietario de los activos.",
+  "search_placeholder": "Buscar herramientas por nombre (ej. Nmap, Burp Suite, Ghidra, Volatility, Hashcat)...",
+  "open_tool_btn": "> ABRIR HERRAMIENTA",
+  "command_syntax": "SINTAXIS Y USO:"
+}

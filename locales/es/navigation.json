@@ -1,0 +1,22 @@
+{
+  "nav_home": "INICIO",
+  "nav_learn": "APRENDER",
+  "nav_knowledge": "CONOCIMIENTO",
+  "nav_certifications": "CERTIFICACIONES",
+  "nav_youtube": "YOUTUBE",
+  "nav_labs": "LABORATORIOS",
+  "nav_tools": "HERRAMIENTAS",
+  "nav_roadmaps": "RUTAS",
+  "nav_about": "ACERCA DE",
+  "nav_search": "BUSCAR",
+  "nav_overview": "Visión General",
+  "nav_hackers": "Tipos de Hackers (01-10+)",
+  "nav_threats": "Taxonomía de Amenazas y MITRE",
+  "nav_auth": "Autenticación y AAA",
+  "nav_encryption": "Cifrado y Criptografía",
+  "nav_firewalls": "Cortafuegos y Defensa de Red",
+  "nav_compare_cert": "Comparador de Certificaciones",
+  "nav_offsec": "Certificaciones OffSec",
+  "console_subsystems": "// SUBSISTEMAS_CONOCIMIENTO",
+  "console_navigation": "// NAVEGACION_CONSOLA"
+}

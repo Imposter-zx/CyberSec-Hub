@@ -1,0 +1,23 @@
+{
+  "certs_badge": "// MATRIZ_CREDENCIALES // EXAMENES_VERIFICADOS",
+  "certs_title": "Explorador de Certificaciones de Ciberseguridad",
+  "certs_subtitle": "Directorio técnico imparcial de certificaciones profesionales verificadas: OffSec, CompTIA, (ISC)², GIAC/SANS, Cisco y proveedores Cloud.",
+  "compare_matrix_btn": "> COMPARAR MATRIZ ({count})",
+  "offsec_hub_btn": "[HUB OFFSEC]",
+  "search_placeholder": "Buscar certificaciones por nombre (ej. OSCP+, Security+, CISSP, eJPT) o entidad...",
+  "domain_specialization": "Dominio / Especialización",
+  "experience_level": "Nivel de Experiencia",
+  "compare_title": "Comparador de Certificaciones de Ciberseguridad",
+  "compare_subtitle": "Compara formatos de examen, enfoque práctico vs teórico, costes, duración, políticas de renovación y experiencia requerida.",
+  "preset_comparisons": "COMPARACIONES DESTACADAS:",
+  "add_to_matrix": "AÑADIR A LA MATRIZ:",
+  "clear_matrix": "LIMPIAR MATRIZ",
+  "no_certs_selected": "NO HAY CERTIFICACIONES SELECCIONADAS",
+  "no_certs_hint": "Selecciona de 2 a 4 certificaciones mediante el botón \"+ Comparar\" para ver diferencias técnicas y costes lado a lado.",
+  "metric_header": "MÉTRICA / CARACTERÍSTICA",
+  "offsec_badge": "// CATALOGO_OFFSEC // ATAQUE_Y_DEFENSA",
+  "offsec_title": "Certificaciones de Ciberseguridad OffSec",
+  "offsec_subtitle": "El catálogo completo de certificaciones prácticas basadas en desempeño de OffSec, desde el estándar OSCP+ hasta Web, Red Team y Defensa.",
+  "offsec_notice_title": "[AVISO OFICIAL Y TRANSPARENCIA DE POLÍTICAS]",
+  "offsec_notice_body": "La duración de exámenes, condiciones de repetición, paquetes de cursos y políticas de renovación de OffSec se actualizan periódicamente. Para precios y normativas vigentes, consulta el"
+}
