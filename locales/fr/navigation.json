@@ -8,6 +8,7 @@
   "nav_tools": "OUTILS",
   "nav_roadmaps": "PARCOURS",
   "nav_about": "À PROPOS",
+  "nav_more": "PLUS",
   "nav_search": "RECHERCHE",
   "nav_overview": "Vue d'ensemble",
   "nav_hackers": "Types de Hackers (01-10+)",
@@ -18,5 +19,7 @@
   "nav_compare_cert": "Comparateur de Certifications",
   "nav_offsec": "Certifications OffSec",
   "console_subsystems": "// SOUS_SYSTEMES_CONNAISSANCES",
-  "console_navigation": "// NAVIGATION_CONSOLE"
+  "console_navigation": "// NAVIGATION_CONSOLE",
+  "github_profile": "Visiter mon profil GitHub",
+  "github_repo": "Voir le code source"
 }

@@ -78,5 +78,10 @@
   "theme_dark": "Mode Sombre",
   "theme_system": "Thème Système",
   "language_selector_label": "Choisir la langue",
-  "breadcrumbs_root": "racine"
+  "breadcrumbs_root": "racine",
+  "about_github_tag": "// COMMUNAUTÉ & OPEN SOURCE",
+  "about_github_title": "Conçu avec curiosité. Partagé avec la communauté.",
+  "about_github_desc": "CyberSec Hub est un projet d'apprentissage en cybersécurité conçu pour organiser et centraliser les connaissances, les ressources éducatives, les laboratoires pratiques, les outils, les certifications et les chaînes de formation fiables. Explorez le projet, découvrez d'autres dépôts ou contribuez à la communauté.",
+  "about_github_btn": "Visiter le profil GitHub",
+  "about_github_repo_btn": "Voir le code source"
 }

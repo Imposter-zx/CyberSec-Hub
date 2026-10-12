@@ -1,11 +1,17 @@
+'use client';
+
 import React from 'react';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
-import { Shield, CheckCircle2, Code, Scale, Terminal } from 'lucide-react';
+import { Shield, CheckCircle2, Code, Scale, Terminal, ArrowUpRight } from 'lucide-react';
+import { GithubIcon } from '@/components/ui/GithubIcon';
+import { useI18n } from '@/lib/i18n';
 
 export default function AboutPage() {
+  const { t } = useI18n();
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-sans">
-      <Breadcrumbs items={[{ label: 'About & Methodology' }]} />
+      <Breadcrumbs items={[{ label: t('nav_about') || 'About & Methodology' }]} />
 
       {/* Header */}
       <div className="mb-10">
@@ -23,6 +29,47 @@ export default function AboutPage() {
 
       {/* Mission & Core Philosophy */}
       <div className="space-y-10 text-sm text-[#18221C] dark:text-[#E8F5E9] leading-relaxed">
+        {/* GitHub Community Section */}
+        <section className="p-7 rounded-2xl bg-[#FFFFFF] dark:bg-[#0E1510] border border-[#DDE5DE] dark:border-[#1B2A1F] space-y-4 shadow-xs relative overflow-hidden group">
+          <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#267747] dark:text-[#00FF66]">
+            <GithubIcon className="w-4 h-4 text-[#267747] dark:text-[#00FF66]" />
+            <span>{t('about_github_tag')}</span>
+          </div>
+          <h2 className="text-lg sm:text-xl font-bold text-[#18221C] dark:text-[#E8F5E9] font-mono">
+            {t('about_github_title')}
+          </h2>
+          <p className="text-[#5F6B62] dark:text-[#91A596] leading-relaxed">
+            {t('about_github_desc')}
+          </p>
+
+          <div className="pt-2 flex flex-wrap items-center gap-3">
+            <a
+              href="https://github.com/Imposter-zx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#267747] text-white dark:bg-[#00FF66] dark:text-[#050705] hover:opacity-90 font-mono text-xs font-bold transition-all shadow-xs"
+              aria-label={t('about_github_btn')}
+            >
+              <GithubIcon className="w-4 h-4" />
+              <span>{t('about_github_btn')}</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+
+            <a
+              href="https://github.com/Imposter-zx/CyberSec-Hub"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#EEF3EE] dark:bg-[#050705] border border-[#DDE5DE] dark:border-[#1B2A1F] hover:border-[#267747] dark:hover:border-[#00FF66] text-[#18221C] dark:text-[#E8F5E9] font-mono text-xs font-bold transition-all"
+              aria-label={t('about_github_repo_btn')}
+            >
+              <Code className="w-4 h-4 text-[#267747] dark:text-[#00FF66]" />
+              <span>{t('about_github_repo_btn')}</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+            </a>
+          </div>
+        </section>
+
+        {/* Platform Mission */}
         <section className="p-7 rounded-2xl bg-[#FFFFFF] dark:bg-[#0E1510] border border-[#DDE5DE] dark:border-[#1B2A1F] space-y-4 shadow-xs">
           <h2 className="text-lg font-bold text-[#18221C] dark:text-[#E8F5E9] font-mono flex items-center gap-2">
             <Shield className="w-5 h-5 text-[#267747] dark:text-[#00FF66]" />

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Shield, ArrowUpRight } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
+import { GithubIcon } from '@/components/ui/GithubIcon';
 
 export const Footer: React.FC = () => {
   const { t } = useI18n();
@@ -106,7 +107,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Credentials & System info */}
+          {/* Credentials & Links */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#18221C] dark:text-[#E8F5E9] mb-3 flex items-center gap-1.5">
               <span className="text-[#267747] dark:text-[#00FF66]">&gt;</span>
@@ -130,13 +131,28 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
+                  href="https://github.com/Imposter-zx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#267747] dark:hover:text-[#00FF66] transition-colors flex items-center gap-1.5"
+                  aria-label={t('github_profile')}
+                >
+                  <GithubIcon className="w-3.5 h-3.5 text-[#267747] dark:text-[#00FF66]" />
+                  <span>GitHub @Imposter-zx</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-60" />
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://github.com/Imposter-zx/CyberSec-Hub"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#267747] dark:hover:text-[#00FF66] transition-colors flex items-center gap-1"
+                  className="hover:text-[#267747] dark:hover:text-[#00FF66] transition-colors flex items-center gap-1.5"
+                  aria-label={t('github_repo')}
                 >
-                  <span>• GitHub Repository</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#267747] dark:text-[#00FF66]" />
+                  <GithubIcon className="w-3.5 h-3.5 text-[#5F6B62] dark:text-[#91A596]" />
+                  <span>{t('github_repo')}</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-60" />
                 </a>
               </li>
             </ul>
@@ -149,7 +165,17 @@ export const Footer: React.FC = () => {
             <span className="text-[#267747] dark:text-[#00FF66] font-bold">CYBERSEC_HUB</span>
             <span>// OPEN SOURCE SECURITY KNOWLEDGE MATRIX</span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="https://github.com/Imposter-zx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#FFFFFF] dark:bg-[#0E1510] border border-[#DDE5DE] dark:border-[#1B2A1F] hover:border-[#267747] dark:hover:border-[#00FF66] text-[#5F6B62] dark:text-[#91A596] hover:text-[#18221C] dark:hover:text-[#E8F5E9] transition-colors"
+              aria-label={t('github_profile')}
+            >
+              <GithubIcon className="w-3.5 h-3.5 text-[#267747] dark:text-[#00FF66]" />
+              <span>@Imposter-zx</span>
+            </a>
             <span className="text-[10px] text-[#267747] dark:text-[#00FF66] bg-[#FFFFFF] dark:bg-[#0E1510] px-2.5 py-0.5 rounded border border-[#DDE5DE] dark:border-[#1B2A1F]">
               ZERO SPONSORED BIAS
             </span>

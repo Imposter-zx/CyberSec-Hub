@@ -8,6 +8,7 @@
   "nav_tools": "الأدوات",
   "nav_roadmaps": "المسارات",
   "nav_about": "عن المنصة",
+  "nav_more": "المزيد",
   "nav_search": "البحث",
   "nav_overview": "نظرة عامة",
   "nav_hackers": "أنواع المخترقين (01-10+)",
@@ -18,5 +19,7 @@
   "nav_compare_cert": "مقارنة الشهادات",
   "nav_offsec": "شهادات OffSec",
   "console_subsystems": "// الأنظمة_الفرعية_للمعرفة",
-  "console_navigation": "// ملاحة_وحدة_التحكم"
+  "console_navigation": "// ملاحة_وحدة_التحكم",
+  "github_profile": "زيارة ملفي الشخصي على GitHub",
+  "github_repo": "عرض الكود المصدري"
 }
